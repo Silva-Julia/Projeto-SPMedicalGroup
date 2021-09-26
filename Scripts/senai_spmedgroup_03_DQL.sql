@@ -1,6 +1,16 @@
 USE MEDICALGROUP_JULIA;
 GO
 
+SELECT * FROM TIPOUSUARIO
+SELECT * FROM USUARIO
+SELECT * FROM CLINICA
+SELECT * FROM ESPECIALIDADE
+SELECT * FROM SITUACAO
+SELECT * FROM PACIENTE
+SELECT * FROM MEDICO
+SELECT * FROM CONSULTA
+
+
 --Listagem de todos os paciente do sistema
 SELECT nomeUsuario 'Nome do Paciente', emailUsuario 'Email do paciente', titulotipoUsuario 'tipo de usuário',cpf
 FROM USUARIO u

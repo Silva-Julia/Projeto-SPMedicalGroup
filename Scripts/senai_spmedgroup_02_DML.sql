@@ -5,6 +5,16 @@ INSERT INTO TIPOUSUARIO
 VALUES ('Admin'), ('Comum'), ('Médico')
 GO
 
+INSERT INTO USUARIO (idTipoUsuario, nomeUsuario, emailUsuario, senhaUsuario)
+VALUES (3, 'Ricardo Lemos', 'ricardo.lemos@spmedicalgroup.com.br', '1234'), 
+       (3, 'Roberto Possarle', 'roberto.possarle@spmedicalgroup.com.br', '1234'), 
+	   (3, 'Helena Strada', 'helena.souza@spmedicalgroup.com.br', '1234'),
+	   (2, 'Ligia', 'Ligia@email.com', '1234'), (2, 'Alexandre', 'Alexandre@email.com', '1234'), 
+	   (2, 'Fernando', 'Fernando@email.com', '1234'), (2, 'Henrique', 'Henrique@email.com', '1234'), 
+	   (2, 'João', 'João@email.com', '1234'), (2, 'Bruno', 'Bruno@email.com', '1234'), (2, 'Mariana', 'Mariana@email.com', '1234'),
+	   (1, 'Rafaela', 'Rafaela@email.com', '1234');
+GO
+
 INSERT INTO ESPECIALIDADE
 VALUES ('Acupuntura'),('Anestesiologia'),('Angiologia'),('Cardiologia'),('Cirurgia Cardiovascular'),('Cirurgia da mão'),('Cirurgia do aparelho digestivo'),
 ('Cirurgia Geral'),('Cirurgia Pediátrica'),('Cirurgia Plástica'),('Cirurgia Torácica'),('Cirurgia Vascular'),('Dermatologia'),('Radioterapia'),('Urologia'),
@@ -19,15 +29,6 @@ INSERT INTO SITUACAO
 VALUES ('Realizada'), ('Agendada'), ('Cancelada');
 GO
 
-INSERT INTO USUARIO (idTipoUsuario, nomeUsuario, emailUsuario, senhaUsuario)
-VALUES (3, 'Ricardo Lemos', 'ricardo.lemos@spmedicalgroup.com.br', '1234'), 
-       (3, 'Roberto Possarle', 'roberto.possarle@spmedicalgroup.com.br', '1234'), 
-	   (3, 'Helena Strada', 'helena.souza@spmedicalgroup.com.br', '1234'),
-	   (2, 'Ligia', 'Ligia@email.com', '1234'), (2, 'Alexandre', 'Alexandre@email.com', '1234'), 
-	   (2, 'Fernando', 'Fernando@email.com', '1234'), (2, 'Henrique', 'Henrique@email.com', '1234'), 
-	   (2, 'João', 'João@email.com', '1234'), (2, 'Bruno', 'Bruno@email.com', '1234'), (2, 'Mariana', 'Mariana@email.com', '1234'),
-	   (1, 'Rafaela', 'Rafaela@email.com', '1234');
-GO
 
 INSERT INTO PACIENTE (idUsuario, nomePaciente, dataNascimento, cpf, enderecoPaciente)
 VALUES (4, 'Ligia', '13-10-1983', '94839859000', 'Rua Estado de Israel 240, São Paulo, Estado de São Paulo, 04022-000'), 
