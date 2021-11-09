@@ -20,14 +20,15 @@ body{
 
 /* -------------------- LOGIN ---------------------- */
 .container{
-    background-image: url("../Front-end/assets/fundoLogin.png");
+    background-image: url("../spmedicalgroup-base/assets/fundoLogin.png");
     height: 1081px;
     background-position: right;
+    background-repeat: round
 }
 
 .logo{
     margin-top: 2%;
-    margin-inline: 23%;
+    margin-inline: 27%;
     height:  288px;
     position: absolute;
 }
@@ -38,10 +39,10 @@ body{
     height: 496px;
     border-radius: 22px;
     display: inline-grid;
-    margin-inline-start: 368px;
+    margin-inline-start: 30vw;
     padding-inline: 21px;
     padding-top: 77px;
-    margin-top: 28%;
+    margin-top: 26%;
 }
 
 .linha_escrita_login{
@@ -105,7 +106,7 @@ body{
     width: 600px;
     height: 94px;
     display: inline-grid;
-    margin-inline-start: 368px;
+    margin-inline-start: 30vw;
     margin-top: 24px;
 }
 
@@ -130,9 +131,10 @@ body{
 
 /* -------------------- CADASTRO ---------------------- */
 .fundo_cadastro{
-    background-image: url("../Front-end/assets/fundoCadastro.png");
+    background-image: url("../spmedicalgroup-base/assets/fundoCadastro.png");
     height: 1137px;
     background-position: right;
+    background-repeat: round
 }
 
 .box_cadastro{
@@ -141,9 +143,9 @@ body{
     height: 496px;
     border-radius: 22px;
     display: inline-grid;
-    margin-inline-start: 368px;
+    margin-inline-start: 31vw;
     padding-inline: 21px;
-    padding-top: 77px;
+    padding-top: 54px;
     margin-top: 28%;
 }
 
@@ -177,10 +179,14 @@ select {
     border-bottom: 1px solid #e6e6e6;
   }
 
+option{
+    color: black;
+}
+
 .boton_Cadastro{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    padding-left: 79px;
-    margin-top: 47px;
+    padding-left: 97px;
+    /* margin-top: 47px; */
 }
 
 .btn__cadastro{
@@ -201,7 +207,7 @@ select {
     width: 600px;
     height: 94px;
     display: inline-grid;
-    margin-inline-start: 368px;
+    margin-inline-start: 31vw;
     margin-top: 24px;
 }
 
@@ -239,11 +245,11 @@ header{
 .container_header{
     display: flex;
     justify-content: center;
-    margin-top: 9px;
+    margin-top:  5px
 }
 
 .logo_header{
-    width: 239px;
+    width: 228px;
     cursor: pointer;
 }
 
@@ -252,6 +258,7 @@ header{
     margin-right: 26px;
     padding-left: 33vw;
     margin-top: 2vw;
+    display: flex;
  }
 
  .nav_header span{
@@ -259,12 +266,14 @@ header{
      font-size:21px;
      font-family: 'Titillium Web', sans-serif;
      display: flex;
-    align-items: center;
 }
 
 .nav_redirecionamento{
-    width: 40px;
+    /* width: 44px; */
     cursor: pointer;
+    height: 59px;
+    padding-bottom: 23px;
+    margin-left: 36px;
 }
 
 
@@ -289,18 +298,18 @@ main{
     height: 521px;
     background: rgba(255, 255, 255, 0.99);
     border-radius: 22px;
-    margin-inline-start: 12vw;
+    margin-inline-start: 11vw;
 }
 
 .conteudo_cadasConsulta{
-    padding-inline-start: 74px;
+    padding-inline-start: 29px
 }
 
 .conteudo_cadasConsulta h2{
     color: #000000;
     font-size: 32px;
     font-family: 'Titillium Web', sans-serif;
-    padding-inline: 13vw;
+    padding-inline: 15vw;
     padding-top: 35px;
 }
 
@@ -315,6 +324,7 @@ main{
 .linha_escrita_consulta{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: #000000;
+    margin-left: 28px;
 }
 
 .input__consulta{
@@ -330,7 +340,8 @@ main{
 
 .boton_Consulta{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    padding-left:  134px;
+    padding-left:  12vw;
+    margin-bottom: 42px;
 }
 
 .btn__consulta{
@@ -356,7 +367,7 @@ main{
     color: #000000;
     font-size: 32px;
     font-family: 'Titillium Web', sans-serif;
-    padding-inline: 32vw;
+    padding-inline: 28vw;
     padding-top: 35px;
 }
 
@@ -367,7 +378,7 @@ main{
 
 .tabela_lista{
     padding-bottom: 40px;
-    padding-top: 38px;
+    padding-top: 28px;
 }
 
 .tabela_lista img{
@@ -389,7 +400,7 @@ td{
 /* ------- FOOTER ----------- */
 
 .rodapePrincipal{
-    background-image: url("../Front-end/assets/Frame.png");
+    background-image: url("../spmedicalgroup-base/assets/Frame.png");
     height:  96px;
 }
 
@@ -429,14 +440,14 @@ td{
     color: #000000;
     font-size: 32px;
     font-family: 'Titillium Web', sans-serif;
-    padding-inline: 31vw;
+    padding-inline: 27vw;
     padding-top: 35px;
 }
 
 .boton_alterarSitu{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    padding-left: 25vw;
-    padding-top: 21px;
+    padding-left: 22vw;
+    padding-top: 45px;
 }
 
 .btn__alterarSitu{
@@ -454,7 +465,7 @@ td{
 
 /* ------------------------- PACIENTE -------------- */
 .fundo_paciente{
-    background-image: url("../Front-end/assets/fundoPaciente.png");
+    background-image: url("../spmedicalgroup-base/assets/fundoPaciente.png");
     height: 780px;
     width: 100%;
     padding-top: 130px;
@@ -473,6 +484,6 @@ td{
     color: #000000;
     font-size: 32px;
     font-family: 'Titillium Web', sans-serif;
-    padding-inline: 31vw;
+    padding-inline: 28vw;
     padding-top: 35px;
 }
