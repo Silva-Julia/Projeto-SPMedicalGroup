@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title> Administrador </title>
+     <link rel="stylesheet" href="spmedicalgroup.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="container_header">
+            <img class="logo_header" href="index.html" src="../Front-end/assets/LOGO.png" alt="LOGO">
+
+                <nav class="nav_header" >
+                    <span> Administrador </span>
+                    <img  class="nav_redirecionamento" src="../Front-end/assets/baseline_format.png">
+                </nav>
+            
+        </div>
+    </header>
+
+    <main>
+        <section class="area_fundo">
+
+            <section class="cadasConsulta">
+                <div class="conteudo_cadasConsulta">
+                    <h2> Cadastrar Consulta </h2>
+
+                    <form class="box_cadasConsulta">
+                        <div class="linha_escrita_consulta">
+                            <input
+                                class= "input__consulta"
+                                placeholder="Nome Medico"
+                                type="text"
+                                name="Nome Medico"
+                                id="consulta__nomeMed"
+                            />
+                        </div>
+            
+                        <div class="linha_escrita_consulta">
+                            <input
+                                class= "input__consulta"
+                                placeholder="Situação"
+                                type="text"
+                                name="Situação"
+                                id="consulta__situacao"
+                            />
+                        </div>
+
+                        <div class="linha_escrita_consulta">
+                            <input
+                                class= "input__consulta"
+                                placeholder="Nome Paciente"
+                                type="text"
+                                name="Nome Paciente"
+                                id="consulta__nomePaci"
+                            />
+                        </div>
+
+                        <div class="linha_escrita_consulta">
+                            <input
+                                class= "input__consulta"
+                                placeholder="Data da Consulta"
+                                type="date"
+                                name="Data da Consulta"
+                                id="consulta__data"
+                            />
+                        </div>
+
+                        <div class="linha_escrita_consulta">
+                            <input
+                                class= "input__consulta"
+                                placeholder="Horário"
+                                type="time"
+                                name="Horário"
+                                id="consulta__horario"
+                            />
+                        </div>
+            
+                        <div class="boton_Consulta">
+                            <button class="btn__consulta" id="btn__consulta" href="#">
+                                Cadastrar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </section >
+
+
+
+            <section class="cont_listarConsulta">
+
+                <h2> Listar Consulta </h2>
+
+                <div class="conteudo_listaConsulta">
+                    <table class="tabela_lista" id="tabela-lista">
+
+                          <tr>
+                            <th><img src="../Front-end/assets/baseline_person_black_24dp.png"></th>
+                            <td>Dr.Ricardo Lemos</td>
+                            <td>Alexandre</td>
+                            <td>Agendada</td>
+                            <td>06/01/2020</td>
+                            <td> 10:00</td>
+                        </tr>
+                    </table>
+                          
+                    <table class="tabela_lista" id="tabela-lista">
+                        <tr>
+                          <th><img src="../Front-end/assets/baseline_person_black_24dp.png"></th>
+                          <td>Dra.Helena Strada</td>
+                          <td>Fernando</td>
+                          <td>Cancelada</td>
+                          <td>07/02/2020</td>
+                          <td> 11:00</td>
+                        </tr>
+
+                    </table>
+
+                    <table class="tabela_lista" id="tabela-lista">
+                        <tr>
+                          <th><img src="../Front-end/assets/baseline_person_black_24dp.png"></th>
+                          <td>Dr.Roberto Possarle </td>
+                          <td>Mariana</td>
+                          <td>Realizada</td>
+                          <td>20/01/2020</td>
+                          <td> 15:00</td>
+                        </tr>
+
+                    </table>
+                </div>
+
+            </section>
+            
+        </section>
+        
+    </main>
+    
+    <footer>
+        <section class="rodapePrincipal">
+            <div class="escrita_footer">
+                <p>Escola Senai de Informatica - 2021</p>
+            </div>
+        </section>
+    </footer>
+
+
+</body>

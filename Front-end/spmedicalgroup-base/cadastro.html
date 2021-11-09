@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title> Cadastro </title>
+     <link rel="stylesheet" href="spmedicalgroup.css">
+</head>
+
+<body>
+    
+    <section class="fundo_cadastro">
+
+            <img class="logo" href="index.html" src="../Front-end/assets/LOGO.png" alt="LOGO">
+
+            <form class="box_cadastro">
+
+                <div class="linha_escrita_cadastro">
+                    <input 
+                        class= "input__cadastro"
+                        placeholder="Email"
+                        type="text"
+                        name="Email"
+                        id="cadastro__email"
+                    />
+                </div>
+    
+                <div class="linha_escrita_cadastro">
+                    <input 
+                        class= "input__cadastro"
+                        placeholder="Username"
+                        type="text"
+                        name="Username"
+                        id="cadastro__email"
+                    />
+                </div>
+    
+                <div class="tipoUsuario_Cadastro">
+                    <span> Tipo de Usuario </span>
+                    <form>
+                        <select name="country">
+                            <option value="ad" >Administrador</option>
+                            <option value="med">Medico</option>
+                            <option value="pac">Paciente</option>
+                        </select>
+                     </form>
+                </div>
+    
+                <div class="linha_escrita_cadastro">
+                    <input
+                        class= "input__cadastro"
+                        placeholder="Senha"
+                        type="password"
+                        name="Senha"
+                        id="cadastro__senha"
+                    />
+                </div>
+    
+                <div class="boton_Cadastro">
+                    <button class="btn__cadastro" id="btn__cadastro" href="#">
+                        Cadastre-se
+                    </button>
+                </div>
+                
+            </form>
+            
+
+            <div class="box_cadastro2">
+                <span class="link_paraLogin"> Tem uma conta? <a class="link_login" href="login.html"> Conecte-se </a> </span>
+            </div>
+
+    </section>
+
+</body>
