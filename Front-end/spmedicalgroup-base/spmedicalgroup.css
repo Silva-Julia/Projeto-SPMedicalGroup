@@ -171,17 +171,22 @@ body{
 }
 
 select {
-    width:546px;
-    height: 28px;
-    padding: 16px 20px;
-    border: none;
-    background-color: transparent;
-    border-bottom: 1px solid #e6e6e6;
+    /* width:546px; */
+    height: 51px;
+    /* padding: 7px; */
+    /* border: none; */
+    /* background-color: transparent; */
+    /* border-bottom: 1px solid #e6e6e6; */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    line-height: 28px;
+    color:#5E5555;
+    border: 0;
+  width: 553px;
+  border-bottom: 1px solid #e6e6e6;
+  padding: 10px;
+  background: transparent;
+  font-size: 23px;
   }
-
-option{
-    color: black;
-}
 
 .boton_Cadastro{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
