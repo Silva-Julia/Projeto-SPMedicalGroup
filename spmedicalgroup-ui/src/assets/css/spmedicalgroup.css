@@ -1,0 +1,489 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&family=Yellowtail&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ropa+Sans&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+}
+
+
+/* ----------------------HOME ---------------------- */
+
+
+
+
+/* -------------------- LOGIN ---------------------- */
+.container{
+    background-image: url("../spmedicalgroup-base/assets/fundoLogin.png");
+    height: 1081px;
+    background-position: right;
+    background-repeat: round
+}
+
+.logo{
+    margin-top: 2%;
+    margin-inline: 27%;
+    height:  288px;
+    position: absolute;
+}
+
+.box_login{
+    background: rgba(255, 255, 255, 0.75);
+    width: 600px;
+    height: 496px;
+    border-radius: 22px;
+    display: inline-grid;
+    margin-inline-start: 30vw;
+    padding-inline: 21px;
+    padding-top: 77px;
+    margin-top: 26%;
+}
+
+.linha_escrita_login{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    line-height: 28px;
+    width: 120px;
+    color:#5E5555
+}
+
+.input__login{
+    border: 0;
+  width: 553px;
+  border-bottom: 1px solid #e6e6e6;
+  padding: 10px;
+  background: transparent;
+  font-size: 23px;
+}
+
+.boton_Login{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding-left:  95px;
+}
+
+.btn__login{
+    width: 364px;
+    height: 46.46px;
+    border-radius: 22px;
+    border:none;
+    font-size: 24px;
+    color: #FFFFFF; 
+    font-weight: bold;
+    background: #04ADBF;
+    cursor: pointer;
+}
+
+.local_esqueceuSenha{
+    display: inline-grid;
+    padding-inline: 144px;
+    margin-bottom: 35px;
+}
+
+.hr_pequeno{
+    width: 269px;
+    height: 0px;
+    border: 1px solid #111010;
+}
+
+.esqueceuSenha{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    width: 236px;
+    height: 30px;
+    font-size: 23px;
+    color: #2686CC;
+    margin-inline: 40px;
+    text-decoration: none;
+}
+
+.box_login2{
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 22px;
+    width: 600px;
+    height: 94px;
+    display: inline-grid;
+    margin-inline-start: 30vw;
+    margin-top: 24px;
+}
+
+.link{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    width: 369px;
+    font-size: 23px;
+    color: #5E5555;
+    margin-inline: 129px;
+    padding-top: 32px;
+}
+
+.link_cadastro{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 23px;
+    color: #2686CC;
+    text-decoration: none;
+}
+
+
+
+
+/* -------------------- CADASTRO ---------------------- */
+.fundo_cadastro{
+    background-image: url("../spmedicalgroup-base/assets/fundoCadastro.png");
+    height: 1137px;
+    background-position: right;
+    background-repeat: round
+}
+
+.box_cadastro{
+    background: rgba(255, 255, 255, 0.75);
+    width: 600px;
+    height: 496px;
+    border-radius: 22px;
+    display: inline-grid;
+    margin-inline-start: 31vw;
+    padding-inline: 21px;
+    padding-top: 54px;
+    margin-top: 28%;
+}
+
+.linha_escrita_cadastro{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    line-height: 28px;
+    color:#5E5555;
+}
+
+.input__cadastro{
+    border: 0;
+  width: 553px;
+  border-bottom: 1px solid #e6e6e6;
+  padding: 10px;
+  background: transparent;
+  font-size: 23px;
+}
+
+.tipoUsuario_Cadastro{
+    font-family:  -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 23px;
+    color:#5E5555;
+}
+
+select {
+    width:546px;
+    height: 28px;
+    padding: 16px 20px;
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid #e6e6e6;
+  }
+
+option{
+    color: black;
+}
+
+.boton_Cadastro{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding-left: 97px;
+    /* margin-top: 47px; */
+}
+
+.btn__cadastro{
+    width: 364px;
+    height: 46.46px;
+    border-radius: 22px;
+    border:none;
+    font-size: 23px;
+    color: #FFFFFF; 
+    font-weight: bold;
+    background: #04ADBF;
+    cursor: pointer;
+}
+
+.box_cadastro2{
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 22px;
+    width: 600px;
+    height: 94px;
+    display: inline-grid;
+    margin-inline-start: 31vw;
+    margin-top: 24px;
+}
+
+.link_paraLogin{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    width: 369px;
+    font-size: 23px;
+    color: #5E5555;
+    margin-inline: 153px;
+    padding-top: 32px;
+}
+
+.link_login{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 23px;
+    color: #2686CC;
+    text-decoration: none;
+}
+
+
+
+
+/* ----------------------- ADMINISTRADOR --------------------- */
+
+
+/* ------- HEADER ----------- */
+header{
+    background-color:#FFFFFF;
+    height: 111px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.container_header{
+    display: flex;
+    justify-content: center;
+    margin-top:  5px
+}
+
+.logo_header{
+    width: 228px;
+    cursor: pointer;
+}
+
+.nav_header{
+    margin-left: 158px;
+    margin-right: 26px;
+    padding-left: 33vw;
+    margin-top: 2vw;
+    display: flex;
+ }
+
+ .nav_header span{
+     color: #000000;
+     font-size:21px;
+     font-family: 'Titillium Web', sans-serif;
+     display: flex;
+}
+
+.nav_redirecionamento{
+    /* width: 44px; */
+    cursor: pointer;
+    height: 59px;
+    padding-bottom: 23px;
+    margin-left: 36px;
+}
+
+
+/* ------- HEADER ----------- */
+
+
+
+main{
+    margin-top: 112px;
+}
+
+.area_fundo{
+    height: 1414px;
+    background: linear-gradient(0deg, rgba(4, 173, 191, 0.3), rgba(4, 173, 191, 0.3)), rgba(140, 158, 172, 0.45);
+    padding-top: 130px;
+    display: grid;
+    justify-content: center;
+}
+
+.cadasConsulta{
+    width: 774px;
+    height: 521px;
+    background: rgba(255, 255, 255, 0.99);
+    border-radius: 22px;
+    margin-inline-start: 11vw;
+}
+
+.conteudo_cadasConsulta{
+    padding-inline-start: 29px
+}
+
+.conteudo_cadasConsulta h2{
+    color: #000000;
+    font-size: 32px;
+    font-family: 'Titillium Web', sans-serif;
+    padding-inline: 15vw;
+    padding-top: 35px;
+}
+
+.box_cadasConsulta{
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 40px;
+    align-content: space-between;
+    height: 28vw;
+}
+
+.linha_escrita_consulta{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #000000;
+    margin-left: 28px;
+}
+
+.input__consulta{
+    color: #000000;
+    font-size: 21px;
+    background: #C4C4C4;
+    border-radius: 22px;
+    border:none;
+    width: 316px;
+    height: 47.92px;
+    padding-inline: 26px;
+}
+
+.boton_Consulta{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding-left:  12vw;
+    margin-bottom: 42px;
+}
+
+.btn__consulta{
+    width: 364px;
+    height: 53.01px;
+    border-radius: 22px;
+    border:none;
+    font-size: 23px;
+    color: #FFFFFF; 
+    font-weight: bold;
+    background: #04ADBF;
+    cursor: pointer;
+}
+
+.cont_listarConsulta{
+    background: rgba(255, 255, 255, 0.99);
+    border-radius: 22px;
+    width: 1098px;
+    height: 454px;
+}
+
+.cont_listarConsulta h2{
+    color: #000000;
+    font-size: 32px;
+    font-family: 'Titillium Web', sans-serif;
+    padding-inline: 28vw;
+    padding-top: 35px;
+}
+
+.conteudo_listaConsulta{
+    display: grid;
+    justify-content: center;
+}
+
+.tabela_lista{
+    padding-bottom: 40px;
+    padding-top: 28px;
+}
+
+.tabela_lista img{
+    width: 31px;
+}
+
+td{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: #C4C4C4;
+    border-radius: 36px;
+    color: #000000;
+    width: 188px;
+    height: 34px;
+    font-size: 20px;
+    padding-inline-start: 8px;
+}
+
+
+/* ------- FOOTER ----------- */
+
+.rodapePrincipal{
+    background-image: url("../spmedicalgroup-base/assets/Frame.png");
+    height:  96px;
+}
+
+.escrita_footer{
+    font-family: 'Ropa Sans', sans-serif;
+    font-size: 27px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding-top: 43px;
+
+}
+/* p{
+} */
+
+/* ------- FOOTER ----------- */
+
+
+
+/* --------------------- MEDICO -------------------------- */
+.area_fundoMedico{
+    height: 969px;
+    background: linear-gradient(0deg, rgba(4, 173, 191, 0.3), rgba(4, 173, 191, 0.3)), rgba(140, 158, 172, 0.45);
+    padding-top: 130px;
+    display: grid;
+    justify-content: center;
+}
+
+.cont_listaMedico{
+    background: rgba(255, 255, 255, 0.99);
+    border-radius: 22px;
+    width: 1067px;
+    height: 727px;
+}
+
+.cont_listaMedico h2{
+    color: #000000;
+    font-size: 32px;
+    font-family: 'Titillium Web', sans-serif;
+    padding-inline: 27vw;
+    padding-top: 35px;
+}
+
+.boton_alterarSitu{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding-left: 22vw;
+    padding-top: 45px;
+}
+
+.btn__alterarSitu{
+    width: 386px;
+    height: 79px;
+    border-radius: 22px;
+    border:none;
+    font-size: 23px;
+    color: #FFFFFF; 
+    font-weight: bold;
+    background: #04ADBF;
+    cursor: pointer;
+}
+
+
+/* ------------------------- PACIENTE -------------- */
+.fundo_paciente{
+    background-image: url("../spmedicalgroup-base/assets/fundoPaciente.png");
+    height: 780px;
+    width: 100%;
+    padding-top: 130px;
+    display: grid;
+    justify-content: center;
+}
+
+.cont_listaPaciente{
+    background: rgba(255, 255, 255, 0.99);
+    border-radius: 22px;
+    width: 1069px;
+    height: 443px;
+}
+
+.cont_listaPaciente h2{
+    color: #000000;
+    font-size: 32px;
+    font-family: 'Titillium Web', sans-serif;
+    padding-inline: 28vw;
+    padding-top: 35px;
+}
