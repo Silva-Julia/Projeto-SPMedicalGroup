@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&family=Yellowtail&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Ropa+Sans&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Ropa+Sans&display=swap');
 
 *{
     margin: 0;
@@ -14,8 +14,180 @@ body{
 
 
 /* ----------------------HOME ---------------------- */
+.fundo_headerHome{
+    background-image: url("../spmedicalgroup-base/assets/fundo_Home.png");
+    height: 1020px;
+    background-repeat: round
+}
 
+.Home{
+    display: flex;
+    justify-content: center;
+    padding-top: 2vw;
+}
 
+.nav_headerHome{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 645px;
+    margin-left: 158px;
+    margin-right: 26px;
+}
+
+.nav_headerHome a{
+    font-size:21px;
+    font-family: 'Titillium Web', sans-serif;
+    display: flex;
+}
+
+.login{
+    color: #0388A6;
+    background-color: #FFFFFF;
+    border-radius: 22px;
+    width: 77px;
+    height: 34px;
+    padding-inline: 14px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.escrita_banner{
+    display: grid;
+    justify-content: center;
+    margin-top: 22vw;
+}
+
+.escrita_banner h1{
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 93px;
+    color: #FFFFFF;
+    border-bottom: 4px solid;
+    width: 87%;
+    padding-inline: 3vw;
+    margin-left: 6vw;
+    padding-bottom: 22px;
+}
+
+.escrita_banner p{
+    color: #FFFFFF;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 27px;
+    padding-top: 55px;
+}
+
+.secao_especialidade{
+    display: grid;
+    justify-content: center;
+}
+
+.especialidade h2{
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 47px;
+    color: #FFFFFF;
+    background-color: #8C9EAC;
+    border-radius: 22px;
+    width: 412px;
+    height: 78px;
+    font-weight: bold;
+    padding-inline: 55px;
+    margin-left: 11vw;
+}
+
+.box_especialidade{
+    border: 2px solid;
+    width: 82vw;
+    justify-content: center;
+    display: grid;
+}
+
+.tabela_Especialidade{
+    padding-bottom: 22px;
+    padding-top: 34px;
+}
+
+.tabela_Especialidade td{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: #C4C4C4;
+    border-radius: 36px;
+    color: #000000;
+    width: 228px;
+    height: 37px;
+    font-size: 20px;
+    text-align-last: center;
+}
+
+.container_MaisSobre img{
+    /* background-image: url("../spmedicalgroup-base/assets/fundo_MaisSobre.png"); */
+    height: 813px;
+    width: 100%;
+}
+
+.box_MaisSobre{
+    background-color:  #8C9EAC;;
+    display: grid;
+    justify-content: center;
+    width: 780px;
+    height: 437px;
+}
+
+.box_MaisSobre h3{
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: bold;
+    font-size: 60px;
+    color: white;
+}
+
+.box_MaisSobre p{
+    letter-spacing: 0.16em;
+    text-transform: lowercase;
+    font-family: 'Titillium Web';
+    font-size: 31px;
+    color: white;
+}
+
+.endereço{
+    background-image: url(../assets/imagem-fundo-endereco.png);
+    height: 516px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+h4{
+    color: black;
+    font-family: 'Bebas Neue', 'cursive';
+    font-size: 64px;
+    font-weight: 400;
+    text-transform: uppercase;
+    width: 895px;
+    margin-bottom: 10px;
+}
+
+.box_endereço{
+    display: flex;
+    width: 899px;
+    height: 200px;
+    background: linear-gradient(0deg, rgba(3, 136, 166, 0.2), rgba(3, 136, 166, 0.2)), rgba(4, 173, 191, 0.62);
+    align-items: center;
+    border: 4px solid #0388A6;
+}
+
+.box_endereço p{
+    font-family:'Ropa Sans', sans-serif;
+    font-size: 24px;
+    color: black;
+    width: 298px;
+    margin-left: 67px;
+}
+
+.img_mapa{
+    position: absolute;
+    top: 125px;
+    right: 277px;
+}
 
 
 /* -------------------- LOGIN ---------------------- */
@@ -171,17 +343,22 @@ body{
 }
 
 select {
-    width:546px;
-    height: 28px;
-    padding: 16px 20px;
-    border: none;
-    background-color: transparent;
-    border-bottom: 1px solid #e6e6e6;
+    /* width:546px; */
+    height: 51px;
+    /* padding: 7px; */
+    /* border: none; */
+    /* background-color: transparent; */
+    /* border-bottom: 1px solid #e6e6e6; */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    line-height: 28px;
+    color:#5E5555;
+    border: 0;
+  width: 553px;
+  border-bottom: 1px solid #e6e6e6;
+  padding: 10px;
+  background: transparent;
+  font-size: 23px;
   }
-
-option{
-    color: black;
-}
 
 .boton_Cadastro{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -234,7 +411,7 @@ option{
 
 
 /* ------- HEADER ----------- */
-header{
+.box_header{
     background-color:#FFFFFF;
     height: 111px;
     position: fixed;
@@ -393,7 +570,7 @@ td{
     width: 188px;
     height: 34px;
     font-size: 20px;
-    padding-inline-start: 8px;
+    text-align-last: center;
 }
 
 
