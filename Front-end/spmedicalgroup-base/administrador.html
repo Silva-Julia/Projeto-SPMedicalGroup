@@ -10,16 +10,16 @@
 
 <body>
 
-    <header>
+    <header class="box_header">
         <div class="container_header">
             <img class="logo_header" href="index.html" src="../spmedicalgroup-base/assets/LOGO.png" alt="LOGO">
 
-            <div class="nav_header" >
-                <span> Administrador </span>
-                <nav  >
+            
+                <nav class="nav_header">
+                    <span> Administrador </span>
                     <img  class="nav_redirecionamento" src="../spmedicalgroup-base/assets/baseline_format.png">
                 </nav>
-            </div>
+
             
         </div>
     </header>
@@ -151,4 +151,20 @@
     </footer>
 
 
+
+    <script>
+        function botaoDoMenu(){
+            var menu = document.getElementById("links");
+   
+            if(menu.style.display === "flex"){
+                //esconder o menu
+                menu.style.display ="none";
+            } else{
+                //mostrar o menu
+                menu.style.display = "flex";
+            }
+        }
+    </script>
+
 </body>
+</html>

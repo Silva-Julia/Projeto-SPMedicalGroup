@@ -10,33 +10,105 @@
 
 <body>
 
-    <header>
-        <div>
-            <img src="../Front-end/assets/LOGO 2.png">
+    <header class="fundo_headerHome">
+        <div class="Home">
+            <img class="logo_header" src="../spmedicalgroup-base/assets/LOGO 2.png">
 
-            <div>
-                <nav>
+                <nav class="nav_headerHome">
                     <a> Home </a>
                     <a> Especialidades </a>
                     <a> Sobre a Clínica </a>
                     <a> Endereço </a>
-                    <a> Login </a>
+                    <a class="login" href="login.html"> Login </a>
                 </nav>
+        </div>
+            <div class="escrita_banner">
+                <h1> Clínica SP Medical Group </h1>
+                <p> sistema de saúde eficiente, de alta qualidade, focados em dedicar carinho e atenção aos seus pacientes.</p>
             </div>
-        </div>
 
-        <div>
-            <h1> Clínica SP Medical Group </h1>
-            <hr>
-            <p> sistema de saúde eficiente, de alta qualidade, focados em dedicar carinho e atenção aos seus pacientes.</p>
-        </div>
     </header>
 
     <main>
+        <section class="secao_especialidade">
+            <div >
+                <div class="especialidade">
+                    <h2> Especialidades </h2>
+                </div>
+                
+                <div class="box_especialidade">
+                    <table class="tabela_Especialidade" id="tabela-lista">
+                        <tr>
+                          <td>Acupuntura</td>
+                          <td>Anestesiologia</td>
+                          <td>Cardiologia</td>
+                          <td>Cirurgia Cardiovascular</td>
+                        </tr>
+                    </table>
+
+                    <table class="tabela_Especialidade" id="tabela-lista">
+                        <tr>
+                          <td>Cirurgia da Mão</td>
+                          <td>Cirurgia Geral</td>
+                          <td>Cirurgia Pediátrica</td>
+                          <td>Cirurgia Plástica</td>
+                        </tr>
+                    </table>
+
+                    <table class="tabela_Especialidade" id="tabela-lista">
+                        <tr>
+                          <td>Cirurgia Torácica</td>
+                          <td>Cirurgia Vascular</td>
+                          <td>Dermatologia</td>
+                          <td>Radioterapia</td>
+                        </tr>
+                    </table>
+
+                    <table class="tabela_Especialidade" id="tabela-lista">
+                        <tr>
+                          <td>Urologia</td>
+                          <td>Pediatria</td>
+                          <td>Psiquiatria</td>
+                          <td>Angiologia</td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+        </section>
+
+
+        <section class="container_MaisSobre">
+            <img src="../spmedicalgroup-base/assets/fundo_MaisSobre.png"/>
+            <div class="box_MaisSobre">
+                <h3> Mais Sobre a Clínica </h3>
+                <p> Lorem Ipsum sobreviveu não só a cinco séculos, como também permanecendo essencialmente
+                    inalterado. Se popularizou na década de 60, quando a
+                    Letraset passou a ser
+                    integrado a softwares de editoração eletrônica como Aldus
+                    PageMaker.</p>
+            </div>
+        </section>
+
+        <section id="endereço" class="endereço"> 
+            <h4> endereço:</h4>
+            <div class="box_endereço">
+                <p> Alameda Barão de Limeira, 539 
+                    Santa Cecilia, São Paulo - SP
+                    CEP: 01202-001</p>
+           </div>
+           <img class="img_mapa" src="../spmedicalgroup-base/assets/endereço.png">
+        </section>
         
     </main>
 
     <footer>
-
+        <section class="rodapePrincipal">
+            <div class="escrita_footer">
+                <p>Escola Senai de Informatica - 2021</p>
+            </div>
+        </section>
     </footer>
+
 </body>
+</html>
