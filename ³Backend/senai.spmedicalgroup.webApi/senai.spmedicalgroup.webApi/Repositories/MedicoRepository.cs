@@ -21,7 +21,15 @@ namespace senai.spmedicalgroup.webApi.Repositories
 
         public List<Medico> ListarTodos()
         {
-            return ctx.Medicos.ToList();
+            return ctx.Medicos.Select(u => new Medico()
+            {
+                IdUsuario = u.IdUsuario,
+                IdMedico = u.IdMedico,
+                IdUsuarioNavigation = new Usuario()
+                {
+                    NomeUsuario = u.IdUsuarioNavigation.NomeUsuario
+                }
+            }).ToList();
         }
     }
 }

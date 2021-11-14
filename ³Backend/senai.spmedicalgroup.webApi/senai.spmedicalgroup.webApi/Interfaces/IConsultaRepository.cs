@@ -18,6 +18,10 @@ namespace senai.spmedicalgroup.webApi.Interfaces
 
         void CancelarConsulta(int Id);
 
+        void RemoverConsultaSistema(int id);
+
+        void AlterarSituacao(string descricao, int id);
+
         Consulta BuscarPorId(int id);
     }
 }

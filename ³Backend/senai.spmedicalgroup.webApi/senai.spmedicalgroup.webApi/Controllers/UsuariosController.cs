@@ -20,6 +20,8 @@ namespace senai.spmedicalgroup.webApi.Controllers
     public class UsuariosController : ControllerBase
     {
         private IUsuarioRepository _usuarioRepository { get; set; }
+        public string JwtRegisteredClaimTypes { get; private set; }
+
 
         public UsuariosController()
         {

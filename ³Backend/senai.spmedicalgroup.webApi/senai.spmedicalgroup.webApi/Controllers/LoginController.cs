@@ -4,6 +4,7 @@ using Microsoft.IdentityModel.Tokens;
 using senai.spmedicalgroup.webApi.Domains;
 using senai.spmedicalgroup.webApi.Interfaces;
 using senai.spmedicalgroup.webApi.Repositories;
+using senai.spmedicalgroup.webApi.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -31,18 +32,19 @@ namespace senai.spmedicalgroup.webApi.Controllers
 
 
         [HttpPost]
-        public IActionResult Login(Usuario Login)
+        public IActionResult Login(LoginViewModel Login)
         {
             try
             {
-                Usuario usuarioBuscado = _usuarioRepository.Login(Login.EmailUsuario, Login.SenhaUsuario);
+                Usuario usuarioBuscado = _usuarioRepository.Login(Login.Email, Login.Senha);
                 if (usuarioBuscado != null)
                 {
                     var Claims = new[]
                     {
                     new Claim(JwtRegisteredClaimNames.Email, usuarioBuscado.EmailUsuario),
                     new Claim(JwtRegisteredClaimNames.Jti, usuarioBuscado.IdUsuario.ToString()),
-                    new Claim(ClaimTypes.Role, usuarioBuscado.IdTipoUsuario.ToString())
+                    new Claim(ClaimTypes.Role, usuarioBuscado.IdTipoUsuario.ToString()),
+                    new Claim("role", usuarioBuscado.IdTipoUsuario.ToString())
                 };
 
                     var Key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("spmedicalgroup-chave-autenticacao"));

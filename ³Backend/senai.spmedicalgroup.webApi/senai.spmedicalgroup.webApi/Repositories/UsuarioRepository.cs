@@ -57,12 +57,7 @@ namespace senai.spmedicalgroup.webApi.Repositories
 
         public void Deletar(int id)
         {
-            Usuario usuarioBuscado = ctx.Usuarios.FirstOrDefault(u => u.IdUsuario == id);
-            if (usuarioBuscado == null)
-            {
-                throw new Exception("Id nao existente");
-            }
-            ctx.Usuarios.Remove(usuarioBuscado);
+            ctx.Usuarios.Remove(BuscarPorId(id));
             ctx.SaveChanges();
         }
 
@@ -71,10 +66,8 @@ namespace senai.spmedicalgroup.webApi.Repositories
             return ctx.Usuarios
                 .Select(u => new Usuario
                 {
-                    IdUsuario = u.IdUsuario,
                     NomeUsuario = u.NomeUsuario,
                     EmailUsuario = u.EmailUsuario,
-                    IdTipoUsuario = u.IdTipoUsuario,
                     IdTipoUsuarioNavigation = new Tipousuario()
                     {
                         TituloTipoUsuario = u.IdTipoUsuarioNavigation.TituloTipoUsuario

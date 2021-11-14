@@ -203,5 +203,95 @@ namespace senai.spmedicalgroup.webApi.Controllers
             return Ok(_consultaRepository.BuscarPorId(id));
         }
 
+
+        [Authorize(Roles = "Médico")]
+        [HttpPatch("AlterarSituacao/{id}")]
+        public IActionResult AlterarSituacao(Consulta consultaAtt, int id)
+        {
+            try
+            {
+                Consulta consultaBuscada = _consultaRepository.BuscarPorId(id);
+                int idMedico = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
+                if (consultaAtt.DescricaoSituaConsulta == null)
+                {
+                    return BadRequest(new
+                    {
+                        Mensagem = "É necessário informar a situação!"
+                    });
+                }
+
+                if (id <= 0)
+                {
+                    return BadRequest(new
+                    {
+                        Mensagem = "É necessário informar um ID válido!"
+                    });
+                }
+
+                if (_consultaRepository.BuscarPorId(id) == null)
+                {
+                    return NotFound(new
+                    {
+                        Mensagem = "Não há nenhuma consulta com o ID informado!"
+                    });
+                }
+
+                if (consultaBuscada.IdMedico != idMedico)
+                {
+                    return BadRequest(new
+                    {
+                        Mensagem = "Somente o médico titular da consulta pode fazer alterações na descrição!"
+                    });
+                }
+                _consultaRepository.AlterarSituacao(consultaAtt.DescricaoSituaConsulta, id);
+                return StatusCode(200, new
+                {
+                    Mensagem = "A situação da consulta foi alterada com sucesso!",
+                    consultaBuscada
+                });
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+        }
+
+
+        [Authorize(Roles = "Admin")]
+        [HttpDelete("Remover/{id:int}")]
+        public IActionResult RemoverConsultaSistema(int id)
+        {
+            try
+            {
+                if (id <= 0)
+                {
+                    return BadRequest(new
+                    {
+                        Mensagem = "É necessário informar um ID válido!"
+                    });
+                }
+
+                if (_consultaRepository.BuscarPorId(id) == null)
+                {
+                    return NotFound(new
+                    {
+                        Mensagem = "Não há nenhuma consulta com o ID informado!"
+                    });
+                }
+
+                _consultaRepository.RemoverConsultaSistema(id);
+
+                return StatusCode(200, new
+                {
+                    Mensagem = "A consulta informada foi removida do sistema!"
+                });
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }
