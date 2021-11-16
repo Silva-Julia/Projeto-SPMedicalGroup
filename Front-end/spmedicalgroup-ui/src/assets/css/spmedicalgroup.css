@@ -15,7 +15,7 @@ body{
 
 /* ----------------------HOME ---------------------- */
 .fundo_headerHome{
-    background-image: url("../spmedicalgroup-base/assets/fundo_Home.png");
+    background-image: url("../img/fundo_Home.png");
     height: 1020px;
     background-repeat: round
 }
@@ -147,7 +147,7 @@ body{
 }
 
 .endereço{
-    background-image: url(../assets/imagem-fundo-endereco.png);
+    background-image: url("../img/imagem-fundo-endereco.png");
     height: 516px;
     display: flex;
     flex-direction: column;
@@ -192,7 +192,7 @@ h4{
 
 /* -------------------- LOGIN ---------------------- */
 .container{
-    background-image: url("../spmedicalgroup-base/assets/fundoLogin.png");
+    background-image: url("../img/fundoLogin.png");
     height: 1081px;
     background-position: right;
     background-repeat: round
@@ -303,7 +303,7 @@ h4{
 
 /* -------------------- CADASTRO ---------------------- */
 .fundo_cadastro{
-    background-image: url("../spmedicalgroup-base/assets/fundoCadastro.png");
+    background-image: url("../img/fundoCadastro.png");
     height: 1137px;
     background-position: right;
     background-repeat: round
@@ -577,7 +577,7 @@ td{
 /* ------- FOOTER ----------- */
 
 .rodapePrincipal{
-    background-image: url("../spmedicalgroup-base/assets/Frame.png");
+    background-image: url("../img/Frame.png");
     height:  96px;
 }
 
@@ -642,7 +642,7 @@ td{
 
 /* ------------------------- PACIENTE -------------- */
 .fundo_paciente{
-    background-image: url("../spmedicalgroup-base/assets/fundoPaciente.png");
+    background-image: url("../img/fundoPaciente.png");
     height: 780px;
     width: 100%;
     padding-top: 130px;

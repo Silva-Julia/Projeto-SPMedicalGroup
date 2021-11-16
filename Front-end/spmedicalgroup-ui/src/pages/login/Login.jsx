@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { parseJwt, usuarioAutenticado } from "../../services/auth";
 
 import '../../assets/css/spmedicalgroup.css';
-import LOGO from '../../assets/img/LOGO.png';
+import logo from '../../assets/img/LOGO.png';
 
 export default class Login extends Component {
   constructor(props) {
@@ -99,7 +99,7 @@ export default class Login extends Component {
       <div>
         <section className="container">
 
-          <Link to="/"><img className="logo" href="index.html" src={LOGO} alt="LOGO" />{' '} </Link>
+          <Link to="/"><img className="logo" href="index.html" src={logo} alt="LOGO" />{' '} </Link>
 
           <form className="box_login" onSubmit={this.efetuaLogin}>
             <div className="linha_escrita_login">

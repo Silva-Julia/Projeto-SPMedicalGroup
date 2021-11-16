@@ -10,9 +10,9 @@ import {
 
 import './index.css';
 
-import Home from './pages/home/App';
-import Login from './pages/login/Login';
-import NotFound from './pages/notFound/NotFound';
+import Home from '../src/pages/home/App';
+import Login from '../src/pages/login/Login';
+import NotFound from '../src/pages/notFound/NotFound';
 
 
 import reportWebVitals from './reportWebVitals';
@@ -65,8 +65,8 @@ const routing = (
   <Router>
     <div>
       <Switch>
-        <Route exact path="/" component={Home} /> {/* Home */}
-        <Route path="/login/" component={Login} /> {/* Login */}
+        <Route exact path="/home" component={App} /> {/* Home */}
+        <Route path="/login" component={Login} /> {/* Login */}
         {/* <PermissaoAdm path="/tiposEventos" component={TiposEventos} /> Tipos Eventos */}
         {/* <PermissaoAdm path="/eventosAdm" component={EventosAdm} /> Eventos Adm */}
         {/* <PermissaoComum path="/meusEventos" component={MeusEventos} /> Meus Eventos */}
