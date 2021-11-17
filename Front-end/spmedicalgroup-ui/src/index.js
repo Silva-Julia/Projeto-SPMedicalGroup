@@ -1,17 +1,17 @@
 import React from 'react';
+import { parseJwt, usuarioAutenticado } from './services/auth.js';
+
 import ReactDOM from 'react-dom';
-import {
-  Route,
-  BrowserRouter as Router,
-  Redirect,
-  Switch,
-} from 'react-router-dom';
+import { Route, BrowserRouter as Router, Redirect, Switch, } from 'react-router-dom';
 
 
 import './index.css';
 
 import Home from '../src/pages/home/App';
 import Login from '../src/pages/login/Login';
+import Administrador from '../src/pages/administrador/adm';
+import Medico from '../src/pages/medico/medico';
+import Paciente from '../src/pages/paciente/paciente';
 import NotFound from '../src/pages/notFound/NotFound';
 
 
@@ -65,13 +65,11 @@ const routing = (
   <Router>
     <div>
       <Switch>
-        <Route exact path="/home" component={App} /> {/* Home */}
+        <Route exact path="/home" component={Home} /> {/* Home */}
         <Route path="/login" component={Login} /> {/* Login */}
-        {/* <PermissaoAdm path="/tiposEventos" component={TiposEventos} /> Tipos Eventos */}
-        {/* <PermissaoAdm path="/eventosAdm" component={EventosAdm} /> Eventos Adm */}
-        {/* <PermissaoComum path="/meusEventos" component={MeusEventos} /> Meus Eventos */}
-        {/* <PermissaoAdm path="/tiposUsuarios" component={TiposUsuarios} /> Tipos Usuários */}
-        {/* <Route path="/perfil" component={Perfil} /> Perfil */}
+        <Route path="/administrador" component={Administrador}/>  {/* Administrador */}
+        <Route path="/medico" component={Medico} />
+        <Route path="/paciente" component={Paciente} />
         <Route path="/notFound" component={NotFound} /> {/* Not Found */}
         <Redirect to="/notFound" /> {/* Redireciona para Not Found caso não encontre nenhuma rota */}
       </Switch>
@@ -81,12 +79,7 @@ const routing = (
 
 
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+ReactDOM.render(routing, document.getElementById('root'));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

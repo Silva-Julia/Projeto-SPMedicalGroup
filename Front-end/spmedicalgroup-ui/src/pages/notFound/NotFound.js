@@ -1,3 +1,5 @@
+import '../../assets/css/App.css'
+
 function NotFound() {
     return (
       <div className="App">

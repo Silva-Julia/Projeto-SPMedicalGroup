@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import axios from "axios";
 
-import Footer from '../../components/footer/Footer';
+import Footer from '../../components/footer';
+import HeaderAdm from '../../components/headerAdm';
 
 import '../../assets/css/spmedicalgroup.css';
-import logo from '../../assets/img/LOGO.css'
-import perfil from '../../assets/img/baseline_person_black_24dp';
-import redirecionamento from '../../assets/img/baseline_format.png';
-
-import { interfaceDeclaration } from '@babel/types';
+import '../../assets/img/baseline_format.png';
 
 export default class Adm extends Component {
     constructor(props) {
@@ -124,21 +121,11 @@ export default class Adm extends Component {
 
 
 
-    render() {
+    render() 
+    {
         return (
             <div>
-
-                    <header className="box_header">
-                        <div className="container_header">
-                            <img className="logo_header" href="index.html" src={logo} alt="LOGO">
-
-                            <nav className="nav_header">
-                                <span> Administrador </span>
-                                <img className="nav_redirecionamento" src={redirecionamento}>
-                            </nav>          
-
-                        </div>
-                    </header>
+                    <HeaderAdm></HeaderAdm>
 
                     <main>
                         <section className="area_fundo">
@@ -188,7 +175,7 @@ export default class Adm extends Component {
                                             <option value ="0"> Insira o nome do Paciente</option>
                                             { this.state.listaPacientes.map(paciente =>{
                                                 return(
-                                                    <option key={paciente.IdPaciente} value={paciente.idPaciente} {paciente.nomePaciente}></option>
+                                                    <option key={paciente.IdPaciente} value={paciente.idPaciente}> {paciente.nomePaciente}</option>
                                                 );
                                             })
                                             }
@@ -237,7 +224,10 @@ export default class Adm extends Component {
                                                     <tr key={consulta.idConsulta}></tr>
                                                     <p> Paciente: {consulta.idPacienteNavigation.nomePaciente}</p>
                                                     <p> Situação: {consulta.idSituacaoNavigation.situacao}</p>
-                                                    <p> Data Consulta: {new int.DateTimeFormat('pt-BR').format(new Date(consulta.dataConsulta))} </p>
+                                                    <p> Data Consulta: {Intl.DateTimeFormat("pt-BR", {
+                                                    year: 'numeric', month: 'numeric', day: 'numeric',
+                                                    hour: 'numeric', minute: 'numeric', hour12: false
+                                                }).format(new Date(consulta.dataConsulta))} </p>
                                                 </table>
                                             )
                                         })}
@@ -288,7 +278,7 @@ export default class Adm extends Component {
 
                          <Footer></Footer>
 
-            </div>
+             </div>
         );
     }
 }

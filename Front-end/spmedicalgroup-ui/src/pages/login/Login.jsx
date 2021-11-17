@@ -1,8 +1,7 @@
 import { Component } from 'react';
-import { render } from 'react-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { parseJwt, usuarioAutenticado } from "../../services/auth";
+import { parseJwt } from "../../services/auth.js";
 
 import '../../assets/css/spmedicalgroup.css';
 import logo from '../../assets/img/LOGO.png';
@@ -145,7 +144,7 @@ export default class Login extends Component {
                     disabled
                     className="btn__login"
                     id="btn__login"
-                    disabled
+                    // disabled
                   > Loading...</button>
                 </div>
               )
@@ -170,7 +169,7 @@ export default class Login extends Component {
             <div className="local_esqueceuSenha">
               <hr className="hr_pequeno"></hr>
               <nav>
-                <a className="esqueceuSenha" href=""> Esqueceu a senha </a>
+                <a className="esqueceuSenha"> Esqueceu a senha </a>
               </nav>
             </div>
           </form>
