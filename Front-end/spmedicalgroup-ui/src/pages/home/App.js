@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+// import { useState, useEffect } from 'react';
+// import { Link, useHistory } from 'react-router-dom';
 
 import fundo from '../../assets/img/fundo_MaisSobre.png';
 import endereco from '../../assets/img/endereço.png';
@@ -65,7 +65,7 @@ function App() {
 
 
           <section className="container_MaisSobre">
-            <img src={fundo} />
+            <img src={fundo}></img>
             <div className="box_MaisSobre">
               <h3> Mais Sobre a Clínica </h3>
               <p> Lorem Ipsum sobreviveu não só a cinco séculos, como também permanecendo essencialmente
@@ -83,7 +83,7 @@ function App() {
                 Santa Cecilia, São Paulo - SP
                 CEP: 01202-001</p>
             </div>
-            <img className="img_mapa" src={endereco} />
+            <img className="img_mapa" src={endereco}></img>
           </section>
             
         </main>

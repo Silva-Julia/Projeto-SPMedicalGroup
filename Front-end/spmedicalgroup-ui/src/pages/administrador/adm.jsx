@@ -7,7 +7,7 @@ import HeaderAdm from '../../components/headerAdm';
 import '../../assets/css/spmedicalgroup.css';
 import '../../assets/img/baseline_format.png';
 
-export default class Adm extends Component {
+export default class Administrador extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -18,7 +18,7 @@ export default class Adm extends Component {
             IdPaciente: 0,
             IdMedico: 0,
             IdSituacao: 0,
-            dataConsulta: new Date,
+            dataConsulta: new Date(),
         }
     };
 

@@ -12,7 +12,7 @@ export default function HeaderAdm()
                 
                  <nav className="nav_header">
                     <span> Administrador </span>
-                    <img className="nav_redirecionamento" src={redirecionamento} alt="Redirecionamento"></img>
+                    <img className="nav_redirecionamento" src={redirecionamento} alt="Redirecionamento"/>
                  </nav>
 
              </div>

@@ -12,7 +12,8 @@ export default function HeaderPaginas()
 
                 <div className="nav_header">
                     <nav>
-                            <span> Dr. Ricardo Lemos <img  className="nav_redirecionamento" src={perfil} /></span>
+                        <span> Dr. Ricardo Lemos </span>
+                        <img  className="nav_redirecionamento" src={perfil}></img>
                     </nav>
                 </div>
             </div>

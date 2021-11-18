@@ -11,7 +11,7 @@ import Home from '../src/pages/home/App';
 import Login from '../src/pages/login/Login';
 import Administrador from '../src/pages/administrador/adm';
 import Medico from '../src/pages/medico/medico';
-import Paciente from '../src/pages/paciente/paciente';
+// import Paciente from '../src/pages/paciente/paciente';
 import NotFound from '../src/pages/notFound/NotFound';
 
 
@@ -67,10 +67,16 @@ const routing = (
       <Switch>
         <Route exact path="/home" component={Home} /> {/* Home */}
         <Route path="/login" component={Login} /> {/* Login */}
-        <Route path="/administrador" component={Administrador}/>  {/* Administrador */}
-        <Route path="/medico" component={Medico} />
-        <Route path="/paciente" component={Paciente} />
-        <Route path="/notFound" component={NotFound} /> {/* Not Found */}
+
+        <PermissaoAdmin path = "/administrador" component={Administrador} />
+        {/* <PermissaoComum path = "/paciente" component={Paciente} /> */}
+        <PermissaoMédico path = "/medico" component={Medico} />
+
+        {/* <Route path="/administrador" component={Administrador}/>  */}
+        {/* <Route path="/medico" component={Medico} /> */}
+        {/* <Route path="/paciente" component={Paciente} /> */}
+        
+        <Route path="/notFound" component={NotFound} /> 
         <Redirect to="/notFound" /> {/* Redireciona para Not Found caso não encontre nenhuma rota */}
       </Switch>
     </div>
