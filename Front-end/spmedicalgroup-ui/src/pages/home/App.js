@@ -65,7 +65,7 @@ function App() {
 
 
           <section className="container_MaisSobre">
-            <img src={fundo}></img>
+            <images src={fundo}/>
             <div className="box_MaisSobre">
               <h3> Mais Sobre a Clínica </h3>
               <p> Lorem Ipsum sobreviveu não só a cinco séculos, como também permanecendo essencialmente
@@ -83,7 +83,7 @@ function App() {
                 Santa Cecilia, São Paulo - SP
                 CEP: 01202-001</p>
             </div>
-            <img className="img_mapa" src={endereco}></img>
+            {/* <images className="img_mapa" src={endereco}/> */}
           </section>
             
         </main>

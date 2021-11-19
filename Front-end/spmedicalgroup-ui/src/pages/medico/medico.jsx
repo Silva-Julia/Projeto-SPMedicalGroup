@@ -1,6 +1,5 @@
 import { Component} from 'react';
 import axios from "axios"
-import { render } from "react-dom/cjs/react-dom.development";
 
 import Footer from '../../components/footer';
 import HeaderPaginas from '../../components/headerPaginas';

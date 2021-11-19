@@ -67,10 +67,12 @@ const routing = (
       <Switch>
         <Route exact path="/home" component={Home} /> {/* Home */}
         <Route path="/login" component={Login} /> {/* Login */}
-
-        <PermissaoAdmin path = "/administrador" component={Administrador} />
+        <Route path="/administrador" component={Administrador} /> 
+        <Route path="/medico" component={Medico} /> 
+        {/* <Route path="/paciente" component={Paciente} />  */}
+        {/* <PermissaoAdmin path = "/administrador" component={Administrador} /> */}
+        {/* <PermissaoMédico path = "/medico" component={Medico} /> */}
         {/* <PermissaoComum path = "/paciente" component={Paciente} /> */}
-        <PermissaoMédico path = "/medico" component={Medico} />
 
         {/* <Route path="/administrador" component={Administrador}/>  */}
         {/* <Route path="/medico" component={Medico} /> */}

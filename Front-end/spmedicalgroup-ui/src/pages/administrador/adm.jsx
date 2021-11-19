@@ -15,8 +15,8 @@ export default class Administrador extends Component {
             listaPacientes: [],
             listaMedicos: [],
             listaSituacao: [],
-            IdPaciente: 0,
-            IdMedico: 0,
+            IdPaciente: '',
+            IdMedico: '',
             IdSituacao: 0,
             dataConsulta: new Date(),
         }
@@ -136,53 +136,57 @@ export default class Administrador extends Component {
 
                                     <form  onSubmit={ this.cadastrarConsulta} className="box_cadasConsulta">
                                         <div className="linha_escrita_consulta">
-                                            <select
+                                            <input
                                                 className="input__consulta"
                                                 placeholder="Nome Medico"
                                                 type="text"
                                                 name="Nome Medico"
+                                                id="consulta__nomeMed"                                               
                                                 value={this.state.IdMedico}
                                                 onChange={this.atualizaStateCampo}
                                             />
-                                            <option value="0"> Insira o nome do Medico </option>
+                                            {/* <option value="0"> Insira o nome do Medico </option> */}
                                             {
                                                 this.state.listaMedicos.map(medico => {
                                                     return(
-                                                        <option key={medico.IdMedico} vaue={medico.idMedico}> {medico.nomeUsuario} </option>
+                                                        <option key={medico.IdMedico} value={medico.idMedico}> {medico.nomeUsuario} </option>
                                                     );
                                                 })
                                             }
                                         </div>
 
                                         <div className="linha_escrita_consulta">
-                                            <select
+                                            <input
                                                 className="input__consulta"
                                                 placeholder="Situação"
                                                 type="text"
                                                 name="Situação"
                                                 id="consulta__situacao"
+                                                value={this.state.IdSituacao}
+                                                onChange={this.atualizaStateCampo}
                                             />
                                         </div>
 
                                         <div className="linha_escrita_consulta">
-                                            <select
+                                            <input
                                                  className="input__consulta"
                                                 placeholder="Nome Paciente"
                                                 type="text"
                                                 name="Nome Paciente"
+                                                id="consulta__nomePac"
+                                                value={this.state.IdPaciente}
                                                onChange={this.atualizaStateCampo}
                                             />
-                                            <option value ="0"> Insira o nome do Paciente</option>
-                                            { this.state.listaPacientes.map(paciente =>{
+                                            {/* { this.state.listaPacientes.map(paciente =>{
                                                 return(
                                                     <option key={paciente.IdPaciente} value={paciente.idPaciente}> {paciente.nomePaciente}</option>
                                                 );
                                             })
-                                            }
+                                            } */}
                                         </div>
 
                                         <div className="linha_escrita_consulta">
-                                            <select
+                                            <input
                                                 className="input__consulta"
                                                 placeholder="Data da Consulta"
                                                 type="date"
@@ -192,7 +196,7 @@ export default class Administrador extends Component {
                                         </div>
 
                                         <div className="linha_escrita_consulta">
-                                            <select
+                                            <input
                                                 className="input__consulta"
                                                 placeholder="Horário"
                                                 type="time"
@@ -217,26 +221,26 @@ export default class Administrador extends Component {
 
                                     <h2> Listar Consulta </h2>
 
-                                    <div className="conteudo_listaConsulta">
+                                    {/* <div className="conteudo_listaConsulta">
                                         {this.state.listaConsultas.map((consulta) => {
                                             return(
                                                 <table className="tabela_lista">
                                                     <tr key={consulta.idConsulta}></tr>
-                                                    <p> Paciente: {consulta.idPacienteNavigation.nomePaciente}</p>
-                                                    <p> Situação: {consulta.idSituacaoNavigation.situacao}</p>
-                                                    <p> Data Consulta: {Intl.DateTimeFormat("pt-BR", {
+                                                    <p> {consulta.idPacienteNavigation.nomePaciente}</p>
+                                                    <p> {consulta.idSituacaoNavigation.situacao}</p>
+                                                    <p> {Intl.DateTimeFormat("pt-BR", {
                                                     year: 'numeric', month: 'numeric', day: 'numeric',
                                                     hour: 'numeric', minute: 'numeric', hour12: false
                                                 }).format(new Date(consulta.dataConsulta))} </p>
                                                 </table>
                                             )
                                         })}
-                                    </div>
+                                    </div> */}
 
-                                    {/* <div className="conteudo_listaConsulta">
+                                    <div className="conteudo_listaConsulta">
                                         <table className="tabela_lista" id="tabela-lista">
                                             <tr>
-                                                <th><img src="../spmedicalgroup-base/assets/baseline_person_black_24dp.png"></th>
+                                                <th><images src="../spmedicalgroup-base/assets/baseline_person_black_24dp.png"/></th>
                                                     <td>Dr.Ricardo Lemos</td>
                                                     <td>Alexandre</td>
                                                     <td>Agendada</td>
@@ -245,30 +249,30 @@ export default class Administrador extends Component {
                                             </tr>
                                         </table>
 
-                                            <table className="tabela_lista" id="tabela-lista">
+                                         <table className="tabela_lista" id="tabela-lista">
                                                 <tr>
-                                                    <th><img src="../spmedicalgroup-base/assets/baseline_person_black_24dp.png"></th>
+                                                    <th><images src="../spmedicalgroup-base/assets/baseline_person_black_24dp.png"/></th>
                                                         <td>Dra.Helena Strada</td>
                                                         <td>Fernando</td>
                                                         <td>Cancelada</td>
                                                         <td>07/02/2020</td>
                                                         <td> 11:00</td>
-                                        </tr>
+                                                </tr>
 
-                                    </table>
+                                         </table>
 
                                                 <table className="tabela_lista" id="tabela-lista">
-                                                    <tr>
-                                                        <th><img src="../spmedicalgroup-base/assets/baseline_person_black_24dp.png"></th>
+                                                     <tr>
+                                                        <th><images src="../spmedicalgroup-base/assets/baseline_person_black_24dp.png"/></th>
                                                             <td>Dr.Roberto Possarle </td>
                                                             <td>Mariana</td>
                                                             <td>Realizada</td>
                                                             <td>20/01/2020</td>
                                                             <td> 15:00</td>
-                                        </tr>
+                                                     </tr>
 
-                                    </table>
-                                </div> */}
+                                                </table>
+                                     </div>
 
                                 </section>
                             

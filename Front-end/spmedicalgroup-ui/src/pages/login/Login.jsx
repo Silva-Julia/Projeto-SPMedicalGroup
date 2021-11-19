@@ -169,7 +169,7 @@ export default class Login extends Component {
             <div className="local_esqueceuSenha">
               <hr className="hr_pequeno"></hr>
               <nav>
-                <a className="esqueceuSenha" href=""> Esqueceu a senha </a>
+                <button className="esqueceuSenha" > Esqueceu a senha </button>
               </nav>
             </div>
           </form>
