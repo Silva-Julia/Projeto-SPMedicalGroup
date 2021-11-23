@@ -117,18 +117,25 @@ body{
     text-align-last: center;
 }
 
+.container_MaisSobre{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../spmedicalgroup-base/assets/fundo_MaisSobre.png");
+    height: 928px;
+    background-repeat: round;
+}
+
 .container_MaisSobre img{
-    /* background-image: url("../spmedicalgroup-base/assets/fundo_MaisSobre.png"); */
     height: 813px;
     width: 100%;
 }
 
 .box_MaisSobre{
     background-color:  #8C9EAC;;
-    display: grid;
-    justify-content: center;
-    width: 780px;
-    height: 437px;
+    width: 885px;
+    height: 464px;
+    padding-inline: 8vw;
 }
 
 .box_MaisSobre h3{
