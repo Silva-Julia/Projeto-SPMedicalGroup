@@ -154,7 +154,6 @@ body{
 }
 
 .endereço{
-    background-image: url(../assets/imagem-fundo-endereco.png);
     height: 516px;
     display: flex;
     flex-direction: column;
