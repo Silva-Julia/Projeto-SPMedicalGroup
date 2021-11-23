@@ -1,5 +1,5 @@
 import { Component} from 'react';
-import axios from "axios"
+import axios from "axios";
 
 import Footer from '../../components/footer';
 import HeaderPaginas from '../../components/headerPaginas';

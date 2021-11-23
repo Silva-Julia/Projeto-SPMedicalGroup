@@ -1,7 +1,6 @@
 // import { useState, useEffect } from 'react';
 // import { Link, useHistory } from 'react-router-dom';
 
-import fundo from '../../assets/img/fundo_MaisSobre.png';
 import endereco from '../../assets/img/endereço.png';
 
 import '../../assets/css/spmedicalgroup.css';
@@ -65,14 +64,9 @@ function App() {
 
 
           <section className="container_MaisSobre">
-            <images src={fundo}/>
             <div className="box_MaisSobre">
               <h3> Mais Sobre a Clínica </h3>
-              <p> Lorem Ipsum sobreviveu não só a cinco séculos, como também permanecendo essencialmente
-                inalterado. Se popularizou na década de 60, quando a
-                Letraset passou a ser
-                integrado a softwares de editoração eletrônica como Aldus
-                PageMaker.</p>
+              <p> Lorem Ipsum sobreviveu não só a cinco séculos, como também permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.</p>
             </div>
           </section>
 
@@ -83,7 +77,7 @@ function App() {
                 Santa Cecilia, São Paulo - SP
                 CEP: 01202-001</p>
             </div>
-            {/* <images className="img_mapa" src={endereco}/> */}
+            <img className="img_mapa" src={endereco}></img>
           </section>
             
         </main>

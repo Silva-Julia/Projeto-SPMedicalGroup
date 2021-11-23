@@ -4,55 +4,56 @@ import HeaderPaginas from '../../components/headerPaginas';
 import Footer from '../../components/footer';
 
 
-    render()
-    {
-        return(
-            <div>
-                <HeaderPaginas></HeaderPaginas>
 
-                <main>
-                    <section class="fundo_paciente">
+    // render()
+    // {
+    //     return(
+    //         <div>
+    //             <HeaderPaginas></HeaderPaginas>
 
-                        <section class="cont_listaPaciente">
+    //             <main>
+    //                 <section class="fundo_paciente">
 
-                            <h2> Listar Consulta </h2>
-                            <div class="conteudo_listaConsulta">
+    //                     <section class="cont_listaPaciente">
 
-                                <table class="tabela_lista" id="tabela-lista">
-                                    <tr>
-                                        <td>Dr. Ricardo Lemos</td>
-                                        <td>Cancelada  </td>
-                                        <td> 07/02/2019</td>
-                                        <td>11:00</td>
-                                    </tr>
-                                </table>
+    //                         <h2> Listar Consulta </h2>
+    //                         <div class="conteudo_listaConsulta">
 
-                                <table class="tabela_lista" id="tabela-lista">
-                                    <tr>
-                                        <td> Dr. Ricardo Lemos </td>
-                                        <td>Agendada</td>
-                                        <td>09/03/2020</td>
-                                        <td>11:00</td>
-                                    </tr>
-                                </table>
+    //                             <table class="tabela_lista" id="tabela-lista">
+    //                                 <tr>
+    //                                     <td>Dr. Ricardo Lemos</td>
+    //                                     <td>Cancelada  </td>
+    //                                     <td> 07/02/2019</td>
+    //                                     <td>11:00</td>
+    //                                 </tr>
+    //                             </table>
 
-                                <table class="tabela_lista" id="tabela-lista">
-                                    <tr>
-                                        <td>Dra. Helena Strada</td>
-                                        <td>Realizada </td>
-                                        <td>30/02/2020</td>
-                                        <td>10:00</td>
-                                    </tr>
-                                </table>
-                            </div>
+    //                             <table class="tabela_lista" id="tabela-lista">
+    //                                 <tr>
+    //                                     <td> Dr. Ricardo Lemos </td>
+    //                                     <td>Agendada</td>
+    //                                     <td>09/03/2020</td>
+    //                                     <td>11:00</td>
+    //                                 </tr>
+    //                             </table>
 
-                        </section>
+    //                             <table class="tabela_lista" id="tabela-lista">
+    //                                 <tr>
+    //                                     <td>Dra. Helena Strada</td>
+    //                                     <td>Realizada </td>
+    //                                     <td>30/02/2020</td>
+    //                                     <td>10:00</td>
+    //                                 </tr>
+    //                             </table>
+    //                         </div>
 
-                    </section>
-                </main>
+    //                     </section>
 
-                <Footer></Footer>
+    //                 </section>
+    //             </main>
 
-            </div>
-        )
-    }
+    //             <Footer></Footer>
+
+    //         </div>
+    //     )
+    // }
