@@ -26,8 +26,7 @@ export default class Login extends Component {
     this.setState({ erroMensagem: '', isLoading: true });
 
     // Define a url e o corpo da requisição
-    axios
-      .post('http://localhost:5000/api/Login', {
+    axios.post('http://localhost:5000/api/Login', {
         email: this.state.email,
         senha: this.state.senha,
       })
@@ -98,7 +97,7 @@ export default class Login extends Component {
       <div>
         <section className="container">
 
-          <Link to="/"><img className="logo" href="index.html" src={logo} alt="LOGO" />{' '} </Link>
+          <Link to="/"><img className="logo" to="/App.js" src={logo} alt="LOGO" />{' '} </Link>
 
           <form className="box_login" onSubmit={this.efetuaLogin}>
             <div className="linha_escrita_login">
@@ -134,18 +133,10 @@ export default class Login extends Component {
 
 
             { /*   Verifica se a requisição está em andamento  Se estiver, desabilita o click do botão  */}
-
-
             { // Caso seja true, renderiza o botão desabilitado com o texto 'Loading...' */}
               this.state.isLoading === true && (
                 <div className="boton_Login">
-                  <button
-                    type="submit"
-                    disabled
-                    className="btn__login"
-                    id="btn__login"
-                    // disabled
-                  > Loading...</button>
+                  <button type="submit" className="btn__logi" disabled> Loading...</button>
                 </div>
               )
             }
@@ -153,13 +144,9 @@ export default class Login extends Component {
             { // Caso seja false, renderiza o botão habilitado com o texto 'Login'
               this.state.isLoading === false && (
                 <div className="boton_Login">
-                  <button
-                    className="btn__login"
-                    id="btn__login"
-                    type="submit"
-                    disabled={this.state.email === '' || this.state.senha === '' ? 'none' : ''}
-                  >
-                    Login
+                  <button type="submit" className="btn__login" id="btn__login"
+                      disabled={this.state.email === '' || this.state.senha === '' ? 'none' : ''}
+                  >Login
                   </button>
                 </div>
               )

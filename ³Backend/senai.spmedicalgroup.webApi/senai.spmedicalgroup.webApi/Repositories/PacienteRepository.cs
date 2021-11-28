@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using senai.spmedicalgroup.webApi.Context;
 using senai.spmedicalgroup.webApi.Domains;
 using senai.spmedicalgroup.webApi.Interfaces;
 using System;
@@ -10,7 +11,7 @@ namespace senai.spmedicalgroup.webApi.Repositories
 {
     public class PacienteRepository : IPacienteRepository
     {
-        SpMedicalGroupContext ctx = new SpMedicalGroupContext();
+        SpMedicalGroupWeb ctx = new SpMedicalGroupWeb();
 
         public void Atualizar(int id, Paciente attPaciente)
         {
@@ -57,7 +58,7 @@ namespace senai.spmedicalgroup.webApi.Repositories
                         {
                             IdPaciente = p.IdPaciente,
                             EnderecoPaciente = p.EnderecoPaciente,
-                            DataNasc = p.DataNasc,
+                            DataNascimento = p.DataNascimento,
                             
                             IdUsuarioNavigation = new Usuario()
                             {

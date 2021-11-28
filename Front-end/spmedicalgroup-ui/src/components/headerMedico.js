@@ -3,7 +3,7 @@ import "../assets/css/spmedicalgroup.css";
 import logo from "../assets/img/LOGO.png";
 import perfil from "../assets/img/man (2) 1.png";
 
-export default function HeaderPaginas()
+export default function HeaderMedico()
 {
     return(
          <header className="box_header">

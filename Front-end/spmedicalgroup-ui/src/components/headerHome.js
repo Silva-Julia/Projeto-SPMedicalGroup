@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import "../assets/css/spmedicalgroup.css";
 import logo from "../assets/img/LOGO 2.png";
 
@@ -10,11 +11,11 @@ export default function HeaderHome(){
                 <img class="logo_header" src={logo} alt="LOGO"></img> 
 
                 <nav className="nav_headerHome">
-                    <a href="App.js"> Home  </a>
-                    <a href="secao_especialidade"> Especialidades </a>
-                    <a href="box_MaisSobre"> Sobre a Clínica </a>
-                    <a href="endereço"> Endereço </a>
-                    <a className="login" href="#Login"> Login </a>
+                    <Link><a href="/App.js"> Home  </a></Link>
+                    <Link><a href="#secao_especialidade"> Especialidades </a></Link>
+                    <Link><a href="#box_MaisSobre"> Sobre a Clínica </a></Link>
+                    <Link><a href="#endereço"> Endereço </a></Link>
+                    <Link><a className="login" href="/Login"> Login </a></Link>
                 </nav>
             </div>
             <div className="escrita_banner">

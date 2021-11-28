@@ -5,7 +5,7 @@ import Footer from '../../components/footer';
 import HeaderAdm from '../../components/headerAdm';
 
 import '../../assets/css/spmedicalgroup.css';
-import '../../assets/img/baseline_format.png';
+import perfil from '../../assets/img/baseline_person_black_24dp.png';
 
 export default class Administrador extends Component {
     constructor(props) {
@@ -131,89 +131,89 @@ export default class Administrador extends Component {
                         <section className="area_fundo">
 
                             <section className="cadasConsulta">
-                                <div className="conteudo_cadasConsulta">
-                                    <h2> Cadastrar Consulta </h2>
+                                    <div className="conteudo_cadasConsulta">
+                                        <h2> Cadastrar Consulta </h2>
 
-                                    <form  onSubmit={ this.cadastrarConsulta} className="box_cadasConsulta">
-                                        <div className="linha_escrita_consulta">
-                                            <input
-                                                className="input__consulta"
-                                                placeholder="Nome Medico"
-                                                type="text"
-                                                name="Nome Medico"
-                                                id="consulta__nomeMed"                                               
-                                                value={this.state.IdMedico}
+                                        <form  onSubmit={ this.cadastrarConsulta} className="box_cadasConsulta">
+                                            <div className="linha_escrita_consulta">
+                                                <input
+                                                    className="input__consulta"
+                                                    placeholder="Nome Medico"
+                                                    type="text"
+                                                    name="Nome Medico"
+                                                    id="consulta__nomeMed"                                               
+                                                    value={this.state.IdMedico}
+                                                    onChange={this.atualizaStateCampo}
+                                                />
+                                                {/* <option value="0"> Insira o nome do Medico </option> */}
+                                                {
+                                                    this.state.listaMedicos.map(medico => {
+                                                        return(
+                                                            <option key={medico.IdMedico} value={medico.idMedico}> {medico.nomeUsuario} </option>
+                                                        );
+                                                    })
+                                                }
+                                            </div>
+
+                                            <div className="linha_escrita_consulta">
+                                                <input
+                                                    className="input__consulta"
+                                                    placeholder="Situação"
+                                                    type="text"
+                                                    name="Situação"
+                                                    id="consulta__situacao"
+                                                    value={this.state.IdSituacao}
+                                                    onChange={this.atualizaStateCampo}
+                                                />
+                                            </div>
+
+                                            <div className="linha_escrita_consulta">
+                                                <input
+                                                    className="input__consulta"
+                                                    placeholder="Nome Paciente"
+                                                    type="text"
+                                                    name="Nome Paciente"
+                                                    id="consulta__nomePac"
+                                                    value={this.state.IdPaciente}
                                                 onChange={this.atualizaStateCampo}
-                                            />
-                                            {/* <option value="0"> Insira o nome do Medico </option> */}
-                                            {
-                                                this.state.listaMedicos.map(medico => {
+                                                />
+                                                {/* { this.state.listaPacientes.map(paciente =>{
                                                     return(
-                                                        <option key={medico.IdMedico} value={medico.idMedico}> {medico.nomeUsuario} </option>
+                                                        <option key={paciente.IdPaciente} value={paciente.idPaciente}> {paciente.nomePaciente}</option>
                                                     );
                                                 })
-                                            }
-                                        </div>
+                                                } */}
+                                            </div>
 
-                                        <div className="linha_escrita_consulta">
-                                            <input
-                                                className="input__consulta"
-                                                placeholder="Situação"
-                                                type="text"
-                                                name="Situação"
-                                                id="consulta__situacao"
-                                                value={this.state.IdSituacao}
-                                                onChange={this.atualizaStateCampo}
-                                            />
-                                        </div>
+                                            <div className="linha_escrita_consulta">
+                                                <input
+                                                    className="input__consulta"
+                                                    placeholder="Data da Consulta"
+                                                    type="date"
+                                                    name="Data da Consulta"
+                                                    id="consulta__data"
+                                                />
+                                            </div>
 
-                                        <div className="linha_escrita_consulta">
-                                            <input
-                                                 className="input__consulta"
-                                                placeholder="Nome Paciente"
-                                                type="text"
-                                                name="Nome Paciente"
-                                                id="consulta__nomePac"
-                                                value={this.state.IdPaciente}
-                                               onChange={this.atualizaStateCampo}
-                                            />
-                                            {/* { this.state.listaPacientes.map(paciente =>{
-                                                return(
-                                                    <option key={paciente.IdPaciente} value={paciente.idPaciente}> {paciente.nomePaciente}</option>
-                                                );
-                                            })
-                                            } */}
-                                        </div>
+                                            <div className="linha_escrita_consulta">
+                                                <input
+                                                    className="input__consulta"
+                                                    placeholder="Horário"
+                                                    type="time"
+                                                    name="Horário"
+                                                    id="consulta__horario"
+                                                />
+                                            </div>
 
-                                        <div className="linha_escrita_consulta">
-                                            <input
-                                                className="input__consulta"
-                                                placeholder="Data da Consulta"
-                                                type="date"
-                                                name="Data da Consulta"
-                                                id="consulta__data"
-                                            />
-                                        </div>
+                                            <div className="boton_Consulta">
+                                                <button className="btn__consulta" id="btn__consulta" href="#">
+                                                    Cadastrar
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
 
-                                        <div className="linha_escrita_consulta">
-                                            <input
-                                                className="input__consulta"
-                                                placeholder="Horário"
-                                                type="time"
-                                                name="Horário"
-                                                id="consulta__horario"
-                                            />
-                                        </div>
-
-                                        <div className="boton_Consulta">
-                                            <button className="btn__consulta" id="btn__consulta" href="#">
-                                                 Cadastrar
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
-
-                            </section >
+                             </section >
 
 
 
@@ -221,13 +221,14 @@ export default class Administrador extends Component {
 
                                     <h2> Listar Consulta </h2>
 
-                                    {/* <div className="conteudo_listaConsulta">
+                                     <div className="conteudo_listaConsulta">
                                         {this.state.listaConsultas.map((consulta) => {
                                             return(
                                                 <table className="tabela_lista">
                                                     <tr key={consulta.idConsulta}></tr>
+                                                    <th><images src={perfil}/> </th>
                                                     <p> {consulta.idPacienteNavigation.nomePaciente}</p>
-                                                    <p> {consulta.idSituacaoNavigation.situacao}</p>
+                                                    <p> {consulta.idSituacaoNavigation.IdSituacao}</p>
                                                     <p> {Intl.DateTimeFormat("pt-BR", {
                                                     year: 'numeric', month: 'numeric', day: 'numeric',
                                                     hour: 'numeric', minute: 'numeric', hour12: false
@@ -235,48 +236,62 @@ export default class Administrador extends Component {
                                                 </table>
                                             )
                                         })}
-                                    </div> */}
+                                    </div>
 
                                     <div className="conteudo_listaConsulta">
-                                        <table className="tabela_lista" id="tabela-lista">
-                                            <tr>
-                                                <th><images src="../spmedicalgroup-base/assets/baseline_person_black_24dp.png"/></th>
-                                                    <td>Dr.Ricardo Lemos</td>
-                                                    <td>Alexandre</td>
-                                                    <td>Agendada</td>
-                                                    <td>06/01/2020</td>
-                                                    <td> 10:00</td>
-                                            </tr>
-                                        </table>
+                                        {this.state.listaConsultas.map((consulta) => {
+                                            return(
+                                                <table className="tabela_lista">
+                                                    <tr key={consulta.idConsulta}></tr>
+                                                    <th><images src={perfil}/> </th>
+                                                    <p> {consulta.idPacienteNavigation.nomePaciente}</p>
+                                                    <p> {consulta.idSituacaoNavigation.IdSituacao}</p>
+                                                    <p> {Intl.DateTimeFormat("pt-BR", {
+                                                    year: 'numeric', month: 'numeric', day: 'numeric',
+                                                    hour: 'numeric', minute: 'numeric', hour12: false
+                                                }).format(new Date(consulta.dataConsulta))} </p>
+                                                </table>
+                                            )
+                                        })}
 
-                                         <table className="tabela_lista" id="tabela-lista">
-                                                <tr>
-                                                    <th><images src="../spmedicalgroup-base/assets/baseline_person_black_24dp.png"/></th>
-                                                        <td>Dra.Helena Strada</td>
-                                                        <td>Fernando</td>
-                                                        <td>Cancelada</td>
-                                                        <td>07/02/2020</td>
-                                                        <td> 11:00</td>
-                                                </tr>
-
-                                         </table>
-
-                                                <table className="tabela_lista" id="tabela-lista">
-                                                     <tr>
-                                                        <th><images src="../spmedicalgroup-base/assets/baseline_person_black_24dp.png"/></th>
+                                        {this.state.listaConsultas.map((consulta) => {
+                                            return(
+                                                <table className="tabela_lista">
+                                                    <tr key={consulta.idConsulta}></tr>
+                                                    <th><images src={perfil}/> </th>
+                                                    <p> {consulta.idPacienteNavigation.nomePaciente}</p>
+                                                    <p> {consulta.idSituacaoNavigation.IdSituacao}</p>
+                                                    <p> {Intl.DateTimeFormat("pt-BR", {
+                                                    year: 'numeric', month: 'numeric', day: 'numeric',
+                                                    hour: 'numeric', minute: 'numeric', hour12: false
+                                                }).format(new Date(consulta.dataConsulta))} </p>
+                                                </table>
+                                            )
+                                        })}
+                                                {this.state.listaConsultas.map((consulta) => {
+                                                     return(
+                                                     <table className="tabela_lista" id="tabela-lista">
+                                                     <tr key={consulta.idConsulta}>
+                                                        <th><images src={perfil}/> </th>
                                                             <td>Dr.Roberto Possarle </td>
-                                                            <td>Mariana</td>
-                                                            <td>Realizada</td>
-                                                            <td>20/01/2020</td>
-                                                            <td> 15:00</td>
+                                                            <td> {consulta.idPacienteNavigation.nomePaciente} Mariana</td>
+                                                            <td> {consulta.idSituacaoNavigation.IdSituacao} Realizada</td>
+                                                            <td> {Intl.DateFormat("pt-BR", { 
+                                                                 year: 'numeric', month: 'numeric', day: 'numeric', 
+                                                                 }).format(new Date(consulta.dataConsulta))}</td>
+                                                            <td> {Intl.TimeFormat("pt-BR", {  
+                                                                hour: 'numeric', minute: 'numeric', hour12: false
+                                                                }).format(new Date(consulta.dataConsulta))} 15:00</td>
                                                      </tr>
 
-                                                </table>
+                                                     </table>
+                                                     )
+                                                })}
                                      </div>
 
                                 </section>
                             
-                            </section>
+                         </section>
                         
                          </main>
 

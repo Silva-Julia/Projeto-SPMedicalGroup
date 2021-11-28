@@ -2,9 +2,13 @@ import { Component} from 'react';
 import axios from "axios";
 
 import Footer from '../../components/footer';
-import HeaderPaginas from '../../components/headerPaginas';
+import HeaderMedico from '../../components/headerMedico';
 
 import '../../assets/css/spmedicalgroup.css';
+import perfilMulher from '../../assets/img/woman (1) 1.png';
+import perfilHomem from '../../assets/img/man 1.png';
+import perfilMulher2 from '../../assets/img/woman 1.png';
+import perfilHomem2 from '../../assets/img/man (1) 1.png';
 
 export default class Medico extends Component{
     constructor(props){
@@ -24,7 +28,7 @@ export default class Medico extends Component{
     };
 
     buscaConsultas =() => {
-        axios("http://localhost:5000/api/Consultas/consulta", {
+        axios('http://localhost:5000/api/Consultas/consulta', {
             headers: {
                 'Authorization': 'Bearer' + localStorage.getItem('usuario-login')
             },
@@ -78,98 +82,112 @@ export default class Medico extends Component{
                 idSituaçao: consultaRecebida.idSituaçao,
             },
             () => {
-                console.log()
+                console.log(
+                    'A' + consultaRecebida.idConsulta + ' foi selecionada,',
+                    'agora o valor é: ' + this.state.idConsultaAlterado,
+                    'e o valor da situação é: ' + this.state.idSituaçao,
+                )
             }
         )
     }
 
+    atualizaStateCampo = async (event) => {
+        await this.setState({
+            //diz o target (alvo) do evento , pegando o value(valor)
+            idSituaçao: event.target.value,
+          });
+          console.log(this.state.idSituaçao);
+        };
+        limparCampos = () => {
+          this.setState({
+            idSituaçao: '',
+            idConsultaAlterado: 0,
+          });
+          console.log('Os states foram resetados!');
+    };
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // render(){
-    //     return(
-    //         <div>
+    render(){
+        return(
+            <div>
                 
-    //             <HeaderPaginas></HeaderPaginas>
+                <HeaderMedico></HeaderMedico>
 
-    //              <main>
+                 <main>
 
-    //                 <section  class="area_fundoMedico">
+                    <section  class="area_fundoMedico">
 
-    //                     <section class="cont_listaMedico">
+                        <section class="cont_listaMedico">
 
-    //                         <h2> Listar Consulta </h2>
+                            <h2> Listar Consulta </h2>
 
-    //                             <div class="conteudo_listaConsulta">
-    //                                 <table  class="tabela_lista" id="tabela-lista">
-    //                                     <tr>
-    //                                         <th><img src="../spmedicalgroup-base/assets/woman (1) 1.png"></th>
-    //                                         <td>Mariana  </td>
-    //                                         <td>Agendada</td>
-    //                                         <td>08/03/2020</td>
-    //                                         <td>15:00</td>
-    //                                     </tr>
-    //                                 </table>
-                                        
-    //                                 <table class="tabela_lista" id="tabela-lista">
-    //                                     <tr>
-    //                                     <th><img src="../spmedicalgroup-base/assets/man 1.png"></th>
-    //                                     <td>João</td>
-    //                                     <td>Cancelada</td>
-    //                                     <td>30/01/2020</td>
-    //                                     <td>9:00</td>                               
-    //                                     </tr>
-    //                                 </table>
+                                <div class="conteudo_listaConsulta">
+                                            <table  class="tabela_lista" id="tabela-lista">
+                                            {this.state.listaConsultas.map((consulta) => {
+                                                return (
+                                                <tr>
+                                                    <th><images src={perfilMulher}></images></th>
+                                                    <td>Mariana  </td>
+                                                    <td>Agendada</td>
+                                                    <td>08/03/2020</td>
+                                                    <td>15:00</td>
+                                                </tr>
+                                                 )
+                                             })
+                                             }
+                                            </table>
+                                                
+                                            <table class="tabela_lista" id="tabela-lista">
+                                                <tr>
+                                                <th><images src={perfilHomem}></images></th>
+                                                <td>João</td>
+                                                <td>Cancelada</td>
+                                                <td>30/01/2020</td>
+                                                <td>9:00</td>                               
+                                                </tr>
+                                            </table>
 
-    //                                 <table class="tabela_lista" id="tabela-lista">
-    //                                     <tr>
-    //                                     <th><img src="../spmedicalgroup-base/assets/woman 1.png"></th>
-    //                                     <td>Mariana </td>
-    //                                     <td>Realizada</td>
-    //                                     <td>20/01/2020</td>
-    //                                     <td>15:00</td>
-    //                                     </tr>
-    //                                 </table>
+                                            <table class="tabela_lista" id="tabela-lista">
+                                                <tr>
+                                                <th><images src={perfilMulher2}></images></th>
+                                                <td>Mariana </td>
+                                                <td>Realizada</td>
+                                                <td>20/01/2020</td>
+                                                <td>15:00</td>
+                                                </tr>
+                                            </table>
 
-    //                                 <table class="tabela_lista" id="tabela-lista">
-    //                                     <tr>
-    //                                     <th><img src="../spmedicalgroup-base/assets/man (1) 1.png"></th>
-    //                                     <td>Alexandre </td>
-    //                                     <td>Agendada</td>
-    //                                     <td>06/01/2020</td>
-    //                                     <td> 10:00</td>
-    //                                     </tr>
-    //                                 </table>
-    //                             </div>
+                                            <table class="tabela_lista" id="tabela-lista">
+                                                <tr>
+                                                <th><images src={perfilHomem2}></images></th>
+                                                <td>Alexandre </td>
+                                                <td>Agendada</td>
+                                                <td>06/01/2020</td>
+                                                <td> 10:00</td>
+                                                </tr>
+                                            </table>
+                                         
+                                </div>
 
-    //                             <div class="boton_alterarSitu">
-    //                                 <button class="btn__alterarSitu" id="btn__alterarSitu" href="#">
-    //                                     Alterar Situação
-    //                                 </button>
-    //                             </div>
-    //                     </section>
+                                {this.state.idConsultaAlterado !== 0 &&
+                                    <div class="boton_alterarSitu">
+                                        <form onSubmit={this.mudarSituacao}>
+                                        <button class="btn__alterarSitu" id="btn__alterarSitu">
+                                            Alterar Situação </button>
+                                        <button type="button" onClick={this.limparCampos}>Cancelar</button>
+                                        </form>
+                                    </div>
+                                }
+                        </section>
 
-    //                 </section>
-    //              </main>
+                    </section>
+                 </main>
 
-    //              <Footer></Footer>
+                 <Footer></Footer>
 
-    //         </div>
-    //     )
-    // }
+            </div>
+        )
+    }
 }
