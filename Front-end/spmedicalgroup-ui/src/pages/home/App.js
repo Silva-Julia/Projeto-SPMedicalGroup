@@ -1,5 +1,3 @@
-// import { useState, useEffect } from 'react';
-// import { Link, useHistory } from 'react-router-dom';
 
 import endereco from '../../assets/img/endereço.png';
 
