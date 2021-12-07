@@ -9,6 +9,7 @@ import { Image,
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import api from '../services/api';
+import jwtDecode from 'jwt-decode';
 
 export default class Login extends Component{
     constructor(props){
@@ -24,7 +25,7 @@ export default class Login extends Component{
 
         try {
             
-            const resposta = await api.post('/login', {
+            const resposta = await api.post('/Login', {
                 email : this.state.email,
                 senha : this.state.senha,
             });
@@ -35,7 +36,30 @@ export default class Login extends Component{
             
             await AsyncStorage.setItem('userToken', token);
             
-            this.props.navigation.navigate('main');
+            if (resposta.data == 200) {
+                
+                console.warn('Login Realizado')
+                console.warn(jwtDecode(token).role)
+
+                var certo = jwtDecode(token).role
+                console.warn('certo ' + certo)
+
+                switch (certo) {
+
+                    case '2':
+                        this.props.navigation.navigate('Paciente');
+                        break;
+                    case '3':
+                        this.props.navigation.navigate('Medico');
+                        break;
+                    case '1':
+                        this.props.navigation.navigate('Admin');
+                        break;
+                
+                    default:
+                        break;
+                }
+            }
 
         } catch (error) {
             console.warn(error)

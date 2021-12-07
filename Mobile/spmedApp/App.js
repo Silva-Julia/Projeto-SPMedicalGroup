@@ -9,8 +9,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 const AuthStack = createStackNavigator();
 
 import Login from '../spmedApp/src/screens/login';
-// import Main from './src/screens/main';
-// import ConsultaPaciente from '../spmedApp/src/screens/consultaPaciente';
+import ConsultaPaciente from '../spmedApp/src/screens/consultaPaciente';
 
 export default function Stack() {
   return (
@@ -18,13 +17,12 @@ export default function Stack() {
 
       <AuthStack.Navigator
         // headerMode = 'none'
-        initialRouteName="Login"
+        initialRouteName="consultaPaciente"
         screenOptions={{
         headerShown: false,
         }}>
-        <AuthStack.Screen name='Login' component={Login} />
-        {/* <AuthStack.Screen name="Main" component={Main} /> */}
-        {/* <AuthStack.Screen name='ConsultaPaciente' component={ConsultaPaciente} /> */}
+        {/* <AuthStack.Screen name='Login' component={Login} /> */}
+        <AuthStack.Screen name='ConsultaPaciente' component={ConsultaPaciente} />
       </AuthStack.Navigator>
     </NavigationContainer>
   );
