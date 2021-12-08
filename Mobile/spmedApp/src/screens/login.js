@@ -15,7 +15,7 @@ export default class Login extends Component{
     constructor(props){
         super(props);
         this.state = {
-            email: 'ricardo.lemos@spmedicalgroup.com.br',
+            email: 'Ligia@email.com',
             senha: '1234'
         }
     }
@@ -30,13 +30,15 @@ export default class Login extends Component{
                 senha : this.state.senha,
             });
     
+            console.warn(resposta);
             const token = resposta.data.token;
             
             console.warn(token);
             
             await AsyncStorage.setItem('userToken', token);
+            console.warn(resposta.data);
             
-            if (resposta.data == 200) {
+            if (resposta.status == 200) {
                 
                 console.warn('Login Realizado')
                 console.warn(jwtDecode(token).role)
@@ -45,20 +47,22 @@ export default class Login extends Component{
                 console.warn('certo ' + certo)
 
                 switch (certo) {
-
-                    case '2':
-                        this.props.navigation.navigate('Paciente');
-                        break;
-                    case '3':
-                        this.props.navigation.navigate('Medico');
-                        break;
+                    
                     case '1':
                         this.props.navigation.navigate('Admin');
+                        break;
+                    case '2':
+                        this.props.navigation.navigate('ConsultaPaciente');
+                        break;
+                    case '3':
+                        this.props.navigation.navigate('ConsultaMedico');
                         break;
                 
                     default:
                         break;
                 }
+                // this.props.navigation.navigate('ConsultaPaciente');
+                
             }
 
         } catch (error) {

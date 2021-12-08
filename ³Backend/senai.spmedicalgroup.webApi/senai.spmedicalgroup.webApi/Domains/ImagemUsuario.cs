@@ -15,6 +15,5 @@ namespace senai.spmedicalgroup.webApi.Domains
         public DateTime DataInclusao { get; set; }
 
         public virtual Usuario IdUsuarioNavigation { get; set; }
-        
     }
 }

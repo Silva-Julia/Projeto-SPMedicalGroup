@@ -1,5 +1,12 @@
-import { View } from "react-native";
+
 import api from "../services/api"
+import React, { Component } from 'react';
+import { Image, 
+  StyleSheet, 
+  Text,  
+  View,
+   } from 'react-native';
+  import jwtDecode from 'jwt-decode';
 
 export default class ConsultaMedico extends Component {
     constructor(props){
@@ -46,15 +53,85 @@ export default class ConsultaMedico extends Component {
 
     render(){
         return(
-            <View>
-
+            <View style={styles.main}>
+              {/* Cabeçalho - Header */}
+              <View style={styles.mainHeader}>
+                <View style={styles.mainHeaderRow}>
+                  <Image
+                    source={require('../../assets/img/LOGO.png')}
+                    style={styles.mainHeaderImg}
+                  />
+                  <Text style={styles.mainHeaderText}> {this.state.nome} </Text>
+                </View>
+              </View>
+      
+              {/* Corpo - Body */}
+              <View style={styles.mainBody}>
+                {/* <FlatList
+                  contentContainerStyle={styles.mainBodyContent}
+                  keyExtractor={item => item.idUsuario}
+                  keyExtractor={item => item.idSituacao}
+                  // renderItem={this.renderItem}
+                  data={this.state.listaConsultas}
+                /> */}
+              </View>
             </View>
         )
-    }
+     };
   
 };
 
 const styles = StyleSheet.create({
 
+  main: {
+    height: 70,
+    width: '100%',
+    // alignItems: 'center',
+    // justifyContent: 'space-evenly',
+  },
 
+  mainHeader: {
+    display: 'flex',
+    justifyContent: 'center',
+    // alignItems: 'center',
+  },
+
+  mainHeaderRow: {
+    flexDirection: 'row',
+  },
+
+  // imagem do cabeçalho
+  mainHeaderImg: {
+    width: 99,
+    height: 35,
+    marginLeft: 40,
+    marginTop: 10,
+  },
+
+  // texto do cabeçalho
+  mainHeaderText: {
+    fontSize: 14,
+    letterSpacing: 5,
+    color: '#000',
+    marginLeft: 30,
+    marginTop: 26,
+  },
+
+  // conteúdo do body
+  mainBody: {
+    // flex: 4,
+    backgroundColor: '#04ADBF',
+    height:'870%',
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  //conteúdo da lista
+  mainBodyContent: {
+    height: 103,
+    width: 301,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 22,
+  },
 });

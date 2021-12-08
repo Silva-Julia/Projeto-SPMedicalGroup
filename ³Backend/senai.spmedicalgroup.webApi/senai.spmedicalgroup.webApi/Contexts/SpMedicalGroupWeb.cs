@@ -5,7 +5,7 @@ using senai.spmedicalgroup.webApi.Domains;
 
 #nullable disable
 
-namespace senai.spmedicalgroup.webApi.Context
+namespace senai.spmedicalgroup.webApi.Contexts
 {
     public partial class SpMedicalGroupWeb : DbContext
     {
@@ -19,7 +19,7 @@ namespace senai.spmedicalgroup.webApi.Context
         }
 
         public virtual DbSet<Clinica> Clinicas { get; set; }
-        public virtual DbSet<Consulta> Consulta { get; set; }
+        public virtual DbSet<Consultum> Consulta { get; set; }
         public virtual DbSet<Especialidade> Especialidades { get; set; }
         public virtual DbSet<ImagemUsuario> ImagemUsuarios { get; set; }
         public virtual DbSet<Medico> Medicos { get; set; }
@@ -32,9 +32,8 @@ namespace senai.spmedicalgroup.webApi.Context
         {
             if (!optionsBuilder.IsConfigured)
             {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                //optionsBuilder.UseSqlServer("Data Source=DESKTOP-6TRVTDV\\SQLEXPRESS; initial catalog=MEDICALGROUP_JULIA; user Id=sa; pwd=senai@132;");
-                optionsBuilder.UseSqlServer("Data Source=NOTE0111B1\\SQLEXPRESS; initial catalog=MEDICALGROUP_JULIA; user Id=SA; pwd=Senai@132;");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("Data Source=NOTE0111B1\\SQLEXPRESS; initial catalog=MEDICALGROUP_JULIA; user Id=sa; pwd=Senai@132;");
             }
         }
 
@@ -45,17 +44,17 @@ namespace senai.spmedicalgroup.webApi.Context
             modelBuilder.Entity<Clinica>(entity =>
             {
                 entity.HasKey(e => e.IdClinica)
-                    .HasName("PK__CLINICA__C73A6055A72D829B");
+                    .HasName("PK__CLINICA__C73A60554A03F559");
 
                 entity.ToTable("CLINICA");
 
-                entity.HasIndex(e => e.Cnpj, "UQ__CLINICA__35BD3E4830363AC0")
+                entity.HasIndex(e => e.Cnpj, "UQ__CLINICA__35BD3E484EA5B749")
                     .IsUnique();
 
-                entity.HasIndex(e => e.Endereco, "UQ__CLINICA__9456D406CBFF534D")
+                entity.HasIndex(e => e.Endereco, "UQ__CLINICA__9456D406022D8798")
                     .IsUnique();
 
-                entity.HasIndex(e => e.RazaoSocial, "UQ__CLINICA__9BF93A307DDD5908")
+                entity.HasIndex(e => e.RazaoSocial, "UQ__CLINICA__9BF93A301A5B8E1B")
                     .IsUnique();
 
                 entity.Property(e => e.IdClinica).HasColumnName("idClinica");
@@ -88,7 +87,7 @@ namespace senai.spmedicalgroup.webApi.Context
             modelBuilder.Entity<Consultum>(entity =>
             {
                 entity.HasKey(e => e.IdConsulta)
-                    .HasName("PK__CONSULTA__CA9C61F59FCFB34B");
+                    .HasName("PK__CONSULTA__CA9C61F5753D4992");
 
                 entity.ToTable("CONSULTA");
 
@@ -119,18 +118,17 @@ namespace senai.spmedicalgroup.webApi.Context
                 entity.HasOne(d => d.IdSituacaoNavigation)
                     .WithMany(p => p.Consulta)
                     .HasForeignKey(d => d.IdSituacao)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__CONSULTA__idSitu__5629CD9C");
             });
 
             modelBuilder.Entity<Especialidade>(entity =>
             {
                 entity.HasKey(e => e.IdEspecialidade)
-                    .HasName("PK__ESPECIAL__4096980578FF117F");
+                    .HasName("PK__ESPECIAL__40969805AD9C8775");
 
                 entity.ToTable("ESPECIALIDADE");
 
-                entity.HasIndex(e => e.DescricaoEspecialidade, "UQ__ESPECIAL__868251F74782ED46")
+                entity.HasIndex(e => e.DescricaoEspecialidade, "UQ__ESPECIAL__868251F73202D933")
                     .IsUnique();
 
                 entity.Property(e => e.IdEspecialidade)
@@ -162,24 +160,22 @@ namespace senai.spmedicalgroup.webApi.Context
                 entity.Property(e => e.NomeArquivo)
                     .IsRequired()
                     .HasMaxLength(250)
-                    .IsUnicode(false)
-                    .HasColumnName("nomeArquivo"); 
+                    .IsUnicode(false);
 
                 entity.HasOne(d => d.IdUsuarioNavigation)
                     .WithMany(p => p.ImagemUsuarios)
                     .HasForeignKey(d => d.IdUsuario)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__ImagemUsu__IdUsu__3C34F16F");
+                    .HasConstraintName("FK__ImagemUsu__IdUsu__3D5E1FD2");
             });
 
             modelBuilder.Entity<Medico>(entity =>
             {
                 entity.HasKey(e => e.IdMedico)
-                    .HasName("PK__MEDICO__4E03DEBA3DC3B388");
+                    .HasName("PK__MEDICO__4E03DEBA4B5D8B62");
 
                 entity.ToTable("MEDICO");
 
-                entity.HasIndex(e => e.Crm, "UQ__MEDICO__D836F7D1DB0B80DD")
+                entity.HasIndex(e => e.Crm, "UQ__MEDICO__D836F7D1D812AED7")
                     .IsUnique();
 
                 entity.Property(e => e.IdMedico).HasColumnName("idMedico");
@@ -214,20 +210,20 @@ namespace senai.spmedicalgroup.webApi.Context
                 entity.HasOne(d => d.IdUsuarioNavigation)
                     .WithMany(p => p.Medicos)
                     .HasForeignKey(d => d.IdUsuario)
-                    .HasConstraintName("FK__MEDICO__idUsuari__656C112C");
+                    .HasConstraintName("FK__MEDICO__idUsuari__5165187F");
             });
 
             modelBuilder.Entity<Paciente>(entity =>
             {
                 entity.HasKey(e => e.IdPaciente)
-                    .HasName("PK__PACIENTE__F48A08F2D0A879BC");
+                    .HasName("PK__PACIENTE__F48A08F295D35F99");
 
                 entity.ToTable("PACIENTE");
 
-                entity.HasIndex(e => e.EnderecoPaciente, "UQ__PACIENTE__CB603A7CB28B08DD")
+                entity.HasIndex(e => e.EnderecoPaciente, "UQ__PACIENTE__CB603A7CC97B2D74")
                     .IsUnique();
 
-                entity.HasIndex(e => e.Cpf, "UQ__PACIENTE__D836E71F8946E89A")
+                entity.HasIndex(e => e.Cpf, "UQ__PACIENTE__D836E71F643368AF")
                     .IsUnique();
 
                 entity.Property(e => e.IdPaciente).HasColumnName("idPaciente");
@@ -239,7 +235,7 @@ namespace senai.spmedicalgroup.webApi.Context
                     .HasColumnName("cpf");
 
                 entity.Property(e => e.DataNascimento)
-                    .HasColumnType("date")
+                    .HasColumnType("datetime")
                     .HasColumnName("dataNascimento");
 
                 entity.Property(e => e.EnderecoPaciente)
@@ -259,17 +255,17 @@ namespace senai.spmedicalgroup.webApi.Context
                 entity.HasOne(d => d.IdUsuarioNavigation)
                     .WithMany(p => p.Pacientes)
                     .HasForeignKey(d => d.IdUsuario)
-                    .HasConstraintName("FK__PACIENTE__idUsua__6383C8BA");
+                    .HasConstraintName("FK__PACIENTE__idUsua__4D94879B");
             });
 
             modelBuilder.Entity<Situacao>(entity =>
             {
                 entity.HasKey(e => e.IdSituacao)
-                    .HasName("PK__SITUACAO__12AFD1974998E7E5");
+                    .HasName("PK__SITUACAO__12AFD19743B9CE5F");
 
                 entity.ToTable("SITUACAO");
 
-                entity.HasIndex(e => e.DescricaoSituacao, "UQ__SITUACAO__17A9584541F2A513")
+                entity.HasIndex(e => e.DescricaoSituacao, "UQ__SITUACAO__17A9584524D34E86")
                     .IsUnique();
 
                 entity.Property(e => e.IdSituacao)
@@ -286,11 +282,11 @@ namespace senai.spmedicalgroup.webApi.Context
             modelBuilder.Entity<Tipousuario>(entity =>
             {
                 entity.HasKey(e => e.IdTipoUsuario)
-                    .HasName("PK__TIPOUSUA__03006BFF22FFC047");
+                    .HasName("PK__TIPOUSUA__03006BFF941C625C");
 
                 entity.ToTable("TIPOUSUARIO");
 
-                entity.HasIndex(e => e.TituloTipoUsuario, "UQ__TIPOUSUA__C6B29FC3EFA66FE7")
+                entity.HasIndex(e => e.TituloTipoUsuario, "UQ__TIPOUSUA__C6B29FC3B1E6CB2F")
                     .IsUnique();
 
                 entity.Property(e => e.IdTipoUsuario)
@@ -307,11 +303,11 @@ namespace senai.spmedicalgroup.webApi.Context
             modelBuilder.Entity<Usuario>(entity =>
             {
                 entity.HasKey(e => e.IdUsuario)
-                    .HasName("PK__USUARIO__645723A62BB9737C");
+                    .HasName("PK__USUARIO__645723A6D477BB93");
 
                 entity.ToTable("USUARIO");
 
-                entity.HasIndex(e => e.EmailUsuario, "UQ__USUARIO__ACC1DD99B3232FD4")
+                entity.HasIndex(e => e.EmailUsuario, "UQ__USUARIO__ACC1DD99127096F8")
                     .IsUnique();
 
                 entity.Property(e => e.IdUsuario).HasColumnName("idUsuario");
@@ -339,7 +335,7 @@ namespace senai.spmedicalgroup.webApi.Context
                 entity.HasOne(d => d.IdTipoUsuarioNavigation)
                     .WithMany(p => p.Usuarios)
                     .HasForeignKey(d => d.IdTipoUsuario)
-                    .HasConstraintName("FK__USUARIO__idTipoU__5FB337D6");
+                    .HasConstraintName("FK__USUARIO__idTipoU__3A81B327");
             });
 
             OnModelCreatingPartial(modelBuilder);
