@@ -1,127 +1,153 @@
 
 import api from "../services/api"
 import React, { Component } from 'react';
-import { Image, 
-  StyleSheet, 
-  Text,  
+import {
+  Image,
+  StyleSheet,
+  Text,
   View,
-   } from 'react-native';
-  import jwtDecode from 'jwt-decode';
+} from 'react-native';
+
+import jwtDecode from 'jwt-decode';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 export default class ConsultaMedico extends Component {
-    constructor(props){
-      super(props);
-        this.state={
-          listaConsultas: [],
-          nome:'',
-        };
-    }
-  
-    listarConsultas = async()=> {
-      const token = await AsyncStorage.getItem('userToken');
-  
-      if (token != null) {
-        const resposta = await api('/Consultas/Medico', { 
-          headers: {
-            Authorization: 'Bearer ' + token,
-          },
+  constructor(props) {
+    super(props);
+    this.state = {
+      listaConsulta: [],
+      nome: '',
+    };
+  }
+
+  listarConsultas = async () => {
+    const token = await AsyncStorage.getItem('userToken');
+
+    if (token != null) {
+      const resposta = await api('/Consultas/Medico', {
+        headers: {
+          Authorization: 'Bearer ' + token,
+        },
+      });
+
+      if (resposta.status == 200) {
+        const lista = resposta.data.listaConsulta;
+        this.SetState({
+          listaConsulta: lista
         });
-  
-        if (resposta.status == 200) {
-          this.SetState({
-            listaConsultas: resposta.data
-          });
-        }
+        console.warn(this.state.listaConsulta)
       }
     }
+  }
 
 
-    buscarDadosStorage = async () => {
-        try {
-          const valorToken = await AsyncStorage.getItem('userToken');
-          console.warn(jwtDecode(valorToken));
-    
-          if (valorToken != null) {
-            this.setState({nome: jwtDecode(valorToken).name});
-          }
-        } catch (error) {
-          console.warn(error);
-        }
-      };
-  
+  buscarDadosStorage = async () => {
+    try {
+      const valorToken = await AsyncStorage.getItem('userToken');
+      console.warn(jwtDecode(valorToken));
+
+      if (valorToken != null) {
+        this.setState({ nome: jwtDecode(valorToken).name });
+        console.warn(this.state.nome);
+      }
+    } catch (error) {
+      console.warn(error);
+    }
+  };
+
+  componentDidMount() {
+    this.listarConsultas();
+    this.buscarDadosStorage();
+  }
 
 
-    render(){
-        return(
-            <View style={styles.main}>
-              {/* Cabeçalho - Header */}
-              <View style={styles.mainHeader}>
-                <View style={styles.mainHeaderRow}>
-                  <Image
-                    source={require('../../assets/img/LOGO.png')}
-                    style={styles.mainHeaderImg}
-                  />
-                  <Text style={styles.mainHeaderText}> {this.state.nome} </Text>
-                </View>
-              </View>
-      
-              {/* Corpo - Body */}
-              <View style={styles.mainBody}>
-                {/* <FlatList
-                  contentContainerStyle={styles.mainBodyContent}
-                  keyExtractor={item => item.idUsuario}
-                  keyExtractor={item => item.idSituacao}
-                  // renderItem={this.renderItem}
-                  data={this.state.listaConsultas}
-                /> */}
-              </View>
-            </View>
-        )
-     };
-  
+
+  render() {
+    return (
+      <View style={styles.main}>
+        {/* Cabeçalho - Header */}
+        <View style={styles.mainHeader}>
+          <View style={styles.mainHeaderRow}>
+            <Image
+              source={require('../../assets/img/LOGO.png')}
+              style={styles.mainHeaderImg}
+            />
+            <Text style={styles.mainHeaderText}> {this.state.nome} </Text>
+          </View>
+        </View>
+
+        {/* Corpo - Body */}
+        <View style={styles.mainBody}>
+        </View>
+        <FlatList
+          contentContainerStyle={styles.mainBodyContent}
+          data={this.state.listaConsulta}
+          keyExtractor={item => item.idConsulta}
+          renderItem={this.renderItem}
+        />
+      </View>
+
+    );
+  }
+
+  renderItem = ({ item }) => (
+
+    <View style={styles.flatItemRow}>
+      <View style={styles.flatItemContainer}>
+        <Text style={styles.flatItemTitle}>{item.idPacienteNavigation.nomePaciente}</Text>
+        <Text style={styles.flatItemInfo}>{item.descricaoSituaConsulta}</Text>
+
+        <Text style={styles.flatItemInfo}>
+          {Intl.DateTimeFormat("pt-BR", {
+            year: 'numeric', month: 'short', day: 'numeric',
+            hour: 'numeric', minute: 'numeric', hour12: false
+          }).format(new Date(item.dataConsulta))}
+        </Text>
+      </View>
+
+    </View>
+  );
+
 };
 
 const styles = StyleSheet.create({
 
   main: {
-    height: 70,
     width: '100%',
-    // alignItems: 'center',
-    // justifyContent: 'space-evenly',
+    height: '100%',
   },
 
   mainHeader: {
-    display: 'flex',
-    justifyContent: 'center',
-    // alignItems: 'center',
+    height: 50,
   },
 
   mainHeaderRow: {
+    justifyContent: 'space-between',
+    alignItems: 'center',
     flexDirection: 'row',
+    marginLeft: 50,
+    marginTop: 5,
   },
 
-  // imagem do cabeçalho
   mainHeaderImg: {
     width: 99,
     height: 35,
-    marginLeft: 40,
-    marginTop: 10,
   },
 
-  // texto do cabeçalho
   mainHeaderText: {
     fontSize: 14,
     letterSpacing: 5,
     color: '#000',
-    marginLeft: 30,
-    marginTop: 26,
+    marginRight: 50,
   },
+
+
 
   // conteúdo do body
   mainBody: {
-    // flex: 4,
     backgroundColor: '#04ADBF',
-    height:'870%',
+    height: '870%',
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
@@ -129,9 +155,30 @@ const styles = StyleSheet.create({
 
   //conteúdo da lista
   mainBodyContent: {
+    marginTop: 30,
     height: 103,
     width: 301,
     backgroundColor: '#FFFFFF',
     borderRadius: 22,
+  },
+
+  flatItemRow: {
+    flexDirection: 'row',
+    marginTop: 40,
+  },
+
+  flatItemContainer: {
+    flex: 1,
+  },
+
+  flatItemTitle: {
+    fontSize: 16,
+    color: '#000',
+  },
+
+  flatItemInfo: {
+    fontSize: 12,
+    color: '#000',
+    lineHeight: 24,
   },
 });

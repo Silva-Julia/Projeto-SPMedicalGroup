@@ -33,7 +33,7 @@ namespace senai.spmedicalgroup.webApi.Repositories
 
         public Paciente BuscarPorId(int id)
         {
-            return ctx.Pacientes.FirstOrDefault(p => p.IdPaciente == id);
+            return ctx.Pacientes.FirstOrDefault(p => p.IdUsuario == id);
         }
 
         public void Cadastrar(Paciente novoPaciente)

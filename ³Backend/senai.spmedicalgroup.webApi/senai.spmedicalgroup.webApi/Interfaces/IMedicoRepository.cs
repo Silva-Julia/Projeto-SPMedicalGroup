@@ -11,5 +11,7 @@ namespace senai.spmedicalgroup.webApi.Interfaces
         List<Medico> ListarTodos();
 
         void Cadastrar(Medico novoMedico);
+
+        Medico BuscarPorID(int id);
     }
 }

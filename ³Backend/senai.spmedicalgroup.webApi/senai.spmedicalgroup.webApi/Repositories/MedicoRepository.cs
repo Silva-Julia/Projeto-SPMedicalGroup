@@ -12,6 +12,11 @@ namespace senai.spmedicalgroup.webApi.Repositories
     {
         SpMedicalGroupWeb ctx = new SpMedicalGroupWeb();
 
+        public Medico BuscarPorID(int id)
+        {
+            return ctx.Medicos.FirstOrDefault(m => m.IdUsuario == id);
+        }
+
         public void Cadastrar(Medico novoMedico)
         {
             ctx.Medicos.Add(novoMedico);

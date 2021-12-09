@@ -61,7 +61,6 @@ export default class Login extends Component{
                     default:
                         break;
                 }
-                // this.props.navigation.navigate('ConsultaPaciente');
                 
             }
 
@@ -91,7 +90,7 @@ export default class Login extends Component{
                             <TextInput 
                                     style={styles.inputLogin}
                                     placeholder="Username"
-                                    placeholderTextColor="#FFF"
+                                    placeholderTextColor="#000"
                                     keyboardType='email-address'
                                     onChangeText={email => this.setState({ email })}
                                     />
@@ -99,7 +98,7 @@ export default class Login extends Component{
                             <TextInput 
                                     style={styles.inputLogin}
                                     placeholder="Senha"
-                                    placeholderTextColor="#FFF"
+                                    placeholderTextColor="#000"
                                     secureTextEntry={true}
                                     
                                     onChangeText={senha => this.setState({ senha })}
@@ -127,7 +126,7 @@ const styles = StyleSheet.create({
     main: {
         justifyContent: 'center',
         alignItems: 'center',
-        // width: '100%',
+        width: '100%',
         height: '90%',
     },
 
@@ -146,32 +145,32 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 22,
-        marginBottom: 30,
+        marginBottom: 20,
     },
     
     inputLogin: {
-        color: '#000',
         width: 260, //largura mesma do botao
-        marginBottom: 50, //espacamento pra baixo
+        marginBottom: 40, //espacamento pra baixo
+        // marginVertical: 20,
         fontSize: 17,
-        borderBottomColor: '000000', //linha separadora
+        borderBottomColor: '#000', //linha separadora
         borderBottomWidth: 1, //espessura.
     },
 
     btnLogin: {
-        fontSize: 19, //aumentar um pouco
-        fontFamily: 'Roboto', //troca de fonte
-        letterSpacing: 6, //espacamento entre as letras
-        textTransform: 'uppercase', //estilo maiusculo
+        backgroundColor: '#04ADBF',
+        borderRadius: 22,
+        height: 37,
+        width: 174,
     },
     
     btnLoginText: {
-        color: '#000', //mesma cor identidade
+        fontWeight: 'bold',
+        fontSize: 22, //aumentar um pouco
+        fontFamily: 'Roboto', //troca de fonte
+        color: '#FFFFFF', //mesma cor identidade
         justifyContent: 'center',
         alignItems: 'center',
-        height: 37,
-        width: 174,
-        backgroundColor: '#04ADBF',
-        borderRadius: 22,
+        marginLeft: 55,
     }
 });

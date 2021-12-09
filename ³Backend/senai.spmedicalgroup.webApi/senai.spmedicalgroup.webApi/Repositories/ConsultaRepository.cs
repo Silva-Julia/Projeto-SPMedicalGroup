@@ -101,7 +101,7 @@ namespace senai.spmedicalgroup.webApi.Repositories
 
         public List<Consulta> ListarConsultaPaciente(int id)
         {
-            Paciente paciente = ctx.Pacientes.FirstOrDefault(u => u.IdUsuario == id);
+            Paciente paciente = ctx.Pacientes.FirstOrDefault(u => u.IdPaciente == id);
 
             int idPaciente = paciente.IdPaciente;
             return ctx.Consulta

@@ -10,7 +10,7 @@ const AuthStack = createStackNavigator();
 
 import Login from '../spmedApp/src/screens/login';
 import ConsultaPaciente from '../spmedApp/src/screens/consultaPaciente';
-// import ConsultaMedico from './src/screens/consultaMedico';
+import ConsultaMedico from './src/screens/consultaMedico';
 
 export default function Stack() {
   return (
@@ -24,7 +24,7 @@ export default function Stack() {
         }}>
         <AuthStack.Screen name='Login' component={Login} />
         <AuthStack.Screen name='ConsultaPaciente' component={ConsultaPaciente} />
-        {/* <AuthStack.Screen name='ConsultaMedico' component={ConsultaMedico} /> */}
+        <AuthStack.Screen name='ConsultaMedico' component={ConsultaMedico} />
       </AuthStack.Navigator>
     </NavigationContainer>
   );
