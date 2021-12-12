@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using senai.spmedicalgroup.webApi.Context;
+using senai.spmedicalgroup.webApi.Contexts;
 using senai.spmedicalgroup.webApi.Domains;
 using senai.spmedicalgroup.webApi.Interfaces;
 using System;
@@ -15,10 +15,10 @@ namespace senai.spmedicalgroup.webApi.Repositories
 
         public void AlterarSituacao(string descricao, int id)
         {
-            Consulta consultaBuscado = BuscarPorId(id);
+            Consultum consultaBuscado = BuscarPorId(id);
             if (descricao != null)
             {
-                consultaBuscado.DescricaoSituaConsulta = descricao;
+                consultaBuscado.SituacaoConsulta = descricao;
 
                 ctx.Consulta.Update(consultaBuscado);
 
@@ -26,14 +26,14 @@ namespace senai.spmedicalgroup.webApi.Repositories
             }
         }
 
-        public Consulta BuscarPorId(int id)
+        public Consultum BuscarPorId(int id)
         {
             return ctx.Consulta.FirstOrDefault(u => u.IdConsulta == id);
         }
 
-        public void CadastrarConsulta(Consulta novaConsulta)
+        public void CadastrarConsulta(Consultum novaConsulta)
         {
-            novaConsulta.DescricaoSituaConsulta = "";
+            novaConsulta.SituacaoConsulta = "";
             novaConsulta.IdSituacao = 2;
 
             ctx.Consulta.Add(novaConsulta);
@@ -43,16 +43,15 @@ namespace senai.spmedicalgroup.webApi.Repositories
 
         public void CancelarConsulta(int Id)
         {
-            Consulta consultaBuscada = BuscarPorId(Id);
+            Consultum consultaBuscada = BuscarPorId(Id);
 
-            consultaBuscada.DescricaoSituaConsulta = "Consulta Cancelada";
             consultaBuscada.IdSituacao = 3;
-
+            consultaBuscada.SituacaoConsulta = "Consulta Cancelada!";
             ctx.Consulta.Update(consultaBuscada);
             ctx.SaveChanges();
         }
 
-        public List<Consulta> ListarConsultaMedico(int id)
+        public List<Consultum> ListarConsultaMedico(int id)
         {
             Medico medico = ctx.Medicos.FirstOrDefault(u => u.IdUsuario == id);
 
@@ -62,11 +61,11 @@ namespace senai.spmedicalgroup.webApi.Repositories
                 //.Where(c => c.IdMedicoNavigation.IdUsuarioNavigation.IdUsuario == id)
                 .Where(c => c.IdMedico == idMedico)
                 .AsNoTracking()
-                .Select(p => new Consulta()
+                .Select(p => new Consultum()
                 {
                     DataConsulta = p.DataConsulta,
                     IdConsulta = p.IdConsulta,
-                    DescricaoSituaConsulta = p.DescricaoSituaConsulta,
+                    IdSituacao = p.IdSituacao,
                     IdMedicoNavigation = new Medico()
                     {
                         Crm = p.IdMedicoNavigation.Crm,
@@ -99,7 +98,7 @@ namespace senai.spmedicalgroup.webApi.Repositories
                 .ToList();
         }
 
-        public List<Consulta> ListarConsultaPaciente(int id)
+        public List<Consultum> ListarConsultaPaciente(int id)
         {
             Paciente paciente = ctx.Pacientes.FirstOrDefault(u => u.IdPaciente == id);
 
@@ -107,7 +106,7 @@ namespace senai.spmedicalgroup.webApi.Repositories
             return ctx.Consulta
                             .Where(c => c.IdPaciente == idPaciente)
                             .AsNoTracking()
-                            .Select(p => new Consulta()
+                            .Select(p => new Consultum()
                             {
                                 DataConsulta = p.DataConsulta,
                                 IdConsulta = p.IdConsulta,
@@ -143,13 +142,13 @@ namespace senai.spmedicalgroup.webApi.Repositories
                             .ToList();
         }
 
-        public List<Consulta> ListarTodas()
+        public List<Consultum> ListarTodas()
         {
             return ctx.Consulta
-                .Select(p => new Consulta()
+                .Select(p => new Consultum()
                 {   
                     IdConsulta = p.IdConsulta,
-                    DescricaoSituaConsulta = p.DescricaoSituaConsulta,
+                    IdSituacao = p.IdSituacao,
                     DataConsulta = p.DataConsulta,
 
                     IdMedicoNavigation = new Medico()
@@ -189,5 +188,7 @@ namespace senai.spmedicalgroup.webApi.Repositories
             ctx.Consulta.Remove(BuscarPorId(id));
             ctx.SaveChanges();
         }
+
+        
     }
 }

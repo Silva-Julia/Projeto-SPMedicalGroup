@@ -10,8 +10,8 @@ export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      senha: '',
+      email: 'João@email.com',
+      senha: '1234',
       erroMensagem: '',
       isLoading: false,
     };
@@ -26,7 +26,7 @@ export default class Login extends Component {
     this.setState({ erroMensagem: '', isLoading: true });
 
     // Define a url e o corpo da requisição
-    axios.post('http://localhost:5000/api/Login', {
+    axios.post('http://localhost:5000/api/ogin', {
         email: this.state.email,
         senha: this.state.senha,
       })
@@ -55,13 +55,13 @@ export default class Login extends Component {
           // verifica se o usuário logado é do tipo administrador
           switch (parseJwt().role) {
             case "1":
-              this.props.history.push('/adm')
+              this.props.history.push('Admin')
               break;
             case "2":
-              this.props.history.push('/med')
+              this.props.history.push('ConsultaPaciente')
               break;
             case "3":
-              this.props.history.push('/paciente')
+              this.props.history.push('ConsultaMedico')
               break;
 
             default:
@@ -97,21 +97,21 @@ export default class Login extends Component {
       <div>
         <section className="container">
 
-          <Link to="/"><img className="logo" to="/App.js" src={logo} alt="LOGO" />{' '} </Link>
+          <Link to="/"><img className="logo" to="/App.js" src={logo} alt="LOGO" /> </Link>
 
           <form className="box_login" onSubmit={this.efetuaLogin}>
             <div className="linha_escrita_login">
               <input
                 className="input__login"
                 placeholder="Username"
-                type="email"
+                type="text"
                 name="Username"
 
                 // define que o input email recebe o valor do state email
                 value={this.state.email}
                 // faz a chamada para a função que atualiza o state, conforme o usuário altera o valor do input
                 onChange={this.atualizaStateCampo}
-              ></input>
+              />
             </div>
 
             <div className="linha_escrita_login">
@@ -125,7 +125,7 @@ export default class Login extends Component {
                 value={this.state.senha}
                 // faz a chamada para a função que atualiza o state, conforme o usuário altera o valor do input
                 onChange={this.atualizaStateCampo}
-              ></input>
+              />
             </div>
 
             {/* Exibe a mensagem de erro ao tentar logar com credenciais inválidas */}
@@ -136,7 +136,7 @@ export default class Login extends Component {
             { // Caso seja true, renderiza o botão desabilitado com o texto 'Loading...' */}
               this.state.isLoading === true && (
                 <div className="boton_Login">
-                  <button type="submit" className="btn__logi" disabled> Loading...</button>
+                  <button type="submit" className="btn__login" disabled> Loading...</button>
                 </div>
               )
             }
@@ -161,8 +161,8 @@ export default class Login extends Component {
             </div>
           </form>
 
-          <div class="box_login2">
-            <span class="link"> Não tem uma conta? <a class="link_cadastro" href="cadastro.html"> Cadastre-se </a> </span>
+          <div className="box_login2">
+            <span className="link"> Não tem uma conta? <a className="link_cadastro" href="cadastro.html"> Cadastre-se </a> </span>
           </div>
           </section>
       </div>

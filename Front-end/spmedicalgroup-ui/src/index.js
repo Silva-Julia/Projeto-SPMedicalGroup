@@ -25,7 +25,7 @@ const PermissaoAdmin = ({ component: Component }) => (
         // operador spread
         <Component {...props} />
       ) : (
-        <Redirect to="login" />
+        <Redirect to="/Login" />
       )
     }
   />
@@ -39,7 +39,7 @@ const PermissaoComum = ({ component: Component }) => (
         // operador spread
         <Component {...props} />
       ) : (
-        <Redirect to="login" />
+        <Redirect to="/Login" />
       )
     }
   />
@@ -53,7 +53,7 @@ const PermissaoMédico = ({ component: Component }) => (
         // operador spread
         <Component {...props} />
       ) : (
-        <Redirect to="login" />
+        <Redirect to="/Login" />
       )
     }
   />
@@ -65,14 +65,15 @@ const routing = (
   <Router>
     <div>
       <Switch>
-        <Route exact path="/home" component={Home} /> {/* Home */}
-        <Route path="/login" component={Login} /> {/* Login */}
+        <Route exact path="/home" component={Home} /> 
+        <Route path="/login" component={Login} /> 
         <Route path="/administrador" component={Administrador} /> 
         <Route path="/medico" component={Medico} /> 
         <Route path="/paciente" component={Paciente} /> 
-        {/* <PermissaoAdmin path = "/administrador" component={Administrador} /> */}
-        {/* <PermissaoMédico path = "/medico" component={Medico} /> */}
-        {/* <PermissaoComum path = "/paciente" component={Paciente} /> */}
+
+        <PermissaoAdmin path = "/Admin" component={Administrador} />
+        <PermissaoMédico path = "/ConsultaMedico" component={Medico} />
+        <PermissaoComum path = "/ConsultaPaciente" component={Paciente} />
         
         <Route path="/notFound" component={NotFound} /> 
         <Redirect to="/notFound" /> {/* Redireciona para Not Found caso não encontre nenhuma rota */}

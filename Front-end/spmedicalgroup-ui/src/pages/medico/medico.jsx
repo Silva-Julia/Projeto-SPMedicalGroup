@@ -5,10 +5,6 @@ import Footer from '../../components/footer';
 import HeaderMedico from '../../components/headerMedico';
 
 import '../../assets/css/spmedicalgroup.css';
-import perfilMulher from '../../assets/img/woman (1) 1.png';
-import perfilHomem from '../../assets/img/man 1.png';
-import perfilMulher2 from '../../assets/img/woman 1.png';
-import perfilHomem2 from '../../assets/img/man (1) 1.png';
 
 export default class Medico extends Component{
     constructor(props){
@@ -28,7 +24,7 @@ export default class Medico extends Component{
     };
 
     buscaConsultas =() => {
-        axios('http://localhost:5000/api/Consultas/consulta', {
+        axios('http://localhost:5000/api/Consulta/Medico', {
             headers: {
                 'Authorization': 'Bearer' + localStorage.getItem('usuario-login')
             },
@@ -49,7 +45,7 @@ export default class Medico extends Component{
         console.log(this.state.idSituaçao)
 
         if(this.state.idConsultaAlterado !== 0) {
-            fetch("http://localhost:5000/api/Consultas/Situacao/" + this.state.idConsultaAlterado, {
+            fetch("http://localhost:5000/api/Consulta/AlterarSituacao/" + this.state.idConsultaAlterado, {
                 method: 'PATCH',
                 
                 body: JSON.stringify({ idSituaçao: this.state.idSituaçao}),
@@ -61,7 +57,7 @@ export default class Medico extends Component{
             })
 
             .then((resposta) => {
-                if(resposta.status === 204){
+                if(resposta.status === 200){
                     console.log(
                         this.state.idConsultaAlterado + 'foi atualizado',
                     );
@@ -117,67 +113,41 @@ export default class Medico extends Component{
 
                  <main>
 
-                    <section  class="area_fundoMedico">
+                    <section  className="area_fundoMedico">
 
-                        <section class="cont_listaMedico">
+                        <section className="cont_listaMedico">
 
                             <h2> Listar Consulta </h2>
 
-                                <div class="conteudo_listaConsulta">
-                                            <table  class="tabela_lista" id="tabela-lista">
+                                <div className="conteudo_listaConsulta">
+                                            <table  className="tabela_lista" id="tabela-lista">
                                             {this.state.listaConsultas.map((consulta) => {
                                                 return (
-                                                <tr>
-                                                    <th><images src={perfilMulher}></images></th>
-                                                    <td>Mariana  </td>
-                                                    <td>Agendada</td>
-                                                    <td>08/03/2020</td>
-                                                    <td>15:00</td>
+                                                    <tr key={consulta.idConsulta}>
+                                                    <td>{consulta.idPacienteNavigation.nomePaciente}</td>
+                                                    <td>{consulta.idSituacaoNavigation.idSituacao}</td>
+                                                    <td>{Intl.DateTimeFormat("pt-BR", {
+                                                        year: 'numeric', month: 'numeric', day: 'numeric'
+                                                        }).format(new Date(consulta.dataConsulta))}</td>
+                                                    <td>{Intl.DateTimeFormat("pt-BR", { 
+                                                        hour: 'numeric', minute: 'numeric', hour12: false
+                                                        }).format(new Date(consulta.dataConsulta))}</td>
                                                 </tr>
                                                  )
                                              })
                                              }
-                                            </table>
-                                                
-                                            <table class="tabela_lista" id="tabela-lista">
-                                                <tr>
-                                                <th><images src={perfilHomem}></images></th>
-                                                <td>João</td>
-                                                <td>Cancelada</td>
-                                                <td>30/01/2020</td>
-                                                <td>9:00</td>                               
-                                                </tr>
-                                            </table>
-
-                                            <table class="tabela_lista" id="tabela-lista">
-                                                <tr>
-                                                <th><images src={perfilMulher2}></images></th>
-                                                <td>Mariana </td>
-                                                <td>Realizada</td>
-                                                <td>20/01/2020</td>
-                                                <td>15:00</td>
-                                                </tr>
-                                            </table>
-
-                                            <table class="tabela_lista" id="tabela-lista">
-                                                <tr>
-                                                <th><images src={perfilHomem2}></images></th>
-                                                <td>Alexandre </td>
-                                                <td>Agendada</td>
-                                                <td>06/01/2020</td>
-                                                <td> 10:00</td>
-                                                </tr>
-                                            </table>
+                                            </table>                                                                                     
                                          
                                 </div>
 
                                 {this.state.idConsultaAlterado !== 0 &&
-                                    <div class="boton_alterarSitu">
+                                    <div className="boton_alterarSitu">
                                         <form onSubmit={this.mudarSituacao}>
-                                        <button class="btn__alterarSitu" id="btn__alterarSitu">
-                                            Alterar Situação </button>
-                                        <button type="button" onClick={this.limparCampos}>Cancelar</button>
-                                        </form>
+                                            <label className="btn__alterarSitu" id="btn__alterarSitu"> Alterar Situação </label>
+                                            <input type="text" value={this.state.idSituaçao} onChange={this.atualizaStateCampo} />
+                                            <button type="submit"> Salvar </button>
+                                            <button type="button" onClick={this.limparCampos}>Cancelar</button>
+                                            </form>
                                     </div>
                                 }
                         </section>

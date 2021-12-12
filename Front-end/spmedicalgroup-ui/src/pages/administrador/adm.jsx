@@ -5,7 +5,6 @@ import Footer from '../../components/footer';
 import HeaderAdm from '../../components/headerAdm';
 
 import '../../assets/css/spmedicalgroup.css';
-import perfil from '../../assets/img/baseline_person_black_24dp.png';
 
 export default class Administrador extends Component {
     constructor(props) {
@@ -19,11 +18,12 @@ export default class Administrador extends Component {
             IdMedico: '',
             IdSituacao: 0,
             dataConsulta: new Date(),
+            nomeUsuario: '',
         }
     };
 
     buscaPacientes = () => {
-        axios("http://localhost:5000/api/pacientes", {
+        axios("http://localhost:5000/api/Paciente", {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }
@@ -38,7 +38,7 @@ export default class Administrador extends Component {
     }
 
     buscaMedicos = () => {
-        axios("http://localhost:5000/api/medicos", {
+        axios("http://localhost:5000/api/Medico", {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }
@@ -68,7 +68,7 @@ export default class Administrador extends Component {
     }
 
     buscaConsultas = () => {
-        axios("http://localhost:5000/api/Consultas/listarTodas", {
+        axios("http://localhost:5000/api/Consultas/", {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }
@@ -177,12 +177,12 @@ export default class Administrador extends Component {
                                                     value={this.state.IdPaciente}
                                                 onChange={this.atualizaStateCampo}
                                                 />
-                                                {/* { this.state.listaPacientes.map(paciente =>{
+                                                { this.state.listaPacientes.map(paciente =>{
                                                     return(
                                                         <option key={paciente.IdPaciente} value={paciente.idPaciente}> {paciente.nomePaciente}</option>
                                                     );
                                                 })
-                                                } */}
+                                                }
                                             </div>
 
                                             <div className="linha_escrita_consulta">
@@ -205,11 +205,21 @@ export default class Administrador extends Component {
                                                 />
                                             </div>
 
-                                            <div className="boton_Consulta">
-                                                <button className="btn__consulta" id="btn__consulta" href="#">
-                                                    Cadastrar
-                                                </button>
-                                            </div>
+                                                {this.state.isLoading === true &&(
+                                                    <div className="boton_Consulta">
+                                                        <button type="submit" className="btn__consulta" id="btn__consulta" disabled>
+                                                            Carregando...
+                                                        </button>
+                                                    </div>
+                                                )}
+
+                                            {this.state.isLoading === true &&(
+                                                <div className="boton_Consulta">
+                                                    <button type="submit"className="btn__consulta" id="btn__consulta">
+                                                        Cadastrar
+                                                    </button>
+                                                </div>
+                                            )}
                                         </form>
                                     </div>
 
@@ -226,68 +236,20 @@ export default class Administrador extends Component {
                                             return(
                                                 <table className="tabela_lista">
                                                     <tr key={consulta.idConsulta}></tr>
-                                                    <th><images src={perfil}/> </th>
+                                                    {/* <th><images src={perfil}/> </th> */}
+                                                    <p> {consulta.idMedicoNavigation.nomeMedico}</p>
                                                     <p> {consulta.idPacienteNavigation.nomePaciente}</p>
                                                     <p> {consulta.idSituacaoNavigation.IdSituacao}</p>
                                                     <p> {Intl.DateTimeFormat("pt-BR", {
-                                                    year: 'numeric', month: 'numeric', day: 'numeric',
-                                                    hour: 'numeric', minute: 'numeric', hour12: false
-                                                }).format(new Date(consulta.dataConsulta))} </p>
+                                                        year: 'numeric', month: 'numeric', day: 'numeric'      
+                                                        }).format(new Date(consulta.dataConsulta))} </p>
+                                                    <p> {Intl.DateTimeFormat("pt-BR", {
+                                                         hour: 'numeric', minute: 'numeric', hour12: false
+                                                        }).format(new Date(consulta.dataConsulta))} </p>
                                                 </table>
                                             )
                                         })}
                                     </div>
-
-                                    <div className="conteudo_listaConsulta">
-                                        {this.state.listaConsultas.map((consulta) => {
-                                            return(
-                                                <table className="tabela_lista">
-                                                    <tr key={consulta.idConsulta}></tr>
-                                                    <th><images src={perfil}/> </th>
-                                                    <p> {consulta.idPacienteNavigation.nomePaciente}</p>
-                                                    <p> {consulta.idSituacaoNavigation.IdSituacao}</p>
-                                                    <p> {Intl.DateTimeFormat("pt-BR", {
-                                                    year: 'numeric', month: 'numeric', day: 'numeric',
-                                                    hour: 'numeric', minute: 'numeric', hour12: false
-                                                }).format(new Date(consulta.dataConsulta))} </p>
-                                                </table>
-                                            )
-                                        })}
-
-                                        {this.state.listaConsultas.map((consulta) => {
-                                            return(
-                                                <table className="tabela_lista">
-                                                    <tr key={consulta.idConsulta}></tr>
-                                                    <th><images src={perfil}/> </th>
-                                                    <p> {consulta.idPacienteNavigation.nomePaciente}</p>
-                                                    <p> {consulta.idSituacaoNavigation.IdSituacao}</p>
-                                                    <p> {Intl.DateTimeFormat("pt-BR", {
-                                                    year: 'numeric', month: 'numeric', day: 'numeric',
-                                                    hour: 'numeric', minute: 'numeric', hour12: false
-                                                }).format(new Date(consulta.dataConsulta))} </p>
-                                                </table>
-                                            )
-                                        })}
-                                                {this.state.listaConsultas.map((consulta) => {
-                                                     return(
-                                                     <table className="tabela_lista" id="tabela-lista">
-                                                     <tr key={consulta.idConsulta}>
-                                                        <th><images src={perfil}/> </th>
-                                                            <td>Dr.Roberto Possarle </td>
-                                                            <td> {consulta.idPacienteNavigation.nomePaciente} Mariana</td>
-                                                            <td> {consulta.idSituacaoNavigation.IdSituacao} Realizada</td>
-                                                            <td> {Intl.DateFormat("pt-BR", { 
-                                                                 year: 'numeric', month: 'numeric', day: 'numeric', 
-                                                                 }).format(new Date(consulta.dataConsulta))}</td>
-                                                            <td> {Intl.TimeFormat("pt-BR", {  
-                                                                hour: 'numeric', minute: 'numeric', hour12: false
-                                                                }).format(new Date(consulta.dataConsulta))} 15:00</td>
-                                                     </tr>
-
-                                                     </table>
-                                                     )
-                                                })}
-                                     </div>
 
                                 </section>
                             

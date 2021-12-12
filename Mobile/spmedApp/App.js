@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 
 import React from 'react';
-// import { StatusBar } from 'react-native';
+import { StatusBar } from 'react-native';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -15,6 +15,9 @@ import ConsultaMedico from './src/screens/consultaMedico';
 export default function Stack() {
   return (
     <NavigationContainer>      
+      <StatusBar     
+        hidden={true}
+      />
 
       <AuthStack.Navigator
         // headerMode = 'none'

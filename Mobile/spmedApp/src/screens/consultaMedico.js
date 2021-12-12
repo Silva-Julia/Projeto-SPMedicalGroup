@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Text,
   View,
+  StatusBar
 } from 'react-native';
 
 import jwtDecode from 'jwt-decode';
@@ -66,6 +67,10 @@ export default class ConsultaMedico extends Component {
   render() {
     return (
       <View style={styles.main}>
+          <StatusBar
+            hidden={false}
+          />
+
         {/* Cabeçalho - Header */}
         <View style={styles.mainHeader}>
           <View style={styles.mainHeaderRow}>
@@ -140,6 +145,7 @@ const styles = StyleSheet.create({
     letterSpacing: 5,
     color: '#000',
     marginRight: 50,
+    fontFamily: 'TitilliumWeb-Regular',
   },
 
 
@@ -174,11 +180,13 @@ const styles = StyleSheet.create({
   flatItemTitle: {
     fontSize: 16,
     color: '#000',
+    fontFamily: 'Roboto-Regular',
   },
 
   flatItemInfo: {
     fontSize: 12,
     color: '#000',
     lineHeight: 24,
+    fontFamily: 'Roboto-Regular',
   },
 });

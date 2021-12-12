@@ -41,7 +41,7 @@ namespace senai.spmedicalgroup.webApi.Controllers
         {
             try
             {
-                List<Consultum> listaConsultas = _ConsultumRepository.ListarTodas();
+                List<Consultum> listaConsultas = _ConsultaRepository.ListarTodas();
                 if (listaConsultas.Count == 0)
                 {
                     return StatusCode(404, new
@@ -140,24 +140,24 @@ namespace senai.spmedicalgroup.webApi.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public IActionResult Cadastrar(Consultum novaConsulta)
+        public IActionResult Cadastrar(Consultum novaConsultum)
         {
             try
             {
 
-                if (novaConsulta.IdMedico == null || novaConsulta.IdPaciente == null || novaConsulta.DataConsulta < DateTime.Now)
+                if (novaConsultum.IdMedico == null || novaConsultum.IdPaciente == null || novaConsultum.DataConsulta < DateTime.Now)
                 {
                     return BadRequest(new
                     {
                         Mensagem = "Os dados informados são inválidos ou estão vazios!"
                     });
                 }
-                _ConsultaRepository.CadastrarConsulta(novaConsulta);
+                _ConsultaRepository.CadastrarConsulta(novaConsultum);
 
                 return StatusCode(201, new
                 {
                     Mensagem = "A Consulta foi cadastrada!",
-                    novaConsulta
+                    novaConsultum
                 });
             }
             catch (Exception ex)
@@ -223,7 +223,7 @@ namespace senai.spmedicalgroup.webApi.Controllers
             {
                 Consultum ConsultaBuscada = _ConsultaRepository.BuscarPorId(id);
                 int idMedico = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
-                if (ConsultaAtt.DescricaoSituaConsulta == null)
+                if (ConsultaAtt.IdSituacao == null)
                 {
                     return BadRequest(new
                     {
@@ -254,7 +254,7 @@ namespace senai.spmedicalgroup.webApi.Controllers
                         Mensagem = "Somente o médico titular da Consulta pode fazer alterações na descrição!"
                     });
                 }
-                _ConsultaRepository.AlterarSituacao(ConsultaAtt.DescricaoSituaConsulta, id);
+                _ConsultaRepository.AlterarSituacao(ConsultaAtt.SituacaoConsulta, id);
                 return StatusCode(200, new
                 {
                     Mensagem = "A situação da Consulta foi alterada com sucesso!",

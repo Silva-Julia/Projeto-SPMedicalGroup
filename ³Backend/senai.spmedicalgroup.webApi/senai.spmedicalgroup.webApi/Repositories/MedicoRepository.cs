@@ -1,4 +1,4 @@
-﻿using senai.spmedicalgroup.webApi.Context;
+﻿using senai.spmedicalgroup.webApi.Contexts;
 using senai.spmedicalgroup.webApi.Domains;
 using senai.spmedicalgroup.webApi.Interfaces;
 using System;

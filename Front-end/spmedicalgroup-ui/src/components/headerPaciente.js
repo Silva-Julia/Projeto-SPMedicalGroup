@@ -6,15 +6,22 @@ import perfil from "../assets/img/woman (2) 1.png";
 
 
 export default function HeaderPaciente(){
- 
-    return(
-        <header class="box_header">
-        <div class="container_header">
-            <img class="logo_header" href="index.html" src={logo} alt="LOGO"/>
+    // constructor(props)
+    //    {
+    //         super(props);
+    //         this.state = {
+    //             nome: '',
+    //         }
+    //     }
 
-            <div class="nav_header">
+    return(
+        <header className="box_header">
+        <div className="container_header">
+            <img className="logo_header" href="index.html" src={logo} alt="LOGO"/>
+
+            <div className="nav_header">
                 <nav>
-                    <span> Ligia <img  class="nav_redirecionamento" src={perfil}/></span>
+                    <span> {this.state.nome} <img  className="nav_redirecionamento" src={perfil}/></span>
                 </nav>
             </div>
         </div>
