@@ -6,7 +6,8 @@ import {
   StyleSheet,
   Text,
   View,
-  StatusBar
+  StatusBar,
+  FlatList
 } from 'react-native';
 
 import jwtDecode from 'jwt-decode';
@@ -33,8 +34,8 @@ export default class ConsultaMedico extends Component {
       });
 
       if (resposta.status == 200) {
-        const lista = resposta.data.listaConsulta;
-        this.SetState({
+        const lista = await resposta.data;
+        this.setState({
           listaConsulta: lista
         });
         console.warn(this.state.listaConsulta)
@@ -68,7 +69,7 @@ export default class ConsultaMedico extends Component {
     return (
       <View style={styles.main}>
           <StatusBar
-            hidden={false}
+            hidden={true}
           />
 
         {/* Cabeçalho - Header */}
@@ -84,13 +85,14 @@ export default class ConsultaMedico extends Component {
 
         {/* Corpo - Body */}
         <View style={styles.mainBody}>
+          <FlatList
+            contentContainerStyle={styles.mainBodyContent}
+            data={this.state.listaConsulta}
+            keyExtractor={item => item.idConsulta}
+            renderItem={this.renderItem}
+          />
         </View>
-        <FlatList
-          contentContainerStyle={styles.mainBodyContent}
-          data={this.state.listaConsulta}
-          keyExtractor={item => item.idConsulta}
-          renderItem={this.renderItem}
-        />
+
       </View>
 
     );
@@ -100,15 +102,16 @@ export default class ConsultaMedico extends Component {
 
     <View style={styles.flatItemRow}>
       <View style={styles.flatItemContainer}>
-        <Text style={styles.flatItemTitle}>{item.idPacienteNavigation.nomePaciente}</Text>
-        <Text style={styles.flatItemInfo}>{item.descricaoSituaConsulta}</Text>
+        <Text style={styles.flatItemTitle}>{item.idPacienteNavigation.idUsuarioNavigation.nomeUsuario}</Text>
+        <Text style={styles.flatItemInfo}>{item.idSituacaoNavigation.descricaoSituacao}</Text>
 
-        <Text style={styles.flatItemInfo}>
+        <Text style={styles.flatItemData}>
           {Intl.DateTimeFormat("pt-BR", {
             year: 'numeric', month: 'short', day: 'numeric',
             hour: 'numeric', minute: 'numeric', hour12: false
           }).format(new Date(item.dataConsulta))}
         </Text>
+        <View style={styles.linha}/>
       </View>
 
     </View>
@@ -144,7 +147,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     letterSpacing: 5,
     color: '#000',
-    marginRight: 50,
+    marginRight: 35,
     fontFamily: 'TitilliumWeb-Regular',
   },
 
@@ -162,31 +165,47 @@ const styles = StyleSheet.create({
   //conteúdo da lista
   mainBodyContent: {
     marginTop: 30,
-    height: 103,
-    width: 301,
+    //height: 103,
+    width: 290,
     backgroundColor: '#FFFFFF',
     borderRadius: 22,
   },
 
+  linha: {
+    width:200,
+    height:1,
+    marginBottom:10,
+  },
+
   flatItemRow: {
     flexDirection: 'row',
-    marginTop: 40,
+    marginTop: 20,
   },
 
   flatItemContainer: {
-    flex: 1,
+    flexDirection: 'column',
+    marginHorizontal:30,
+    marginBottom: '10%',
   },
 
   flatItemTitle: {
-    fontSize: 16,
+    fontSize: 20,
     color: '#000',
     fontFamily: 'Roboto-Regular',
   },
 
   flatItemInfo: {
-    fontSize: 12,
+    fontSize: 16,
     color: '#000',
     lineHeight: 24,
     fontFamily: 'Roboto-Regular',
+  },
+
+  flatItemData: {
+    fontSize: 16,
+    color: '#000',
+    lineHeight: 24,
+    fontFamily: 'Roboto-Regular',
+    borderBottomWidth: 1,
   },
 });

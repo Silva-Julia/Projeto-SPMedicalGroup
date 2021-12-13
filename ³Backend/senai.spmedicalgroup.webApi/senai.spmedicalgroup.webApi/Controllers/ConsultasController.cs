@@ -35,7 +35,7 @@ namespace senai.spmedicalgroup.webApi.Controllers
 
 
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult ListarTodos()
         {
@@ -61,7 +61,7 @@ namespace senai.spmedicalgroup.webApi.Controllers
 
 
 
-        [Authorize(Roles = "Médico")]
+        [Authorize(Roles = "3")]
         [HttpGet("Medico")]
         public IActionResult ConsultaMedico()
         {
