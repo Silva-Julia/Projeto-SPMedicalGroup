@@ -613,6 +613,7 @@ td{
     padding-top: 130px;
     display: grid;
     justify-content: center;
+    background-repeat: round;
 }
 
 .cont_listaMedico{
@@ -657,6 +658,7 @@ td{
     padding-top: 130px;
     display: grid;
     justify-content: center;
+    background-repeat: round;
 }
 
 .cont_listaPaciente{

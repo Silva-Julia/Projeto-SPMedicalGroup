@@ -68,7 +68,7 @@ export default class Administrador extends Component {
     }
 
     buscaConsultas = () => {
-        axios("http://localhost:5000/api/Consultas/", {
+        axios("http://localhost:5000/api/Consultas", {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }
@@ -205,13 +205,13 @@ export default class Administrador extends Component {
                                                 />
                                             </div>
 
-                                                {this.state.isLoading === true &&(
+                                            {this.state.isLoading === true &&(
                                                     <div className="boton_Consulta">
                                                         <button type="submit" className="btn__consulta" id="btn__consulta" disabled>
                                                             Carregando...
                                                         </button>
                                                     </div>
-                                                )}
+                                            )}
 
                                             {this.state.isLoading === true &&(
                                                 <div className="boton_Consulta">

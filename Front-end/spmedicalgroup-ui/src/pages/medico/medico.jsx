@@ -1,42 +1,48 @@
-import { Component} from 'react';
+import { Component } from 'react';
 import axios from "axios";
 
 import Footer from '../../components/footer';
 import HeaderMedico from '../../components/headerMedico';
 
 import '../../assets/css/spmedicalgroup.css';
+import { render } from 'react-dom';
 
-export default class Medico extends Component{
-    constructor(props){
+export default class Medico extends Component {
+    constructor(props) {
         super(props);
         this.state = {
             listaConsultas: [],
             nomePaciente: '',
             idConsulta: '',
             dataConsulta: '',
-            idSituaçao:'',
+            idSituaçao: '',
             erro: '',
             idConsultaAlterado: 0,
             isLoading: false,
             editando: false,
-            keyAtual: 0
+            keyAtual: 0,
+            alterarBoolean: false,
         }
     };
 
-    buscaConsultas =() => {
-        axios('http://localhost:5000/api/Consulta/Medico', {
+    buscarConsultas = () => {
+        axios('http://localhost:5000/api/Consultas/Medico', {
             headers: {
-                'Authorization': 'Bearer' + localStorage.getItem('usuario-login')
-            },
+                Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
+            }
         })
-            .then((resposta => resposta.json())
-        
-            .then((dados) => this.setState ({ listaConsultas: dados}))
 
-            .catch(erro => console.log(erro))
-    )}
-    componentDidMount(){
-        this.buscaConsultas();
+            .then(resposta => {
+                if (resposta.status === 200) {
+                    this.setState({ listaConsultas: resposta.data })
+                    console.log(this.state.listaConsultas)
+                }
+            })
+            .catch(erro => console.log(erro));
+    }
+
+    componentDidMount() {
+        this.buscarConsultas();
     }
 
     mudarSituacao = (event) => {
@@ -44,29 +50,29 @@ export default class Medico extends Component{
         console.log(this.state.idConsultaAlterado)
         console.log(this.state.idSituaçao)
 
-        if(this.state.idConsultaAlterado !== 0) {
-            fetch("http://localhost:5000/api/Consulta/AlterarSituacao/" + this.state.idConsultaAlterado, {
+        if (this.state.idConsultaAlterado !== 0) {
+            fetch("http://localhost:5000/api/Consulta/AlterarSituacao" + this.state.idConsultaAlterado, {
                 method: 'PATCH',
-                
-                body: JSON.stringify({ idSituaçao: this.state.idSituaçao}),
 
-                headers:{
-                    'Content-Type' : 'Application/Json',
+                body: JSON.stringify({ idSituaçao: this.state.idSituaçao }),
+
+                headers: {
+                    'Content-Type': 'Application/Json',
                     Authorization: 'Bearer' + localStorage.getItem('usuario-login'),
                 }
             })
 
-            .then((resposta) => {
-                if(resposta.status === 200){
-                    console.log(
-                        this.state.idConsultaAlterado + 'foi atualizado',
-                    );
-                }
-            })
+                .then((resposta) => {
+                    if (resposta.status === 200) {
+                        console.log(
+                            this.state.idConsultaAlterado + 'foi atualizado',
+                        );
+                    }
+                })
 
-            .catch((erro) => console.log(erro))
-            .then(this.buscaConsultas)
-            .then(this.limpaCampos)
+                .catch((erro) => console.log(erro))
+                .then(this.buscaConsultas)
+                .then(this.limpaCampos)
         }
     }
 
@@ -91,71 +97,75 @@ export default class Medico extends Component{
         await this.setState({
             //diz o target (alvo) do evento , pegando o value(valor)
             idSituaçao: event.target.value,
-          });
-          console.log(this.state.idSituaçao);
-        };
-        limparCampos = () => {
-          this.setState({
+        });
+        console.log(this.state.idSituaçao);
+    };
+    limparCampos = () => {
+        this.setState({
             idSituaçao: '',
             idConsultaAlterado: 0,
-          });
-          console.log('Os states foram resetados!');
+        });
+        console.log('Os states foram resetados!');
     };
 
 
 
 
-    render(){
-        return(
+    render() {
+        return (
             <div>
-                
+
                 <HeaderMedico></HeaderMedico>
 
-                 <main>
+                <main>
 
-                    <section  className="area_fundoMedico">
+                    <section className="area_fundoMedico">
 
                         <section className="cont_listaMedico">
 
                             <h2> Listar Consulta </h2>
 
-                                <div className="conteudo_listaConsulta">
-                                            <table  className="tabela_lista" id="tabela-lista">
-                                            {this.state.listaConsultas.map((consulta) => {
-                                                return (
-                                                    <tr key={consulta.idConsulta}>
-                                                    <td>{consulta.idPacienteNavigation.nomePaciente}</td>
-                                                    <td>{consulta.idSituacaoNavigation.idSituacao}</td>
+                            <div className="conteudo_listaConsulta">
+                                <table className="tabela_lista" id="tabela-lista">
+                                    <tbody>
+                                        {this.state.listaConsultas.map((consulta) => {
+                                            return (
+                                                <tr key={consulta.idConsulta}>
+                                                    <td>{consulta.idPacienteNavigation.idUsuarioNavigation.nomeUsuario}</td>
+                                                    <td>{consulta.idSituacaoNavigation.descricaoSituacao}</td>
                                                     <td>{Intl.DateTimeFormat("pt-BR", {
                                                         year: 'numeric', month: 'numeric', day: 'numeric'
-                                                        }).format(new Date(consulta.dataConsulta))}</td>
-                                                    <td>{Intl.DateTimeFormat("pt-BR", { 
+                                                    }).format(new Date(consulta.dataConsulta))}</td>
+                                                    <td>{Intl.DateTimeFormat("pt-BR", {
                                                         hour: 'numeric', minute: 'numeric', hour12: false
-                                                        }).format(new Date(consulta.dataConsulta))}</td>
+                                                    }).format(new Date(consulta.dataConsulta))}</td>
                                                 </tr>
-                                                 )
-                                             })
-                                             }
-                                            </table>                                                                                     
-                                         
-                                </div>
+                                            )
+                                        })
+                                        }
+                                    </tbody>
+                                </table>
 
-                                {this.state.idConsultaAlterado !== 0 &&
-                                    <div className="boton_alterarSitu">
-                                        <form onSubmit={this.mudarSituacao}>
-                                            <label className="btn__alterarSitu" id="btn__alterarSitu"> Alterar Situação </label>
-                                            <input type="text" value={this.state.idSituaçao} onChange={this.atualizaStateCampo} />
-                                            <button type="submit"> Salvar </button>
-                                            <button type="button" onClick={this.limparCampos}>Cancelar</button>
-                                            </form>
-                                    </div>
-                                }
+                            </div>
+
+
+                            
+                            <div className="boton_alterarSitu">
+                                <form onSubmit={this.mudarSituacao}>
+                                    <button className="btn__alterarSitu" id="btn__alterarSitu"> Alterar Situação </button>
+
+                                    <input type="text" value={this.state.idSituaçao} onChange={this.atualizaStateCampo} />
+                                    <button type="submit"> Salvar </button>
+                                    <button type="button" onClick={this.limparCampos}>Cancelar</button>
+                                </form>
+                            </div>
+
                         </section>
 
                     </section>
-                 </main>
+                </main>
 
-                 <Footer></Footer>
+                <Footer></Footer>
 
             </div>
         )

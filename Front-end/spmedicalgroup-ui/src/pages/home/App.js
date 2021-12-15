@@ -15,7 +15,7 @@ function App() {
         <main>
           <section className="secao_especialidade">
             <div >
-              <div className="especialidade">
+              <div className="especialidade" id="especialidade">
                 <h2> Especialidades </h2>
               </div>
 

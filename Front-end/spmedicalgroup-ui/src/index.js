@@ -59,14 +59,27 @@ const PermissaoMédico = ({ component: Component }) => (
   />
 );
 
+const PermissaoLogado = ({ component: Component }) => (
+  <Route
+    render={(props) =>
+      usuarioAutenticado() ? (
+        // operador spread
+        <Component {...props} />
+      ) : (
+        <Redirect to="/Login" />
+      )
+    }
+  />
+);
+
 
 
 const routing = (
   <Router>
     <div>
       <Switch>
-        <Route exact path="/home" component={Home} /> 
-        <Route path="/login" component={Login} /> 
+        <PermissaoLogado path="/home" component={Home} /> 
+        <Route exact path="/login" component={Login} /> 
         <Route path="/administrador" component={Administrador} /> 
         <Route path="/medico" component={Medico} /> 
         <Route path="/paciente" component={Paciente} /> 

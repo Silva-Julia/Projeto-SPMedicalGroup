@@ -6,11 +6,13 @@ import { parseJwt } from "../../services/auth.js";
 import '../../assets/css/spmedicalgroup.css';
 import logo from '../../assets/img/LOGO.png';
 
+
+
 export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: 'João@email.com',
+      email: 'ricardo.lemos@spmedicalgroup.com.br',
       senha: '1234',
       erroMensagem: '',
       isLoading: false,
@@ -26,7 +28,7 @@ export default class Login extends Component {
     this.setState({ erroMensagem: '', isLoading: true });
 
     // Define a url e o corpo da requisição
-    axios.post('http://localhost:5000/api/ogin', {
+    axios.post('http://localhost:5000/api/Login', {
         email: this.state.email,
         senha: this.state.senha,
       })
@@ -51,17 +53,16 @@ export default class Login extends Component {
           console.log(base64);
 
           console.log(this.props);
-
-          // verifica se o usuário logado é do tipo administrador
+        
           switch (parseJwt().role) {
             case "1":
-              this.props.history.push('Admin')
+              this.props.history.push('/Admin');
               break;
             case "2":
-              this.props.history.push('ConsultaPaciente')
+              this.props.history.push('/ConsultaPaciente');
               break;
             case "3":
-              this.props.history.push('ConsultaMedico')
+              this.props.history.push('/ConsultaMedico');
               break;
 
             default:
