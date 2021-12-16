@@ -13,6 +13,7 @@ import Administrador from '../src/pages/administrador/adm';
 import Medico from '../src/pages/medico/medico';
 import Paciente from '../src/pages/paciente/paciente';
 import NotFound from '../src/pages/notFound/NotFound';
+import Mapas from './pages/mapas/mapas.jsx';
 
 
 import reportWebVitals from './reportWebVitals';
@@ -22,7 +23,6 @@ const PermissaoAdmin = ({ component: Component }) => (
   <Route
     render={(props) =>
       usuarioAutenticado() && parseJwt().role === '1' ? (
-        // operador spread
         <Component {...props} />
       ) : (
         <Redirect to="/Login" />
@@ -36,7 +36,6 @@ const PermissaoComum = ({ component: Component }) => (
   <Route
     render={(props) =>
       usuarioAutenticado() && parseJwt().role === '2' ? (
-        // operador spread
         <Component {...props} />
       ) : (
         <Redirect to="/Login" />
@@ -50,7 +49,6 @@ const PermissaoMédico = ({ component: Component }) => (
   <Route
     render={(props) =>
       usuarioAutenticado() && parseJwt().role === '3' ? (
-        // operador spread
         <Component {...props} />
       ) : (
         <Redirect to="/Login" />
@@ -63,7 +61,6 @@ const PermissaoLogado = ({ component: Component }) => (
   <Route
     render={(props) =>
       usuarioAutenticado() ? (
-        // operador spread
         <Component {...props} />
       ) : (
         <Redirect to="/Login" />
@@ -79,17 +76,21 @@ const routing = (
     <div>
       <Switch>
         <PermissaoLogado path="/home" component={Home} /> 
-        <Route exact path="/login" component={Login} /> 
+        <Route exact path="/" component={Login} /> 
+        <Route path="/login" component={Login} /> 
+        {/* <Redirect to="/login"/> */}
+        
         <Route path="/administrador" component={Administrador} /> 
         <Route path="/medico" component={Medico} /> 
         <Route path="/paciente" component={Paciente} /> 
+        <Route path="/mapas" component={Mapas} /> 
 
         <PermissaoAdmin path = "/Admin" component={Administrador} />
         <PermissaoMédico path = "/ConsultaMedico" component={Medico} />
         <PermissaoComum path = "/ConsultaPaciente" component={Paciente} />
         
         <Route path="/notFound" component={NotFound} /> 
-        <Redirect to="/notFound" /> {/* Redireciona para Not Found caso não encontre nenhuma rota */}
+        {/* <Redirect to="/notFound" /> Redireciona para Not Found caso não encontre nenhuma rota */}
       </Switch>
     </div>
   </Router>

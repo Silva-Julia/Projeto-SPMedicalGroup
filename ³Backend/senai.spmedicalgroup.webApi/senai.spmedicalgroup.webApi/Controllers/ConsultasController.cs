@@ -35,7 +35,7 @@ namespace senai.spmedicalgroup.webApi.Controllers
 
 
 
-        //[Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "1")]
         [HttpGet]
         public IActionResult ListarTodos()
         {
@@ -138,14 +138,14 @@ namespace senai.spmedicalgroup.webApi.Controllers
 
 
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "1")]
         [HttpPost]
         public IActionResult Cadastrar(Consultum novaConsultum)
         {
             try
             {
 
-                if (novaConsultum.IdMedico == null || novaConsultum.IdPaciente == null || novaConsultum.DataConsulta < DateTime.Now)
+                if (novaConsultum.IdMedico == null || novaConsultum.IdPaciente == null || novaConsultum.IdSituacao == null || novaConsultum.DataConsulta < DateTime.Now)
                 {
                     return BadRequest(new
                     {
@@ -215,7 +215,7 @@ namespace senai.spmedicalgroup.webApi.Controllers
         }
 
 
-        [Authorize(Roles = "Médico")]
+        [Authorize(Roles = "3")]
         [HttpPatch("AlterarSituacao/{id}")]
         public IActionResult AlterarSituacao(Consultum ConsultaAtt, int id)
         {

@@ -12,7 +12,7 @@ export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: 'ricardo.lemos@spmedicalgroup.com.br',
+      email: 'Rafaela@email.com',
       senha: '1234',
       erroMensagem: '',
       isLoading: false,
@@ -52,8 +52,10 @@ export default class Login extends Component {
           // exibe no console do navegador o valor em base64
           console.log(base64);
 
+          console.log("chegou aqui")
+          
           console.log(this.props);
-        
+
           switch (parseJwt().role) {
             case "1":
               this.props.history.push('/Admin');
@@ -106,11 +108,8 @@ export default class Login extends Component {
                 className="input__login"
                 placeholder="Username"
                 type="text"
-                name="Username"
-
-                // define que o input email recebe o valor do state email
+                name="email"
                 value={this.state.email}
-                // faz a chamada para a função que atualiza o state, conforme o usuário altera o valor do input
                 onChange={this.atualizaStateCampo}
               />
             </div>
@@ -120,11 +119,8 @@ export default class Login extends Component {
                 className="input__login"
                 placeholder="Senha"
                 type="password"
-                name="Senha"
-
-                // define que o input senha recebe o valor do state senha
+                name="senha"
                 value={this.state.senha}
-                // faz a chamada para a função que atualiza o state, conforme o usuário altera o valor do input
                 onChange={this.atualizaStateCampo}
               />
             </div>
@@ -152,14 +148,14 @@ export default class Login extends Component {
               )
             }
 
-          </form>
-
             <div className="local_esqueceuSenha">
               <hr className="hr_pequeno"></hr>
               <nav>
                 <button className="esqueceuSenha" > Esqueceu a senha </button>
               </nav>
             </div>
+          </form>
+
 
           <div className="box_login2">
             <span className="link"> Não tem uma conta? <a className="link_cadastro" href="cadastro.html"> Cadastre-se </a> </span>

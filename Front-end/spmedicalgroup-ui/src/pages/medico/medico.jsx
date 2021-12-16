@@ -3,7 +3,7 @@ import axios from "axios";
 
 import Footer from '../../components/footer';
 import HeaderMedico from '../../components/headerMedico';
-//import BotaoEdit from '../../assets/img/botao-editar'
+//import BotaoEdit from '../../assets/img/botao-editar.png';
 
 import '../../assets/css/spmedicalgroup.css';
 //import { render } from 'react-dom';
@@ -71,8 +71,8 @@ export default class Medico extends Component {
                 })
 
                 .catch((erro) => console.log(erro))
-                .then(this.buscaConsultas)
-                .then(this.limpaCampos)
+                // .then(this.buscaConsultas)
+                // .then(this.limpaCampos)
         }
     }
 
@@ -142,7 +142,7 @@ export default class Medico extends Component {
                                                                     hour: 'numeric', minute: 'numeric', hour12: false
                                                                 }).format(new Date(consulta.dataConsulta))}</td>
 
-                                                                {/* <td src={BotaoEdit}> </td> */}
+                                                                <button>editar</button>
                                                             </tr>
                                                         </tbody>
 

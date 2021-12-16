@@ -471,7 +471,7 @@ main{
 }
 
 .area_fundo{
-    height: 1414px;
+    height: 2000px;
     background: linear-gradient(0deg, rgba(4, 173, 191, 0.3), rgba(4, 173, 191, 0.3)), rgba(140, 158, 172, 0.45);
     padding-top: 130px;
     display: grid;
@@ -545,7 +545,7 @@ main{
     background: rgba(255, 255, 255, 0.99);
     border-radius: 22px;
     width: 1098px;
-    height: 454px;
+    height: 850px;
 }
 
 .cont_listarConsulta h2{

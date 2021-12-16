@@ -55,7 +55,7 @@ export default class Paciente extends Component {
                                                     <table className="tabela_lista" id="tabela-lista">
                                                         <tbody>
                                                             <tr key={consulta.idConsulta}>
-                                                                <td>{consulta.idMedicoNavigation.idUsuarioNavigation.nomeUsuario}</td>
+                                                                <td>Dr.{consulta.idMedicoNavigation.idUsuarioNavigation.nomeUsuario}</td>
                                                                 <td>{consulta.idSituacaoNavigation.descricaoSituacao}</td>
                                                                 <td>{Intl.DateTimeFormat("pt-BR", {
                                                                     year: 'numeric', month: 'numeric', day: 'numeric'

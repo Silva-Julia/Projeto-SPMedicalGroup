@@ -5,7 +5,7 @@ import '../../assets/css/spmedicalgroup.css';
 import Footer from '../../components/footer';
 import HeaderHome from '../../components/headerHome';
 
-function App() {
+function Home() {
 
   return (
       <div>
@@ -87,4 +87,4 @@ function App() {
     );
 }
 
-export default App;
+export default Home;

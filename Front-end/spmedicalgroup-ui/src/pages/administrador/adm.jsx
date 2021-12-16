@@ -13,7 +13,7 @@ export default class Administrador extends Component {
             listaConsultas: [],
             IdPaciente: '',
             IdMedico: '',
-            IdSituacao: 0,
+            IdSituacao: '',
             dataConsulta: new Date(),
             loading: false,
             errorMessage: '',
@@ -73,74 +73,74 @@ export default class Administrador extends Component {
         })
             .then(resposta => {
                 if (resposta.status === 200) {
-                    this.state({ listaConsultas: resposta.data })
+                    this.setState({ listaConsultas: resposta.data })
                     console.log(this.state.listaConsultas)
                 }
             })
             .catch(erro => console.log(erro))
     }
 
-    componentDidMount() {
-        this.buscarConsultas();
-    }
-
+    
     cadastrarConsulta = (event) => {
-        event.preventDefault();
+        
         this.setState({ loading: true })
-
+        
         let consulta = {
             IdPaciente: this.state.IdPaciente,
             IdMedico: this.state.IdMedico,
             dataConsulta: new Date(this.state.dataConsulta),
             IdSituacao: this.state.IdSituacao
         };
-
+        
         this.setState({ loading: true });
-
+        
         axios.post("http://localhost:5000/api/Consultas", consulta, {
             headers: {
-                'Authoriztion': 'Bearer' + localStorage.getItem('usuario-login')
+                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }
         })
-            .then(resposta => {
-                if (resposta.status === 201) {
-                    console.log('foi !!!')
-                    this.setState({
-                        IdPaciente: '',
-                        IdMedico: '',
-                        IdSituacao: 0,
-                        dataConsulta: new Date(),
-                        nomeUsuario: '',
-                        loading: false,
-                        errorMessage: '',
-                    })
-                }
-            })
-            .catch(erro => {
-                console.log(erro);
+        .then(resposta => {
+            if (resposta.status === 201) {
+                console.log('foi !!!')
                 this.setState({
-                    errorMessage: 'Dados inválidos',
-                    loading: false
-                });
-            })
-            // .then(this.buscaConsultas);
+                    IdPaciente: '',
+                    IdMedico: '',
+                    IdSituacao: '',
+                    dataConsulta: new Date(),
+                    nomeUsuario: '',
+                    loading: false,
+                    errorMessage: '',
+                })
+            }
+        })
+        .catch(erro => {
+            console.log(erro);
+            this.setState({
+                errorMessage: 'Dados inválidos',
+                loading: false
+            });
+        })
+        // .then(this.buscaConsultas);
     }
-
-
+    
+    
     // componentDidMount() {
-    //     this.buscaConsultas();
-    //     this.buscaPacientes();
-    //     this.buscaMedicos();
-    //     this.buscaSituacoes();
-    // }
-
-    atualizaStateCampo = (campo) => {
-        this.setState({ [campo.target.name]: campo.target.value })
-    }
-
-
-
-
+        //     this.buscaConsultas();
+        //     this.buscaPacientes();
+        //     this.buscaMedicos();
+        //     this.buscaSituacoes();
+        // }
+        
+        atualizaStateCampo = (campo) => {
+            this.setState({ [campo.target.name]: campo.target.value })
+        }
+        
+        
+        componentDidMount() {
+            this.buscaConsultas();
+        }
+        
+        
     render() 
     {
         return (
@@ -160,7 +160,7 @@ export default class Administrador extends Component {
                                                     className="input__consulta"
                                                     placeholder="Nome Medico"
                                                     type="text"
-                                                    name="Nome Medico"
+                                                    name="IdMedico"
                                                     id=""                                               
                                                     value={this.state.IdMedico}
                                                     onChange={this.atualizaStateCampo}
@@ -172,7 +172,7 @@ export default class Administrador extends Component {
                                                     className="input__consulta"
                                                     placeholder="Situação"
                                                     type="text"
-                                                    name="Situação"
+                                                    name="IdSituacao"
                                                     id=""
                                                     value={this.state.IdSituacao}
                                                     onChange={this.atualizaStateCampo}
@@ -184,7 +184,7 @@ export default class Administrador extends Component {
                                                     className="input__consulta"
                                                     placeholder="Nome Paciente"
                                                     type="text"
-                                                    name="Nome Paciente"
+                                                    name="IdPaciente"
                                                     id=""
                                                     value={this.state.IdPaciente}
                                                     onChange={this.atualizaStateCampo}
@@ -196,14 +196,14 @@ export default class Administrador extends Component {
                                                     className="input__consulta"
                                                     placeholder="Data da Consulta"
                                                     type="date"
-                                                    name="Data da Consulta"
+                                                    name="dataConsulta"
                                                     id="consulta__data"
                                                     value={this.state.dataConsulta}
                                                     onChange={this.atualizaStateCampo}
                                                 />
                                             </div>
 
-                                            <div className="linha_escrita_consulta">
+                                            {/* <div className="linha_escrita_consulta">
                                                 <input
                                                     className="input__consulta"
                                                     placeholder="Horário"
@@ -211,7 +211,7 @@ export default class Administrador extends Component {
                                                     name="Horário"
                                                     id="consulta__horario"
                                                 />
-                                            </div>
+                                            </div> */}
 
                                             <p style={{ color: 'red', textAlign: 'center' }}>{this.state.erroMensagem}</p>
                                             
@@ -246,31 +246,30 @@ export default class Administrador extends Component {
 
                                     <h2> Listar Consulta </h2>
 
-                                     <div className="conteudo_listaConsulta">
-                                         <table className="tabela_lista" id="tabela-lista">
-                                            <tbody>
-
                                                 {this.state.listaConsultas.map((consulta) => {
                                                     return(
-                                                        <tr key={consulta.idConsulta}>
-                                                            <td> {consulta.idMedicoNavigation.idUsuarioNavigation.nomeUsuario}</td>
-                                                            <td> {consulta.idPacienteNavigation.idUsuarioNavigation.nomeUsuario}</td>
-                                                            <td> {consulta.idSituacaoNavigation.descricaoSituacao}</td>
-                                                            <td> {Intl.DateTimeFormat("pt-BR", {
-                                                                year: 'numeric', month: 'numeric', day: 'numeric'      
-                                                                }).format(new Date(consulta.dataConsulta))} </td>
-                                                            <td> {Intl.DateTimeFormat("pt-BR", {
-                                                                hour: 'numeric', minute: 'numeric', hour12: false
-                                                                }).format(new Date(consulta.dataConsulta))} </td>
-                                                        </tr>
+                                                        <div className="conteudo_listaConsulta">
+                                                            <table className="tabela_lista" id="tabela-lista">
+                                                                <tbody>
+                                                                    <tr key={consulta.idConsulta}>
+                                                                        <td> Dr.{consulta.idMedicoNavigation.idUsuarioNavigation.nomeUsuario}</td>
+                                                                        <td> {consulta.idPacienteNavigation.idUsuarioNavigation.nomeUsuario}</td>
+                                                                        <td> {consulta.idSituacaoNavigation.descricaoSituacao}</td>
+                                                                        <td> {Intl.DateTimeFormat("pt-BR", {
+                                                                            year: 'numeric', month: 'numeric', day: 'numeric'      
+                                                                            }).format(new Date(consulta.dataConsulta))} </td>
+                                                                        <td> {Intl.DateTimeFormat("pt-BR", {
+                                                                            hour: 'numeric', minute: 'numeric', hour12: false
+                                                                            }).format(new Date(consulta.dataConsulta))} </td>
+                                                                    </tr>
+
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
                                                     )
                                                  })
 
                                                  }
-
-                                            </tbody>
-                                         </table>
-                                    </div>
 
                                 </section>
                             
