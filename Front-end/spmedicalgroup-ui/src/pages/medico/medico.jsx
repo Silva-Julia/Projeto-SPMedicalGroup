@@ -3,9 +3,10 @@ import axios from "axios";
 
 import Footer from '../../components/footer';
 import HeaderMedico from '../../components/headerMedico';
+//import BotaoEdit from '../../assets/img/botao-editar'
 
 import '../../assets/css/spmedicalgroup.css';
-import { render } from 'react-dom';
+//import { render } from 'react-dom';
 
 export default class Medico extends Component {
     constructor(props) {
@@ -21,7 +22,6 @@ export default class Medico extends Component {
             isLoading: false,
             editando: false,
             keyAtual: 0,
-            alterarBoolean: false,
         }
     };
 
@@ -100,6 +100,7 @@ export default class Medico extends Component {
         });
         console.log(this.state.idSituaçao);
     };
+
     limparCampos = () => {
         this.setState({
             idSituaçao: '',
@@ -125,30 +126,32 @@ export default class Medico extends Component {
 
                             <h2> Listar Consulta </h2>
 
-                            <div className="conteudo_listaConsulta">
-                                <table className="tabela_lista" id="tabela-lista">
-                                    <tbody>
                                         {this.state.listaConsultas.map((consulta) => {
                                             return (
-                                                <tr key={consulta.idConsulta}>
-                                                    <td>{consulta.idPacienteNavigation.idUsuarioNavigation.nomeUsuario}</td>
-                                                    <td>{consulta.idSituacaoNavigation.descricaoSituacao}</td>
-                                                    <td>{Intl.DateTimeFormat("pt-BR", {
-                                                        year: 'numeric', month: 'numeric', day: 'numeric'
-                                                    }).format(new Date(consulta.dataConsulta))}</td>
-                                                    <td>{Intl.DateTimeFormat("pt-BR", {
-                                                        hour: 'numeric', minute: 'numeric', hour12: false
-                                                    }).format(new Date(consulta.dataConsulta))}</td>
-                                                </tr>
+                                                <div className="conteudo_listaConsulta">
+                                                    <table className="tabela_lista" id="tabela-lista">
+
+                                                        <tbody>
+                                                            <tr key={consulta.idConsulta}>
+                                                                <td>{consulta.idPacienteNavigation.idUsuarioNavigation.nomeUsuario}</td>
+                                                                <td>{consulta.idSituacaoNavigation.descricaoSituacao}</td>
+                                                                <td>{Intl.DateTimeFormat("pt-BR", {
+                                                                    year: 'numeric', month: 'numeric', day: 'numeric'
+                                                                }).format(new Date(consulta.dataConsulta))}</td>
+                                                                <td>{Intl.DateTimeFormat("pt-BR", {
+                                                                    hour: 'numeric', minute: 'numeric', hour12: false
+                                                                }).format(new Date(consulta.dataConsulta))}</td>
+
+                                                                {/* <td src={BotaoEdit}> </td> */}
+                                                            </tr>
+                                                        </tbody>
+
+                                                    </table>
+
+                                                </div>
                                             )
                                         })
                                         }
-                                    </tbody>
-                                </table>
-
-                            </div>
-
-
                             
                             <div className="boton_alterarSitu">
                                 <form onSubmit={this.mudarSituacao}>

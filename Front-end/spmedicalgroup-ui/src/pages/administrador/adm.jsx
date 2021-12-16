@@ -11,61 +11,59 @@ export default class Administrador extends Component {
         super(props);
         this.state = {
             listaConsultas: [],
-            listaPacientes: [],
-            listaMedicos: [],
-            listaSituacao: [],
             IdPaciente: '',
             IdMedico: '',
             IdSituacao: 0,
             dataConsulta: new Date(),
-            nomeUsuario: '',
+            loading: false,
+            errorMessage: '',
         }
     };
 
-    buscaPacientes = () => {
-        axios("http://localhost:5000/api/Paciente", {
-            headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-            }
-        })
-            .then(resposta => {
-                if (resposta.status === 200) {
-                    this.state({ listaPacientes: resposta.data })
-                    console.log(this.state.listaPacientes)
-                }
-            })
-            .catch(erro => console.log(erro))
-    }
+    // buscaPacientes = () => {
+    //     axios("http://localhost:5000/api/Paciente", {
+    //         headers: {
+    //             'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+    //         }
+    //     })
+    //         .then(resposta => {
+    //             if (resposta.status === 200) {
+    //                 this.state({ listaPacientes: resposta.data })
+    //                 console.log(this.state.listaPacientes)
+    //             }
+    //         })
+    //         .catch(erro => console.log(erro))
+    // }
 
-    buscaMedicos = () => {
-        axios("http://localhost:5000/api/Medico", {
-            headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-            }
-        })
-            .then(resposta => {
-                if (resposta.status === 200) {
-                    this.state({ listaMedicos: resposta.data })
-                    console.log(this.state.listaMedicos)
-                }
-            })
-            .catch(erro => console.log(erro))
-    }
+    // buscaMedicos = () => {
+    //     axios("http://localhost:5000/api/Medico", {
+    //         headers: {
+    //             'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+    //         }
+    //     })
+    //         .then(resposta => {
+    //             if (resposta.status === 200) {
+    //                 this.state({ listaMedicos: resposta.data })
+    //                 console.log(this.state.listaMedicos)
+    //             }
+    //         })
+    //         .catch(erro => console.log(erro))
+    // }
 
-    buscaSituacoes = () => {
-        axios("http://localhost:5000/api/situacoes", {
-            headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-            }
-        })
-            .then(resposta => {
-                if (resposta.status === 200) {
-                    this.state({ listaSituacao: resposta.data })
-                    console.log(this.state.listaSituacao)
-                }
-            })
-            .catch(erro => console.log(erro))
-    }
+    // buscaSituacoes = () => {
+    //     axios("http://localhost:5000/api/situacoes", {
+    //         headers: {
+    //             'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+    //         }
+    //     })
+    //         .then(resposta => {
+    //             if (resposta.status === 200) {
+    //                 this.state({ listaSituacao: resposta.data })
+    //                 console.log(this.state.listaSituacao)
+    //             }
+    //         })
+    //         .catch(erro => console.log(erro))
+    // }
 
     buscaConsultas = () => {
         axios("http://localhost:5000/api/Consultas", {
@@ -76,13 +74,19 @@ export default class Administrador extends Component {
             .then(resposta => {
                 if (resposta.status === 200) {
                     this.state({ listaConsultas: resposta.data })
+                    console.log(this.state.listaConsultas)
                 }
             })
             .catch(erro => console.log(erro))
     }
 
+    componentDidMount() {
+        this.buscarConsultas();
+    }
+
     cadastrarConsulta = (event) => {
         event.preventDefault();
+        this.setState({ loading: true })
 
         let consulta = {
             IdPaciente: this.state.IdPaciente,
@@ -90,6 +94,9 @@ export default class Administrador extends Component {
             dataConsulta: new Date(this.state.dataConsulta),
             IdSituacao: this.state.IdSituacao
         };
+
+        this.setState({ loading: true });
+
         axios.post("http://localhost:5000/api/Consultas", consulta, {
             headers: {
                 'Authoriztion': 'Bearer' + localStorage.getItem('usuario-login')
@@ -98,21 +105,34 @@ export default class Administrador extends Component {
             .then(resposta => {
                 if (resposta.status === 201) {
                     console.log('foi !!!')
+                    this.setState({
+                        IdPaciente: '',
+                        IdMedico: '',
+                        IdSituacao: 0,
+                        dataConsulta: new Date(),
+                        nomeUsuario: '',
+                        loading: false,
+                        errorMessage: '',
+                    })
                 }
             })
             .catch(erro => {
                 console.log(erro);
+                this.setState({
+                    errorMessage: 'Dados inválidos',
+                    loading: false
+                });
             })
-            .then(this.buscaConsultas);
+            // .then(this.buscaConsultas);
     }
 
 
-    componentDidMount() {
-        this.buscaConsultas();
-        this.buscaPacientes();
-        this.buscaMedicos();
-        this.buscaSituacoes();
-    }
+    // componentDidMount() {
+    //     this.buscaConsultas();
+    //     this.buscaPacientes();
+    //     this.buscaMedicos();
+    //     this.buscaSituacoes();
+    // }
 
     atualizaStateCampo = (campo) => {
         this.setState({ [campo.target.name]: campo.target.value })
@@ -134,25 +154,17 @@ export default class Administrador extends Component {
                                     <div className="conteudo_cadasConsulta">
                                         <h2> Cadastrar Consulta </h2>
 
-                                        <form  onSubmit={ this.cadastrarConsulta} className="box_cadasConsulta">
+                                        <form  action="" onSubmit={ this.cadastrarConsulta} className="box_cadasConsulta">
                                             <div className="linha_escrita_consulta">
                                                 <input
                                                     className="input__consulta"
                                                     placeholder="Nome Medico"
                                                     type="text"
                                                     name="Nome Medico"
-                                                    id="consulta__nomeMed"                                               
+                                                    id=""                                               
                                                     value={this.state.IdMedico}
                                                     onChange={this.atualizaStateCampo}
                                                 />
-                                                {/* <option value="0"> Insira o nome do Medico </option> */}
-                                                {
-                                                    this.state.listaMedicos.map(medico => {
-                                                        return(
-                                                            <option key={medico.IdMedico} value={medico.idMedico}> {medico.nomeUsuario} </option>
-                                                        );
-                                                    })
-                                                }
                                             </div>
 
                                             <div className="linha_escrita_consulta">
@@ -161,7 +173,7 @@ export default class Administrador extends Component {
                                                     placeholder="Situação"
                                                     type="text"
                                                     name="Situação"
-                                                    id="consulta__situacao"
+                                                    id=""
                                                     value={this.state.IdSituacao}
                                                     onChange={this.atualizaStateCampo}
                                                 />
@@ -173,16 +185,10 @@ export default class Administrador extends Component {
                                                     placeholder="Nome Paciente"
                                                     type="text"
                                                     name="Nome Paciente"
-                                                    id="consulta__nomePac"
+                                                    id=""
                                                     value={this.state.IdPaciente}
-                                                onChange={this.atualizaStateCampo}
+                                                    onChange={this.atualizaStateCampo}
                                                 />
-                                                { this.state.listaPacientes.map(paciente =>{
-                                                    return(
-                                                        <option key={paciente.IdPaciente} value={paciente.idPaciente}> {paciente.nomePaciente}</option>
-                                                    );
-                                                })
-                                                }
                                             </div>
 
                                             <div className="linha_escrita_consulta">
@@ -192,6 +198,8 @@ export default class Administrador extends Component {
                                                     type="date"
                                                     name="Data da Consulta"
                                                     id="consulta__data"
+                                                    value={this.state.dataConsulta}
+                                                    onChange={this.atualizaStateCampo}
                                                 />
                                             </div>
 
@@ -205,18 +213,25 @@ export default class Administrador extends Component {
                                                 />
                                             </div>
 
-                                            {this.state.isLoading === true &&(
+                                            <p style={{ color: 'red', textAlign: 'center' }}>{this.state.erroMensagem}</p>
+                                            
+                                            {this.state.loading === true &&(
                                                     <div className="boton_Consulta">
-                                                        <button type="submit" className="btn__consulta" id="btn__consulta" disabled>
+                                                        <button type="submit" className="btn__consulta" id="" disabled>
                                                             Carregando...
                                                         </button>
                                                     </div>
                                             )}
 
-                                            {this.state.isLoading === true &&(
+                                            {this.state.loading === false &&(
                                                 <div className="boton_Consulta">
-                                                    <button type="submit"className="btn__consulta" id="btn__consulta">
-                                                        Cadastrar
+                                                    <button type="submit"className="btn__consulta" id=""
+                                                        disabled={
+                                                            this.state.IdMedico === '' || this.state.IdSituacao === '' || this.state.IdPaciente === '' ||  this.state.dataConsulta === '' 
+                                                                ? 'none'
+                                                                : ''
+                                                        }
+                                                    > Cadastrar
                                                     </button>
                                                 </div>
                                             )}
@@ -232,23 +247,29 @@ export default class Administrador extends Component {
                                     <h2> Listar Consulta </h2>
 
                                      <div className="conteudo_listaConsulta">
-                                        {this.state.listaConsultas.map((consulta) => {
-                                            return(
-                                                <table className="tabela_lista">
-                                                    <tr key={consulta.idConsulta}></tr>
-                                                    {/* <th><images src={perfil}/> </th> */}
-                                                    <p> {consulta.idMedicoNavigation.nomeMedico}</p>
-                                                    <p> {consulta.idPacienteNavigation.nomePaciente}</p>
-                                                    <p> {consulta.idSituacaoNavigation.IdSituacao}</p>
-                                                    <p> {Intl.DateTimeFormat("pt-BR", {
-                                                        year: 'numeric', month: 'numeric', day: 'numeric'      
-                                                        }).format(new Date(consulta.dataConsulta))} </p>
-                                                    <p> {Intl.DateTimeFormat("pt-BR", {
-                                                         hour: 'numeric', minute: 'numeric', hour12: false
-                                                        }).format(new Date(consulta.dataConsulta))} </p>
-                                                </table>
-                                            )
-                                        })}
+                                         <table className="tabela_lista" id="tabela-lista">
+                                            <tbody>
+
+                                                {this.state.listaConsultas.map((consulta) => {
+                                                    return(
+                                                        <tr key={consulta.idConsulta}>
+                                                            <td> {consulta.idMedicoNavigation.idUsuarioNavigation.nomeUsuario}</td>
+                                                            <td> {consulta.idPacienteNavigation.idUsuarioNavigation.nomeUsuario}</td>
+                                                            <td> {consulta.idSituacaoNavigation.descricaoSituacao}</td>
+                                                            <td> {Intl.DateTimeFormat("pt-BR", {
+                                                                year: 'numeric', month: 'numeric', day: 'numeric'      
+                                                                }).format(new Date(consulta.dataConsulta))} </td>
+                                                            <td> {Intl.DateTimeFormat("pt-BR", {
+                                                                hour: 'numeric', minute: 'numeric', hour12: false
+                                                                }).format(new Date(consulta.dataConsulta))} </td>
+                                                        </tr>
+                                                    )
+                                                 })
+
+                                                 }
+
+                                            </tbody>
+                                         </table>
                                     </div>
 
                                 </section>

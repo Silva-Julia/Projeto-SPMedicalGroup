@@ -129,7 +129,6 @@ export default class Login extends Component {
               />
             </div>
 
-            {/* Exibe a mensagem de erro ao tentar logar com credenciais inválidas */}
             <p style={{ color: 'red', textAlign: 'center' }}>{this.state.erroMensagem}</p>
 
 
@@ -153,6 +152,7 @@ export default class Login extends Component {
               )
             }
 
+          </form>
 
             <div className="local_esqueceuSenha">
               <hr className="hr_pequeno"></hr>
@@ -160,7 +160,6 @@ export default class Login extends Component {
                 <button className="esqueceuSenha" > Esqueceu a senha </button>
               </nav>
             </div>
-          </form>
 
           <div className="box_login2">
             <span className="link"> Não tem uma conta? <a className="link_cadastro" href="cadastro.html"> Cadastre-se </a> </span>
