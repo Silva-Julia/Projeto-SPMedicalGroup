@@ -3,7 +3,7 @@ import axios from "axios";
 
 import Footer from '../../components/footer';
 import HeaderMedico from '../../components/headerMedico';
-//import BotaoEdit from '../../assets/img/botao-editar.png';
+import BotaoEdit from '../../assets/img/botao-editar.png';
 
 import '../../assets/css/spmedicalgroup.css';
 //import { render } from 'react-dom';
@@ -135,6 +135,14 @@ export default class Medico extends Component {
                                                             <tr key={consulta.idConsulta}>
                                                                 <td>{consulta.idPacienteNavigation.idUsuarioNavigation.nomeUsuario}</td>
                                                                 <td>{consulta.idSituacaoNavigation.descricaoSituacao}</td>
+
+                                                                    {/* {consulta.descricaoSituacao == '' ? editando == true && idConsulta == consulta.idConsulta? <input type="text" value={descricaoSituacao} onChange={(campo) => setDescricao(campo.target.value)} name="situacao" placeholder="Situação"></input> : <span style={{ color: 'red', opacity: 0.6 }}>Sem situaçao</span> : editando == true && idConsulta == consulta.idConsulta ? <input type="text" value={descricaoSituacao} onChange={(campo) => setDescricao(campo.target.value)} name="situacao" placeholder="Situação"></input> : <span>{consulta.descricaoSituacao}</span>}
+                                                                    {usuarioAutenticado() && parseJwt().role == '2' ? editando == true && idConsulta == consulta.idConsulta? <button onClick={editarConsulta}>Concluir</button> : <button onClick={ () => buscaConsulta(consulta)} style={{ borderColor: 'transparent', backgroundColor: 'transparent' }}></button> :  null}
+                                                                    */}
+                                                                    
+                                                                <img src={BotaoEdit} style={{ width: 28 }} alt="Botao Editar" />
+
+                                                                {/* <button>editar <img src={BotaoEdit}> </img></button> */}
                                                                 <td>{Intl.DateTimeFormat("pt-BR", {
                                                                     year: 'numeric', month: 'numeric', day: 'numeric'
                                                                 }).format(new Date(consulta.dataConsulta))}</td>
@@ -142,7 +150,7 @@ export default class Medico extends Component {
                                                                     hour: 'numeric', minute: 'numeric', hour12: false
                                                                 }).format(new Date(consulta.dataConsulta))}</td>
 
-                                                                <button>editar</button>
+                                                                
                                                             </tr>
                                                         </tbody>
 
@@ -153,7 +161,7 @@ export default class Medico extends Component {
                                         })
                                         }
                             
-                            <div className="boton_alterarSitu">
+                            {/* <div className="boton_alterarSitu">
                                 <form onSubmit={this.mudarSituacao}>
                                     <button className="btn__alterarSitu" id="btn__alterarSitu"> Alterar Situação </button>
 
@@ -161,7 +169,7 @@ export default class Medico extends Component {
                                     <button type="submit"> Salvar </button>
                                     <button type="button" onClick={this.limparCampos}>Cancelar</button>
                                 </form>
-                            </div>
+                            </div> */}
 
                         </section>
 

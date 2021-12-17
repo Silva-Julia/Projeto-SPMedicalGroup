@@ -82,7 +82,7 @@ export default class Administrador extends Component {
 
     
     cadastrarConsulta = (event) => {
-        
+        event.preventDefault();
         this.setState({ loading: true })
         
         let consulta = {
@@ -107,7 +107,6 @@ export default class Administrador extends Component {
                     IdMedico: '',
                     IdSituacao: '',
                     dataConsulta: new Date(),
-                    nomeUsuario: '',
                     loading: false,
                     errorMessage: '',
                 })
@@ -122,14 +121,6 @@ export default class Administrador extends Component {
         })
         // .then(this.buscaConsultas);
     }
-    
-    
-    // componentDidMount() {
-        //     this.buscaConsultas();
-        //     this.buscaPacientes();
-        //     this.buscaMedicos();
-        //     this.buscaSituacoes();
-        // }
         
         atualizaStateCampo = (campo) => {
             this.setState({ [campo.target.name]: campo.target.value })
@@ -154,11 +145,11 @@ export default class Administrador extends Component {
                                     <div className="conteudo_cadasConsulta">
                                         <h2> Cadastrar Consulta </h2>
 
-                                        <form  action="" onSubmit={ this.cadastrarConsulta} className="box_cadasConsulta">
+                                        <form onSubmit={ this.cadastrarConsulta} className="box_cadasConsulta">
                                             <div className="linha_escrita_consulta">
                                                 <input
                                                     className="input__consulta"
-                                                    placeholder="Nome Medico"
+                                                    placeholder="ID Medico"
                                                     type="text"
                                                     name="IdMedico"
                                                     id=""                                               
@@ -170,7 +161,7 @@ export default class Administrador extends Component {
                                             <div className="linha_escrita_consulta">
                                                 <input
                                                     className="input__consulta"
-                                                    placeholder="Situação"
+                                                    placeholder="ID Situação"
                                                     type="text"
                                                     name="IdSituacao"
                                                     id=""
@@ -182,7 +173,7 @@ export default class Administrador extends Component {
                                             <div className="linha_escrita_consulta">
                                                 <input
                                                     className="input__consulta"
-                                                    placeholder="Nome Paciente"
+                                                    placeholder="ID Paciente"
                                                     type="text"
                                                     name="IdPaciente"
                                                     id=""
