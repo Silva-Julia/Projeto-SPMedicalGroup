@@ -1,10 +1,10 @@
 import { Component } from 'react';
 import axios from "axios";
+//import { parseJwt, usuarioAutenticado } from '../../services/auth';
 
 import Footer from '../../components/footer';
 import HeaderMedico from '../../components/headerMedico';
 import BotaoEdit from '../../assets/img/botao-editar.png';
-
 import '../../assets/css/spmedicalgroup.css';
 //import { render } from 'react-dom';
 
@@ -41,12 +41,9 @@ export default class Medico extends Component {
             .catch(erro => console.log(erro));
     }
 
-    componentDidMount() {
-        this.buscarConsultas();
-    }
-
+    
     mudarSituacao = (event) => {
-        event.preventDefault();
+        //event.preventDefault();
         console.log(this.state.idConsultaAlterado)
         console.log(this.state.idSituaçao)
 
@@ -100,7 +97,7 @@ export default class Medico extends Component {
         });
         console.log(this.state.idSituaçao);
     };
-
+    
     limparCampos = () => {
         this.setState({
             idSituaçao: '',
@@ -108,7 +105,11 @@ export default class Medico extends Component {
         });
         console.log('Os states foram resetados!');
     };
+    
 
+    componentDidMount() {
+        this.buscarConsultas();
+    }
 
 
 
@@ -134,15 +135,13 @@ export default class Medico extends Component {
                                                         <tbody>
                                                             <tr key={consulta.idConsulta}>
                                                                 <td>{consulta.idPacienteNavigation.idUsuarioNavigation.nomeUsuario}</td>
-                                                                <td>{consulta.idSituacaoNavigation.descricaoSituacao}</td>
-
-                                                                    {/* {consulta.descricaoSituacao == '' ? editando == true && idConsulta == consulta.idConsulta? <input type="text" value={descricaoSituacao} onChange={(campo) => setDescricao(campo.target.value)} name="situacao" placeholder="Situação"></input> : <span style={{ color: 'red', opacity: 0.6 }}>Sem situaçao</span> : editando == true && idConsulta == consulta.idConsulta ? <input type="text" value={descricaoSituacao} onChange={(campo) => setDescricao(campo.target.value)} name="situacao" placeholder="Situação"></input> : <span>{consulta.descricaoSituacao}</span>}
-                                                                    {usuarioAutenticado() && parseJwt().role == '2' ? editando == true && idConsulta == consulta.idConsulta? <button onClick={editarConsulta}>Concluir</button> : <button onClick={ () => buscaConsulta(consulta)} style={{ borderColor: 'transparent', backgroundColor: 'transparent' }}></button> :  null}
-                                                                    */}
+                                                                <td>{consulta.idSituacaoNavigation.descricaoSituacao }</td>
+                                                                {/* {this.state.editando == true && this.state.idConsulta == consulta.idConsulta ? 
+                                                                        <td> <input type="text" value={this.state.idSituaçao} onChange={this.atualizaStateCampo} placeholder='Situação'/> </td> : <td>{consulta.idSituacaoNavigation.descricaoSituacao }</td> }
+                                                                        {usuarioAutenticado() && parseJwt().role === '2' ? this.state.editando == true && this.state.idConsulta === consulta.idSituacaoNavigation.descricaoSituacao ? <td><button onClick={()=> this.mudarSituacao()}>Salvar</button></td> :  <button onClick={() => this.buscaConsulta(consulta)}><img src={BotaoEdit} style={{ width: 28 }} alt="Botao Editar" /></button> : null} */}
                                                                     
                                                                 <img src={BotaoEdit} style={{ width: 28 }} alt="Botao Editar" />
 
-                                                                {/* <button>editar <img src={BotaoEdit}> </img></button> */}
                                                                 <td>{Intl.DateTimeFormat("pt-BR", {
                                                                     year: 'numeric', month: 'numeric', day: 'numeric'
                                                                 }).format(new Date(consulta.dataConsulta))}</td>

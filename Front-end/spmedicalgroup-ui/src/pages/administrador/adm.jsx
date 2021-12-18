@@ -20,51 +20,6 @@ export default class Administrador extends Component {
         }
     };
 
-    // buscaPacientes = () => {
-    //     axios("http://localhost:5000/api/Paciente", {
-    //         headers: {
-    //             'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-    //         }
-    //     })
-    //         .then(resposta => {
-    //             if (resposta.status === 200) {
-    //                 this.state({ listaPacientes: resposta.data })
-    //                 console.log(this.state.listaPacientes)
-    //             }
-    //         })
-    //         .catch(erro => console.log(erro))
-    // }
-
-    // buscaMedicos = () => {
-    //     axios("http://localhost:5000/api/Medico", {
-    //         headers: {
-    //             'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-    //         }
-    //     })
-    //         .then(resposta => {
-    //             if (resposta.status === 200) {
-    //                 this.state({ listaMedicos: resposta.data })
-    //                 console.log(this.state.listaMedicos)
-    //             }
-    //         })
-    //         .catch(erro => console.log(erro))
-    // }
-
-    // buscaSituacoes = () => {
-    //     axios("http://localhost:5000/api/situacoes", {
-    //         headers: {
-    //             'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-    //         }
-    //     })
-    //         .then(resposta => {
-    //             if (resposta.status === 200) {
-    //                 this.state({ listaSituacao: resposta.data })
-    //                 console.log(this.state.listaSituacao)
-    //             }
-    //         })
-    //         .catch(erro => console.log(erro))
-    // }
-
     buscaConsultas = () => {
         axios("http://localhost:5000/api/Consultas", {
             headers: {
@@ -83,16 +38,16 @@ export default class Administrador extends Component {
     
     cadastrarConsulta = (event) => {
         event.preventDefault();
-        this.setState({ loading: true })
+        //this.setState({ loading: true });
         
         let consulta = {
             IdPaciente: this.state.IdPaciente,
             IdMedico: this.state.IdMedico,
             dataConsulta: new Date(this.state.dataConsulta),
-            IdSituacao: this.state.IdSituacao
+            IdSituacao: 3,
+            //this.state.IdSituacao
         };
-        
-        this.setState({ loading: true });
+        //this.setState({ loading: true });
         
         axios.post("http://localhost:5000/api/Consultas", consulta, {
             headers: {
@@ -107,28 +62,31 @@ export default class Administrador extends Component {
                     IdMedico: '',
                     IdSituacao: '',
                     dataConsulta: new Date(),
-                    loading: false,
+                    //loading: false,
                     errorMessage: '',
                 })
             }
         })
-        .catch(erro => {
-            console.log(erro);
-            this.setState({
-                errorMessage: 'Dados inválidos',
-                loading: false
-            });
-        })
-        // .then(this.buscaConsultas);
+        
+        
+        // .catch((erro) => {
+        //         console.log(erro);
+        //         this.setState({
+        //                 errorMessage: 'Dados inválidos',
+        //                 loading: false
+        //             });
+        //         })
+
+        console.log("chegou aqui")
     }
         
         atualizaStateCampo = (campo) => {
             this.setState({ [campo.target.name]: campo.target.value })
         }
         
-        
         componentDidMount() {
             this.buscaConsultas();
+            //this.cadastrarConsulta();
         }
         
         
@@ -143,9 +101,9 @@ export default class Administrador extends Component {
 
                             <section className="cadasConsulta">
                                     <div className="conteudo_cadasConsulta">
+                                        <form onSubmit={ this.cadastrarConsulta} className="box_cadasConsulta">
                                         <h2> Cadastrar Consulta </h2>
 
-                                        <form onSubmit={ this.cadastrarConsulta} className="box_cadasConsulta">
                                             <div className="linha_escrita_consulta">
                                                 <input
                                                     className="input__consulta"

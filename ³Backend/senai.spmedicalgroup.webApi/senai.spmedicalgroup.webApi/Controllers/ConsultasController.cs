@@ -138,32 +138,19 @@ namespace senai.spmedicalgroup.webApi.Controllers
 
 
 
-        [Authorize(Roles = "1")]
+        //[Authorize(Roles = "1")]
         [HttpPost]
         public IActionResult Cadastrar(Consultum novaConsultum)
         {
             try
             {
-
-                if (novaConsultum.IdMedico == null || novaConsultum.IdPaciente == null || novaConsultum.IdSituacao == null || novaConsultum.DataConsulta < DateTime.Now)
-                {
-                    return BadRequest(new
-                    {
-                        Mensagem = "Os dados informados são inválidos ou estão vazios!"
-                    });
-                }
                 _ConsultaRepository.CadastrarConsulta(novaConsultum);
 
-                return StatusCode(201, new
-                {
-                    Mensagem = "A Consulta foi cadastrada!",
-                    novaConsultum
-                });
+                return StatusCode(201);
             }
-            catch (Exception ex)
+            catch (Exception error)
             {
-
-                return BadRequest(ex.Message);
+                return BadRequest(error.Message);
             }
 
         }
