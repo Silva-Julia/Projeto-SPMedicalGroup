@@ -75,7 +75,7 @@ const routing = (
   <Router>
     <div>
       <Switch>
-        <PermissaoLogado path="/home" component={Home} /> 
+        <Route path="/home" component={Home} /> 
         <Route exact path="/" component={Login} /> 
         <Route path="/login" component={Login} /> 
         {/* <Redirect to="/login"/> */}
@@ -85,9 +85,9 @@ const routing = (
         <Route path="/paciente" component={Paciente} /> 
         <Route path="/mapas" component={Mapas} /> 
 
-        <PermissaoAdmin path = "/Admin" component={Administrador} />
-        <PermissaoMédico path = "/ConsultaMedico" component={Medico} />
-        <PermissaoComum path = "/ConsultaPaciente" component={Paciente} />
+        <Route path = "/Admin" component={Administrador} />
+        <Route path = "/ConsultaMedico" component={Medico} />
+        <Route path = "/ConsultaPaciente" component={Paciente} />
         
         <Route path="/notFound" component={NotFound} /> 
         {/* <Redirect to="/notFound" /> Redireciona para Not Found caso não encontre nenhuma rota */}

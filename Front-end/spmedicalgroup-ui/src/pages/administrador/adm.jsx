@@ -21,7 +21,7 @@ export default class Administrador extends Component {
     };
 
     buscaConsultas = () => {
-        axios("http://localhost:5000/api/Consultas", {
+        axios("https://62055ec5161670001741ba6a.mockapi.io/Consulta", {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }
@@ -49,7 +49,7 @@ export default class Administrador extends Component {
         };
         //this.setState({ loading: true });
         
-        axios.post("http://localhost:5000/api/Consultas", consulta, {
+        axios.post("https://62055ec5161670001741ba6a.mockapi.io/Consulta", consulta, {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }
@@ -200,10 +200,10 @@ export default class Administrador extends Component {
                                                         <div className="conteudo_listaConsulta">
                                                             <table className="tabela_lista" id="tabela-lista">
                                                                 <tbody>
-                                                                    <tr key={consulta.idConsulta}>
-                                                                        <td> Dr.{consulta.idMedicoNavigation.idUsuarioNavigation.nomeUsuario}</td>
-                                                                        <td> {consulta.idPacienteNavigation.idUsuarioNavigation.nomeUsuario}</td>
-                                                                        <td> {consulta.idSituacaoNavigation.descricaoSituacao}</td>
+                                                                    <tr key={consulta.id}>
+                                                                        <td> Dr.{consulta.idMedico.medico}</td>
+                                                                        <td> {consulta.idPaciente.paciente}</td>
+                                                                        <td> {consulta.idSituacao.situacao}</td>
                                                                         <td> {Intl.DateTimeFormat("pt-BR", {
                                                                             year: 'numeric', month: 'numeric', day: 'numeric'      
                                                                             }).format(new Date(consulta.dataConsulta))} </td>

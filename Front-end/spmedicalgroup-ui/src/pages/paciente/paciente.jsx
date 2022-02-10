@@ -15,7 +15,7 @@ export default class Paciente extends Component {
     }
 
     buscarConsultas = () => {
-        axios('http://localhost:5000/api/Consultas/Paciente', {
+        axios('https://62055ec5161670001741ba6a.mockapi.io/Paciente', {
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
             }
@@ -54,15 +54,15 @@ export default class Paciente extends Component {
                                                 <div className="conteudo_listaConsulta">
                                                     <table className="tabela_lista" id="tabela-lista">
                                                         <tbody>
-                                                            <tr key={consulta.idConsulta}>
-                                                                <td>Dr.{consulta.idMedicoNavigation.idUsuarioNavigation.nomeUsuario}</td>
-                                                                <td>{consulta.idSituacaoNavigation.descricaoSituacao}</td>
+                                                            <tr key={consulta.id}>
+                                                                <td>Dr.{consulta.idUsuario.nomeMedico}</td>
+                                                                <td>{consulta.enderecoPaciente}</td>
                                                                 <td>{Intl.DateTimeFormat("pt-BR", {
                                                                     year: 'numeric', month: 'numeric', day: 'numeric'
-                                                                }).format(new Date(consulta.dataConsulta))}</td>
+                                                                }).format(new Date(consulta.dataNascimento))}</td>
                                                                 <td>{Intl.DateTimeFormat("pt-BR", {
                                                                     hour: 'numeric', minute: 'numeric', hour12: false
-                                                                }).format(new Date(consulta.dataConsulta))}</td>
+                                                                }).format(new Date(consulta.dataNascimento))}</td>
                                                             </tr>
                                                         </tbody>
                                                         

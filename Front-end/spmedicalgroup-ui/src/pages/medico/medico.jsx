@@ -26,7 +26,7 @@ export default class Medico extends Component {
     };
 
     buscarConsultas = () => {
-        axios('http://localhost:5000/api/Consultas/Medico', {
+        axios('https://62055ec5161670001741ba6a.mockapi.io/Medico', {
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
             }
@@ -133,21 +133,22 @@ export default class Medico extends Component {
                                                     <table className="tabela_lista" id="tabela-lista">
 
                                                         <tbody>
-                                                            <tr key={consulta.idConsulta}>
-                                                                <td>{consulta.idPacienteNavigation.idUsuarioNavigation.nomeUsuario}</td>
-                                                                <td>{consulta.idSituacaoNavigation.descricaoSituacao }</td>
+                                                            <tr key={consulta.id}>
+                                                                <td>{consulta.idUsuario.usuario}</td>
+                                                                <td>{consulta.nomeMedico }</td>
+                                                                <td>{consulta.crm }</td>
                                                                 {/* {this.state.editando == true && this.state.idConsulta == consulta.idConsulta ? 
                                                                         <td> <input type="text" value={this.state.idSituaçao} onChange={this.atualizaStateCampo} placeholder='Situação'/> </td> : <td>{consulta.idSituacaoNavigation.descricaoSituacao }</td> }
                                                                         {usuarioAutenticado() && parseJwt().role === '2' ? this.state.editando == true && this.state.idConsulta === consulta.idSituacaoNavigation.descricaoSituacao ? <td><button onClick={()=> this.mudarSituacao()}>Salvar</button></td> :  <button onClick={() => this.buscaConsulta(consulta)}><img src={BotaoEdit} style={{ width: 28 }} alt="Botao Editar" /></button> : null} */}
                                                                     
                                                                 <img src={BotaoEdit} style={{ width: 28 }} alt="Botao Editar" />
 
-                                                                <td>{Intl.DateTimeFormat("pt-BR", {
+                                                                {/* <td>{Intl.DateTimeFormat("pt-BR", {
                                                                     year: 'numeric', month: 'numeric', day: 'numeric'
-                                                                }).format(new Date(consulta.dataConsulta))}</td>
+                                                                }).format(new Date(consulta.dataNascimento))}</td>
                                                                 <td>{Intl.DateTimeFormat("pt-BR", {
                                                                     hour: 'numeric', minute: 'numeric', hour12: false
-                                                                }).format(new Date(consulta.dataConsulta))}</td>
+                                                                }).format(new Date(consulta.dataNascimento))}</td> */}
 
                                                                 
                                                             </tr>
